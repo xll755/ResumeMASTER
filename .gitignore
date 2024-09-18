@@ -1,0 +1,2 @@
+# Add any file (specific/type), dir, etc that you want git to not track
+.vscode/

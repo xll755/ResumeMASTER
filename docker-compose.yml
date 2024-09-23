@@ -1,0 +1,36 @@
+name: resume_master
+services:
+  db:
+    container_name: database
+    image: mysql:latest
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: rm_db
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: dev
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    # volumes:
+    #   - "./db/init:/docker-entrypoint-initdb.d"
+    #   - "./db/data:/var/lib/mysql"
+    networks:
+      - app-net
+  www:
+    depends_on:
+      - db
+    build: .
+    container_name: web_server
+    image: php:8.3.4RC1-apache-bookworm
+    restart: always
+    volumes:
+      - "./www/:/var/www/html"
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    driver: bridge

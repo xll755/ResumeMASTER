@@ -11,8 +11,9 @@ services:
       MYSQL_USER: dev
       MYSQL_PASSWORD: dev
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
-    # volumes:
-    #   - "./db/init:/docker-entrypoint-initdb.d"
+    volumes:
+      - "./db:/docker-entrypoint-initdb.d/"
+      # - "./db/init:/docker-entrypoint-initdb.d"
     #   - "./db/data:/var/lib/mysql"
     networks:
       - app-net

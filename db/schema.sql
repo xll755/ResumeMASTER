@@ -9,9 +9,11 @@ use `rm_db`;
 -- rm_db.user def
 create table `users` (
 	`id` int not null auto_increment,
+	`userName` varchar(100) default null,
 	`firstName` varchar(100) default null,
 	`lastName` varchar(100) default null,
 	`email` varchar(100) default null,
+	`passwd` varchar(100) default null,
 	primary key (`id`)
 ) Engine=InnoDB;
 

@@ -4,6 +4,7 @@ class Resume implements DB_functions
 	protected int $id; // or private?
 	public int $userId;
 	public string $name;
+	// TODO: some property to represent/store pdf
 
 	public function setID(int $id):void { $this->id = $id; } // for testing & creation only rn  TODO: repair
 
@@ -13,6 +14,7 @@ class Resume implements DB_functions
 		$stmt = $mysqli->prepare($query);
 		$userId = $this->userId;
 		$name = $this->name;
+		// TODO: insert pdf blob
 		$types = "ss";
 		$stmt->bind_param($types, $userId, $name);
 		$stmt->execute();
@@ -39,6 +41,7 @@ class Resume implements DB_functions
 		$this->id = $row['id'];
 		$this->userId = $row['userId'];
 		$this->name = $row['name'];
+		// TODO: fetch pdf blob
 	}
 
 	public function insert(mysqli $mysqli, string $field): void

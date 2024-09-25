@@ -14,3 +14,11 @@ create table `users` (
 	`email` varchar(100) default null,
 	primary key (`id`)
 ) Engine=InnoDB;
+
+-- rm_db.resumes def
+create table `resumes` (
+	`id` int not null auto_increment,
+	`userId` varchar(100) default null,
+	`name` varchar(100) default null,
+	primary key (`id`)
+) Engine=InnoDB;

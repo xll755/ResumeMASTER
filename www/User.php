@@ -2,21 +2,25 @@
 class User implements  DB_functions
 {
 	protected int $id; // or private?
+	public string $userName;
 	public string $firstName;
 	public string $lastName;
 	public string $email;
+	protected string $passwd; // or private?
 
 	public function setID(int $id):void { $this->id = $id; } // for testing & creation only rn  TODO: repair
 
 	public function create(mysqli $mysqli):void
 	{
-		$query = "insert into users(firstName, lastName, email) values (?,?,?)";
+		$query = "insert into users(userName, firstName, lastName, email, passwd) values (?,?,?,?,?)";
 		$stmt = $mysqli->prepare($query);
+		$userName = $this->userName;
 		$fistName = $this->firstName;
 		$lastName = $this->lastName;
 		$email = $this->email;
-		$types = "sss";
-		$stmt->bind_param($types, $fistName, $lastName, $email);
+		$passwd = $this->passwd;
+		$types = "sssss";
+		$stmt->bind_param($types, $userName, $fistName, $lastName, $email, $passwd);
 		$stmt->execute();
 	}
 
@@ -39,9 +43,11 @@ class User implements  DB_functions
 		$result = $stmt->get_result();
 		$row = $result->fetch_assoc();
 		$this->id = $row['id'];
+		$this->userName = $row['userName'];
 		$this->firstName = $row['firstName'];
 		$this->lastName = $row['lastName'];
 		$this->email = $row['email'];
+		$this->passwd = $row['passwd'];
 	}
 
 	public function insert(mysqli $mysqli, string $field): void

@@ -2,6 +2,7 @@
 // testing things to see what works
 
 $mysqli = require_once "./db_config.php"; // assignment not strictly necessary but seems to help lsp, kinda
+include "./Validation.php";
 include "./DB_functions.php";
 include "./User.php";
 // include "./Resume.php";
@@ -29,14 +30,14 @@ print("-------------- \n");
 // create test user
 $test_user = new User();
 // $test_user->setID(1); // set by db
-$test_user->userName = 'test_user';
-$test_user->firstName = 'test';
-$test_user->lastName = 'user';
-$test_user->email = 'test_user@test.test';
+$test_user->setUserName('test_user');
+$test_user->setFirstName('test');
+$test_user->setLastName('user');
+$test_user->setEmail('test_user@test.test');
 $test_user->setPW('passwdHash');
 print("show created user obj: \n");
 print_r($test_user); // "cleaner"
-var_dump($test_user); // more precise
+// var_dump($test_user); // more precise
 
 print("-------------- \n");
 echo "testing user.create method: \n";
@@ -54,9 +55,18 @@ print_r($user_from_db);
 
 print("-------------- \n");
 print("testing user.push method: \n");
-$user_from_db->userName = "updated_uname";
+$user_from_db->setUserName("updated_uname");
 $user_from_db->push($mysqli);
 $user_from_db->pull($mysqli, 1);
+print_r($user_from_db);
+
+print("-------------- \n");
+print("testing user.push_pull method: \n");
+$user_from_db->setFirstName("updated_fname");
+$user_from_db->setLastName("update_lname");
+$user_from_db->setPW("new_password");
+$user_from_db->setEmail("updated_email@email.com");
+$user_from_db->push_pull($mysqli);
 print_r($user_from_db);
 
 print("-------------- \n");

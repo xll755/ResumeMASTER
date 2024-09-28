@@ -4,16 +4,26 @@
 //
 class User implements  DB_functions
 {
-	protected int $id; // or private?
-	public string $userName;
-	public string $firstName;
-	public string $lastName;
-	public string $email;
-	protected string $passwd; // or private?
+	use Validation;
+	private int $id;
+	private string $userName;
+	private string $firstName;
+	private string $lastName;
+	private string $email;
+	private string $passwd;
 
-	public function setID(int $id):void { $this->id = $id; } // for testing & creation only rn  TODO: repair
-	public function getID():int { return $this->id; } // for testing & creation only rn  TODO: repair
-	public function setPW(string $pwd):void { $this->passwd = $pwd; } // for testing & creation only rn  TODO: repair
+	public function setID(int $int):void { $this->id = $this->validate_int_input($int); }
+	public function getID():int { return $this->id; }
+	public function setUserName(string $str): void { $this->userName = $this->validate_str_input($str); }
+	public function getUserName(): string { return $this->userName; }
+	public function setFirstName(string $str): void { $this->firstName = $this->validate_str_input($str); }
+	public function getFirstName(): string { return $this->firstName; }
+	public function setLastName(string $str): void { $this->lastName = $this->validate_str_input($str); }
+	public function getLastName(): string { return $this->lastName; }
+	public function setEmail(string $str): void { $this->email = $this->validate_email($str); }
+	public function getEmail(): string { return $this->email; }
+	public function setPW(string $str):void { $this->passwd = password_hash($this->validate_str_input($str), PASSWORD_DEFAULT); }
+	public function getPW(string $str):string { return $this->passwd; }
 
 	/**
 	 * Create a db entry for the current user obj
@@ -107,6 +117,12 @@ class User implements  DB_functions
 		$types = "sssssi";
 		$stmt->bind_param($types, $userName, $fistName, $lastName, $email, $passwd, $id);
 		$stmt->execute();
+	}
+
+	public function push_pull(mysqli $mysqli): void
+	{
+		$this->push($mysqli);
+		$this->pull($mysqli, $this->id);
 	}
 }
 ?>

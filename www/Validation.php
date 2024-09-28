@@ -1,6 +1,9 @@
 <?php
 /**
  * Provides input validation for user input
+ *
+ * NOTE: should these funcs return bools & we make another trait for cleaning
+ * input?
  */
 trait Validation
 {
@@ -28,6 +31,14 @@ trait Validation
 	{
 		// TODO: validate user input
 		return $int;
+	}
+
+	function validate_email(string $str): string
+	{
+		// TODO: validate email
+		// NOTE: necessary ???
+		return $str;
+
 	}
 }
 ?>

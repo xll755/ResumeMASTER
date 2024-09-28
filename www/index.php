@@ -6,13 +6,20 @@ include "./DB_functions.php";
 include "./User.php";
 // include "./Resume.php";
 
-print("testing db connection: \n");
-$sql = "select database();";
-$result = $mysqli->query($sql);
-$result = $result->fetch_array();
-echo 'current db: ' . $result['database()'] . "\n";
+print("reset users for testing:");
+$sql = "truncate table users;";
+$mysqli->query($sql);
+
+function display_curr_users_in_db(mysqli $mysqli): void
+{
+	$sql = "select count(*) from users;";
+	$result = $mysqli->query($sql);
+	$result = $result->fetch_array();
+	echo 'current # of users: ' . $result['count(*)'] . "\n";
+}
 
 print("-------------- \n");
+
 /*
 * here's my vision as of right now:
 * we work with user objects "locally"
@@ -33,17 +40,11 @@ var_dump($test_user); // more precise
 
 print("-------------- \n");
 echo "testing user.create method: \n";
-$sql = "select count(*) from users;";
-$result = $mysqli->query($sql);
-$result = $result->fetch_array();
-echo 'current # of users: ' . $result['count(*)'] . "\n";
+display_curr_users_in_db(mysqli: $mysqli);
 print("creating db entry for user... \n");
 $test_user->create($mysqli);
 unset($test_user); // remove test_user obj
-$sql = "select count(*) from users;";
-$result = $mysqli->query($sql);
-$result = $result->fetch_array();
-echo 'current # of users: ' . $result['count(*)'] . "\n";
+display_curr_users_in_db(mysqli: $mysqli);
 
 print("-------------- \n");
 print("testing user.pull method on new user obj: \n");
@@ -54,21 +55,16 @@ print_r($user_from_db);
 print("-------------- \n");
 print("testing user.push method: \n");
 $user_from_db->userName = "updated_uname";
-$user_from_db->pull(mysqli: $mysqli, id: 1);
+$user_from_db->push($mysqli);
+$user_from_db->pull($mysqli, 1);
 print_r($user_from_db);
 
 print("-------------- \n");
 print("testing user.delete method: \n");
-$sql = "select count(*) from users;";
-$result = $mysqli->query($sql);
-$result = $result->fetch_array();
-echo 'current # of users: ' . $result['count(*)'] . "\n";
+display_curr_users_in_db(mysqli: $mysqli);
 print("deleting userId:" . $user_from_db->getID() . "\n");
 $user_from_db->delete($mysqli);
-$sql = "select count(*) from users;";
-$result = $mysqli->query($sql);
-$result = $result->fetch_array();
-echo 'current # of users: ' . $result['count(*)'] . "\n";
+display_curr_users_in_db(mysqli: $mysqli);
 
 // if passing around will need to close last
 // dont love

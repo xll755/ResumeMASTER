@@ -14,7 +14,8 @@ create table `users` (
 	`lastName` varchar(100) default null,
 	`email` varchar(100) default null,
 	`passwd` varchar(100) default null,
-	primary key (`id`)
+	primary key (`id`),
+	constraint unique_user unique (`id`, `userName`)
 ) Engine=InnoDB;
 
 -- rm_db.resumes def

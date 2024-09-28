@@ -96,7 +96,7 @@ class User implements  DB_functions
 	*/
 	public function push(mysqli $mysqli): void
 	{
-		$query = "update users(userName, firstName, lastName, email, passwd) set (?,?,?,?,?) where users.id = (?)";
+		$query = "update users set userName=?, firstName=?, lastName=?, email=?, passwd=? where users.id = ?";
 		$stmt = $mysqli->prepare($query);
 		$id = $this->id;
 		$userName = $this->userName;

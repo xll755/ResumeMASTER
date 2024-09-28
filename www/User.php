@@ -26,9 +26,10 @@ class User implements  DB_functions
 	public function getPW(string $str):string { return $this->passwd; }
 
 	/**
-	 * Create a db entry for the current user obj
-	 *
-	* TODO: desc
+	* INSERT the $this User object's data into the DB.
+	*
+	* Create a db entry for the $this User obj.
+	* For use when adding a non-existing User to the DB.
 	*
 	* @param mysqli $mysqli db object
 	* @return void
@@ -48,9 +49,10 @@ class User implements  DB_functions
 	}
 
 	/**
-	* Delete the user who's user obj this is from db
+	* DELETE the $this User object's data from the DB.
 	*
-	* TODO: desc
+	* Remove the db entry for $this User obj.
+	* For use when removing an existing User from the DB.
 	*
 	* @param mysqli $mysqli db object
 	* @return void
@@ -66,9 +68,10 @@ class User implements  DB_functions
 	}
 
 	/**
-	* Pull a user from db into a user object.
+	* PULL all information for a user from DB into $this User obj.
 	*
-	* TODO: desc
+	* Get all of an existing user's DB fields and place them in $this obj.
+	* For use when loading a User obj to work with locally.
 	*
 	* @param mysqli $mysqli db object
 	* @param int $id id of user to pull
@@ -78,7 +81,7 @@ class User implements  DB_functions
 	{
 		$query = "select * from users where users.id = (?)";
 		$stmt = $mysqli->prepare($query);
-		$id = $id;
+		$id = $this->validate_int_input($id);
 		$types = "i";
 		$stmt->bind_param($types, $id);
 		$stmt->execute();
@@ -97,9 +100,10 @@ class User implements  DB_functions
 	}
 
 	/**
-	* Push the current user obj into the db
+	* PUSH all information for a User from $this User obj to DB.
 	*
-	* TODO: desc
+	* Update $this User's DB entry with the current state of $this User obj.
+	* For use after manipulating a User's data locally.
 	*
 	* @param mysqli $mysqli db object
 	* @return void
@@ -119,6 +123,16 @@ class User implements  DB_functions
 		$stmt->execute();
 	}
 
+	/**
+	* PUSH & PULL all information for a User from $this User obj to/from DB.
+	*
+	* Push and then pull updated information to update $this local User obj
+	* to DB state.
+	* For use when updating the local state of $this User is necessary.
+	*
+	* @param mysqli $mysqli db object
+	* @return void
+	*/
 	public function push_pull(mysqli $mysqli): void
 	{
 		$this->push($mysqli);

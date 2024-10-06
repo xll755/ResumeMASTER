@@ -165,5 +165,31 @@ class User implements  DB_functions
 			return $row['id'];
 		}
 	}
+
+	/**
+	* Confirms the correctness of a provided User's passwd
+	*
+	* Uses the User obj's userName to query the DB to check if the provided
+	* passwd matches the passwd for $this User in the DB.
+	*
+	* @param mysqli $mysqli db object
+	* @return bool true if passwds match, false otherwise.
+	*/
+	public function confirmPW(mysqli $mysqli): bool
+	{
+		$query = "select passwd from users where users.userName = (?);";
+		$stmt = $mysqli->prepare($query);
+		$passwd = $this->passwd;
+		$types = "s";
+		$stmt->bind_param($types, $passwd);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$row = $result->fetch_assoc();
+		if ($row['passwd'] == $this->passwd) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 ?>

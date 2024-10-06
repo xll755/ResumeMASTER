@@ -138,5 +138,32 @@ class User implements  DB_functions
 		$this->push($mysqli);
 		$this->pull($mysqli, $this->id);
 	}
+
+	/**
+	* Confirm the existence of a User in the DB
+	*
+	* Uses the User obj's userName to query DB to check if an id exists for the
+	* provided username.
+	*
+	* @param mysqli $mysqli db oject
+	* @return bool false if user.id not found
+	* @return int $id if user.id found
+	*/
+	public function exists(mysqli $mysqli): bool|int
+	{
+		$query = "select id from users where users.userName = (?);";
+		$stmt = $mysqli->prepare($query);
+		$userName = $this->userName;
+		$types = "s";
+		$stmt->bind_param($types, $userName);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$row = $result->fetch_assoc();
+		if ($row['id'] == null) {
+			return false;
+		} else {
+			return $row['id'];
+		}
+	}
 }
 ?>

@@ -1,5 +1,5 @@
 <?php
-// TODO: error handling, specifically in regards to the db
+// TODO: brror handling, specifically in regards to the db
 //
 //
 class User implements  DB_functions
@@ -32,9 +32,9 @@ class User implements  DB_functions
 	* For use when adding a non-existing User to the DB.
 	*
 	* @param mysqli $mysqli db object
-	* @return void
+	* @return int $id created user's id
 	 */
-	public function create(mysqli $mysqli): void
+	public function create(mysqli $mysqli): int
 	{
 		$query = "insert users(userName, firstName, lastName, email, passwd) values (?,?,?,?,?)";
 		$stmt = $mysqli->prepare($query);
@@ -46,6 +46,13 @@ class User implements  DB_functions
 		$types = "sssss";
 		$stmt->bind_param($types, $userName, $fistName, $lastName, $email, $passwd);
 		$stmt->execute();
+		$stmt->execute();
+		$id = $this->exists($mysqli);
+		if ($id) {
+			return $id;
+		} else {
+			throw new Exception("USER NOT ADDED TO DB", 1);
+		}
 	}
 
 	/**

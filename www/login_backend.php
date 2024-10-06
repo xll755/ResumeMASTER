@@ -2,6 +2,7 @@
 // WARN: UNTESTED CODE
 // TODO: confirm sessions code & improve session security
 // TODO: better error handling???
+// TODO: validate the contents of post (is not empty and/or is each field set?)
 
 /* login_backend.php
 *
@@ -39,13 +40,14 @@ $user->setPW($_POST['password']);
 
 if (!$user->confirmPW($mysqli)) {
 	throw new Exception("INCORRECT PASSWORD", 1);
+} else {
+	// NOTE: does this need to be in an else given the throw???
+	session_start();
+	// NOTE: is this what we want to do / how its done?
+	if (!isset($_SESSION['id'])) {
+		$_SESSION['user_id'] = $id;
+	}
+	$user->pull($mysqli, $id);
 }
 
-session_start();
-// NOTE: is this what we want to do / how its done?
-if (!isset($_SESSION['id'])) {
-	$_SESSION['user_id'] = $id;
-}
-
-$user->pull($mysqli, $id);
 ?>

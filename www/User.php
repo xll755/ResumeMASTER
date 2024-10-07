@@ -181,7 +181,7 @@ class User implements  DB_functions
 	* @param mysqli $mysqli db object
 	* @return bool true if passwds match, false otherwise.
 	*/
-	public function confirmPW(mysqli $mysqli): bool
+	public function confirmPW(mysqli $mysqli, string $passwd): bool
 	{
 		$query = "select passwd from users where users.userName = (?);";
 		$stmt = $mysqli->prepare($query);
@@ -191,11 +191,7 @@ class User implements  DB_functions
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$row = $result->fetch_assoc();
-		if ($row['passwd'] == $this->passwd) {
-			return true;
-		} else {
-			return false;
-		}
+		return password_verify($passwd, $row['passwd']);
 	}
 }
 ?>

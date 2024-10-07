@@ -166,7 +166,7 @@ class User implements  DB_functions
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$row = $result->fetch_assoc();
-		if ($row['id'] == null) {
+		if ($row == null) {
 			return false;
 		} else {
 			return $row['id'];

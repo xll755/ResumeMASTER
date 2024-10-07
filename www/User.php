@@ -34,19 +34,19 @@ class User implements  DB_functions
 	* @param mysqli $mysqli db object
 	* @return int $id created user's id
 	 */
-	public function create(mysqli $mysqli): void
+	public function create(mysqli $mysqli): int
 	{
 		$query = "insert users(userName, firstName, lastName, email, passwd) values (?,?,?,?,?)";
 		$stmt = $mysqli->prepare($query);
 		$userName = $this->userName;
-		$fistName = $this->firstName;
+		$firstName = $this->firstName;
 		$lastName = $this->lastName;
 		$email = $this->email;
 		$passwd = $this->passwd;
 		$types = "sssss";
-		$stmt->bind_param($types, $userName, $fistName, $lastName, $email, $passwd);
+		$stmt->bind_param($types, $userName, $firstName, $lastName, $email, $passwd);
 		$stmt->execute();
-		$stmt->execute();
+		$stmt->execute();  //why double executation???
 		$id = $this->exists($mysqli);
 		if ($id) {
 			return $id;

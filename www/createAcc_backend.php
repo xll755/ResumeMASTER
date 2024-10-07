@@ -32,12 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 }
 
 $user = new User();
+$user->setUserName($_POST['userName']);
 $user->setFirstName($_POST['firstName']);
 $user->setLastName($_POST['lastName']);
-$user->setEmail($_POST['emailAdd']);
-// below not yet implemented in html file
-//$user->setUserName($_POST['userName']);
-//$user->setPW($_POST['passwd']);
+$user->setEmail($_POST['emailAddr']);
+$user->setPW($_POST['passwd']);
 
 $id = $user->exists($mysqli);
 if ($id) {

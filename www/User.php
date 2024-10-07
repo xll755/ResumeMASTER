@@ -23,7 +23,7 @@ class User implements  DB_functions
 	public function setEmail(string $str): void { $this->email = $this->validate_email($str); }
 	public function getEmail(): string { return $this->email; }
 	public function setPW(string $str):void { $this->passwd = password_hash($this->validate_str_input($str), PASSWORD_DEFAULT); }
-	public function getPW(string $str):string { return $this->passwd; }
+	public function getPW():string { return $this->passwd; }
 
 	/**
 	* INSERT the $this User object's data into the DB.

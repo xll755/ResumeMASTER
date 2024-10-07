@@ -23,7 +23,7 @@
 
 $mysqli = require_once"./db_config.php";
 include "./Validation.php";
-include "./DB_functions.php.php";
+include "./DB_functions.php";
 include "./User.php";
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {

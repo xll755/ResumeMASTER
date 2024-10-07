@@ -1,5 +1,5 @@
 <?php
-// TODO: error handling, specifically in regards to the db
+// TODO: brror handling, specifically in regards to the db
 //
 //
 class User implements  DB_functions
@@ -32,9 +32,9 @@ class User implements  DB_functions
 	* For use when adding a non-existing User to the DB.
 	*
 	* @param mysqli $mysqli db object
-	* @return void
+	* @return int $id created user's id
 	 */
-	public function create(mysqli $mysqli): void
+	public function create(mysqli $mysqli): int
 	{
 		$query = "insert users(userName, firstName, lastName, email, passwd) values (?,?,?,?,?)";
 		$stmt = $mysqli->prepare($query);
@@ -46,6 +46,13 @@ class User implements  DB_functions
 		$types = "sssss";
 		$stmt->bind_param($types, $userName, $fistName, $lastName, $email, $passwd);
 		$stmt->execute();
+		$stmt->execute();
+		$id = $this->exists($mysqli);
+		if ($id) {
+			return $id;
+		} else {
+			throw new Exception("USER NOT ADDED TO DB", 1);
+		}
 	}
 
 	/**
@@ -137,6 +144,59 @@ class User implements  DB_functions
 	{
 		$this->push($mysqli);
 		$this->pull($mysqli, $this->id);
+	}
+
+	/**
+	* Confirm the existence of a User in the DB
+	*
+	* Uses the User obj's userName to query DB to check if an id exists for the
+	* provided username.
+	*
+	* @param mysqli $mysqli db oject
+	* @return bool false if user.id not found
+	* @return int $id if user.id found
+	*/
+	public function exists(mysqli $mysqli): bool|int
+	{
+		$query = "select id from users where users.userName = (?);";
+		$stmt = $mysqli->prepare($query);
+		$userName = $this->userName;
+		$types = "s";
+		$stmt->bind_param($types, $userName);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$row = $result->fetch_assoc();
+		if ($row['id'] == null) {
+			return false;
+		} else {
+			return $row['id'];
+		}
+	}
+
+	/**
+	* Confirms the correctness of a provided User's passwd
+	*
+	* Uses the User obj's userName to query the DB to check if the provided
+	* passwd matches the passwd for $this User in the DB.
+	*
+	* @param mysqli $mysqli db object
+	* @return bool true if passwds match, false otherwise.
+	*/
+	public function confirmPW(mysqli $mysqli): bool
+	{
+		$query = "select passwd from users where users.userName = (?);";
+		$stmt = $mysqli->prepare($query);
+		$passwd = $this->passwd;
+		$types = "s";
+		$stmt->bind_param($types, $passwd);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$row = $result->fetch_assoc();
+		if ($row['passwd'] == $this->passwd) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
 ?>

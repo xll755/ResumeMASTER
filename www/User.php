@@ -46,7 +46,6 @@ class User implements  DB_functions
 		$types = "sssss";
 		$stmt->bind_param($types, $userName, $fistName, $lastName, $email, $passwd);
 		$stmt->execute();
-		$stmt->execute();
 		$id = $this->exists($mysqli);
 		if ($id) {
 			return $id;

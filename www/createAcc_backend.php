@@ -21,6 +21,7 @@
 *	- new user session
 */
 
+session_start();
 $mysqli = require_once"./db_config.php";
 include "./Validation.php";
 include "./DB_functions.php";
@@ -45,7 +46,6 @@ if ($id) {
 	// NOTE: does this need to be in an else given the throw???
 	$id = $user->create($mysqli);
 	$user->pull($mysqli, $id);
-	session_start();
 	// NOTE: is this what we want to do / how its done?
 	if (!isset($_SESSION['id'])) {
 		$_SESSION['user_id'] = $id;

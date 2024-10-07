@@ -48,6 +48,7 @@ if (!$user->confirmPW($mysqli)) {
 		$_SESSION['user_id'] = $id;
 	}
 	$user->pull($mysqli, $id);
+	header('Location: ./index.html', true);
 }
 
 ?>

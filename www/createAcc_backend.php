@@ -49,6 +49,7 @@ if ($id) {
 	if (!isset($_SESSION['id'])) {
 		$_SESSION['user_id'] = $id;
 	}
+	header('Location: ./index.html', true);
 }
 
 ?>

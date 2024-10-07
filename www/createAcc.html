@@ -20,14 +20,20 @@
 	<form action="createAcc_backend.php" method="POST">												<!-- linking php file to html -->
 	<center>
 	<table>
+	<tr><td><label for="userName">User Name</label></td>												<!-- label for user name input -->
+      <td><input type="text" id="userName" name="userName" maxlength="20" required></td></tr>			
+
 	  <tr><td><label for="firstName">First Name</label></td>											<!-- label for first name input -->
       <td><input type="text" id="firstName" name="firstName" maxlength="20" required></td></tr>			
     
       <tr><td><label for="lastName">Last Name:</label></td>												<!-- label for last name input -->
       <td><input type="text" id="lastName" name="lastName" maxlength="20" required></td></tr>				
 	  
-      <tr><td><label for="emailAdd">Email Address:</label></td>												<!-- label for Email Address input -->
-      <td><input type="text" id="emailAdd" name="emailAdd" maxlength="30" required></td></tr>				
+      <tr><td><label for="emailAddr">Email Address:</label></td>											<!-- label for Email Address input -->
+      <td><input type="text" id="emailAddr" name="emailAddr" maxlength="30" required></td></tr>				
+
+	  <tr><td><label for="passwd">Password:</label></td>												<!-- label for password input -->
+      <td><input type="text" id="passwd" name="passwd" maxlength="30" required></td></tr>				
 	  
 	  <tr><td colspan="2"></td></tr>														<!-- HTML table w/ only two columns !-->
 	  <tr><td><center><input type="submit" value="Submit"></center></td>										<!-- label for "submit" to enter desired information -->

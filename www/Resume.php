@@ -21,7 +21,7 @@ class Resume implements DB_functions
 	* @param mysqli $mysqli db object
 	* @return void
 	 */
-	public function create(mysqli $mysqli): void
+	public function create(mysqli $mysqli): int
 	{
 		$query = "insert into resumes(userId, name) values (?,?)";
 		$stmt = $mysqli->prepare($query);

@@ -23,7 +23,7 @@ class User implements  DB_functions
 	public function setEmail(string $str): void { $this->email = $this->validate_email($str); }
 	public function getEmail(): string { return $this->email; }
 	public function setPW(string $str):void { $this->passwd = password_hash($this->validate_str_input($str), PASSWORD_DEFAULT); }
-	public function getPW(string $str):string { return $this->passwd; }
+	public function getPW():string { return $this->passwd; }
 
 	/**
 	* INSERT the $this User object's data into the DB.
@@ -44,9 +44,9 @@ class User implements  DB_functions
 		$email = $this->email;
 		$passwd = $this->passwd;
 		$types = "sssss";
-		$stmt->bind_param($types, $userName, $firstName, $lastName, $email, $passwd);
+		$stmt->bind_param($types, $userName, $fistName, $lastName, $email, $passwd);
 		$stmt->execute();
-		$stmt->execute();  //why double executation???
+
 		$id = $this->exists($mysqli);
 		if ($id) {
 			return $id;
@@ -166,7 +166,7 @@ class User implements  DB_functions
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$row = $result->fetch_assoc();
-		if ($row['id'] == null) {
+		if ($row == null) {
 			return false;
 		} else {
 			return $row['id'];
@@ -182,21 +182,17 @@ class User implements  DB_functions
 	* @param mysqli $mysqli db object
 	* @return bool true if passwds match, false otherwise.
 	*/
-	public function confirmPW(mysqli $mysqli): bool
+	public function confirmPW(mysqli $mysqli, string $passwd): bool
 	{
 		$query = "select passwd from users where users.userName = (?);";
 		$stmt = $mysqli->prepare($query);
-		$passwd = $this->passwd;
+		$userName = $this->userName;
 		$types = "s";
-		$stmt->bind_param($types, $passwd);
+		$stmt->bind_param($types, $userName);
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$row = $result->fetch_assoc();
-		if ($row['passwd'] == $this->passwd) {
-			return true;
-		} else {
-			return false;
-		}
+		return password_verify($passwd, $row['passwd']);
 	}
 }
 ?>

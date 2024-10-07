@@ -185,9 +185,9 @@ class User implements  DB_functions
 	{
 		$query = "select passwd from users where users.userName = (?);";
 		$stmt = $mysqli->prepare($query);
-		$passwd = $this->passwd;
+		$userName = $this->userName;
 		$types = "s";
-		$stmt->bind_param($types, $passwd);
+		$stmt->bind_param($types, $userName);
 		$stmt->execute();
 		$result = $stmt->get_result();
 		$row = $result->fetch_assoc();

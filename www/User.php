@@ -39,13 +39,14 @@ class User implements  DB_functions
 		$query = "insert users(userName, firstName, lastName, email, passwd) values (?,?,?,?,?)";
 		$stmt = $mysqli->prepare($query);
 		$userName = $this->userName;
-		$fistName = $this->firstName;
+		$firstName = $this->firstName;
 		$lastName = $this->lastName;
 		$email = $this->email;
 		$passwd = $this->passwd;
 		$types = "sssss";
 		$stmt->bind_param($types, $userName, $fistName, $lastName, $email, $passwd);
 		$stmt->execute();
+
 		$id = $this->exists($mysqli);
 		if ($id) {
 			return $id;

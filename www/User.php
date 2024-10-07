@@ -34,7 +34,7 @@ class User implements  DB_functions
 	* @param mysqli $mysqli db object
 	* @return int $id created user's id
 	 */
-	public function create(mysqli $mysqli): int
+	public function create(mysqli $mysqli): void
 	{
 		$query = "insert users(userName, firstName, lastName, email, passwd) values (?,?,?,?,?)";
 		$stmt = $mysqli->prepare($query);

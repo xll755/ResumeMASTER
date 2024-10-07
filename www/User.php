@@ -44,7 +44,7 @@ class User implements  DB_functions
 		$email = $this->email;
 		$passwd = $this->passwd;
 		$types = "sssss";
-		$stmt->bind_param($types, $userName, $fistName, $lastName, $email, $passwd);
+		$stmt->bind_param($types, $userName, $firstName, $lastName, $email, $passwd);
 		$stmt->execute();
 
 		$id = $this->exists($mysqli);
@@ -121,12 +121,12 @@ class User implements  DB_functions
 		$stmt = $mysqli->prepare($query);
 		$id = $this->id;
 		$userName = $this->userName;
-		$fistName = $this->firstName;
+		$firstName = $this->firstName;
 		$lastName = $this->lastName;
 		$email = $this->email;
 		$passwd = $this->passwd;
 		$types = "sssssi";
-		$stmt->bind_param($types, $userName, $fistName, $lastName, $email, $passwd, $id);
+		$stmt->bind_param($types, $userName, $firstName, $lastName, $email, $passwd, $id);
 		$stmt->execute();
 	}
 

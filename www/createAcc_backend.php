@@ -10,7 +10,7 @@
 * Checks if user account exists and creates a new one if none found.
 *
 * Takes in a HTTP POST containing:
-*	- fistName
+*	- firstName
 *	- lastName
 *	- email address
 *	- TODO: needs: userName & PW

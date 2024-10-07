@@ -1,0 +1,39 @@
+<!-- ResumeMASTER
+	 Lewis Green
+	 CPSC 4910
+	 XLL755
+-->
+
+<!-- This segment of code will create a login 
+and create account page for the user. We will connect
+this page to a .php file to authenticate the user's information.
+May also need ot create another form section to link to account creation.
+
+We will utilize POST method instead of GET because POST is more secure.
+Data is not stored via cache, aren't bookmarked, etc. 
+-->
+
+
+<html>
+  <head>
+	<title>Login page</title>															<!--Title of webpage-->
+	
+	<body>																				<!--CSS wrapper stuff to make it pretty goes here?
+	
+		</body>
+
+
+
+	<h2>login</h2>
+	<form action = "placeholderforauthentication.php" method = "POST">					<!--This is to send the user's information to .php for verification. -->
+		<input type = "text" name = "username" placeholder = "Username" required>		<!--This is for the username field, when empty shows username. -->
+		<input type = "password" name = "password" placeholder = "password" required>	<!--This is for the password field, when empty shows password. -->
+		<button type = "submit"> Login </button>										<!--This is for the login button, says "login" -->
+	</form>
+
+
+	</head>
+</html>
+
+
+

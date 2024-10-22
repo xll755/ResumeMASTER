@@ -1,0 +1,13 @@
+{
+    "name": "resume_master",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Smalot\\PdfPaser\\": "/app/vendor/smalot/pdflib/src/"
+        }
+    },
+    "require": {
+        "smalot/pdfparser": "^2.11",
+        "dompdf/dompdf": "^3.0"
+    }
+}

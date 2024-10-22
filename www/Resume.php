@@ -6,10 +6,10 @@ require_once __DIR__ . '/../../../app/vendor/autoload.php';
 
 class Resume implements DB_functions
 {
-	protected int $id; // or private?
-	public int $userId;
-	public string $name;
-	public string $contents;
+	private int $id; // or private?
+	private int $userId;
+	private string $name;
+	private string $contents;
 
 	public function setID(int $id):void { $this->id = $id; } // for testing & creation only rn  TODO: repair
 	public function getID():int { return $this->id; } // for testing & creation only rn  TODO: repair

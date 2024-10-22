@@ -2,16 +2,19 @@
 // TODO: error handling, specifically in regards to the db
 //
 //
+require_once __DIR__ . '/../../../app/vendor/autoload.php';
+
 class Resume implements DB_functions
 {
 	protected int $id; // or private?
 	public int $userId;
 	public string $name;
-	// TODO: add other fields (or figure out how we want to handle resumes)
-	// TODO: some property to represent/store pdf
+	public string $contents;
 
 	public function setID(int $id):void { $this->id = $id; } // for testing & creation only rn  TODO: repair
 	public function getID():int { return $this->id; } // for testing & creation only rn  TODO: repair
+	public function get_contents():string { return $this->contents; }
+	public function print():void { echo $this->contents; } // for testing & creation only rn  TODO: repair
 
 	/**
 	 * Create a db entry for the current resume obj
@@ -100,5 +103,12 @@ class Resume implements DB_functions
 		$stmt->execute();
 	}
 
+	public function import(string $path): void
+	{
+		$parser = new \Smalot\PdfParser\Parser();
+		$pdf = $parser->parseFile($path);
+		$text = $pdf->getText();
+		$this->contents = $text;
+	}
 }
 ?>

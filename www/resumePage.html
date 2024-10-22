@@ -5,12 +5,12 @@
     <title>Upload Your Resume</title>
 </head>
 <body>
-    <h1 style="text-align: center;">Upload Your Resume</h1>
-    <form action="upload_backend.php" method="POST" enctype="multipart/form-data"> <!-- Use enctype for file uploads -->
+    <h1 style="text-align: center;"> Upload Your Resume</h1>
+    <form action="resumePage_Backend.php" method="POST" enctype="multipart/form-data"> <!-- Use enctype for file uploads -->
       <center>
         <table>
           <tr>
-            <td><label for="resume">Upload Resume (PDF only):</label></td>
+            <td><label for="resume"> Upload Resume (PDF only):</label></td>
             <td><input type="file" id="resume" name="resume" accept=".pdf" required></td> <!-- Accept only PDFs -->
           </tr>
           <tr>

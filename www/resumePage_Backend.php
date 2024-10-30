@@ -34,18 +34,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    // Directory where uploaded PDFs will be saved
-    $uploadFileDir = './uploaded_resumes/';
-    $dest_path = $uploadFileDir . $fileName;
+    $name = strtolower($fileNameCmps[0]);
+    $blob = (string) file_get_contents($fileTmpPath);
+    // echo mb_strlen($blob, '8bit');
+    // var_dump($blob);
 
-    // Move file to the desired folder
-    if (!move_uploaded_file($fileTmpPath, $dest_path)) {
-        echo 'There was some error moving the file to the upload directory.';
-        exit();
-    }
+    $resume = new Resume();
+    $resume->set_userId($user_id);
+    $resume->set_name($name);
+    $resume->set_blob($blob);
+    // print($resume->get_blob());
+    // $resume_id = $resume->create($mysqli);
+    $resume_id = 12; // w/o slashes
+
+    $r = new Resume();
+    $r->pull($mysqli, $resume_id);
+    // $r->convert_blob2text();
+    // // var_dump($r);
+    // $r->print();
+
+    // // Directory where uploaded PDFs will be saved
+    // $uploadFileDir = './uploaded_resumes/';
+    // $dest_path = $uploadFileDir . $fileName;
+    //
+    // // Move file to the desired folder
+    // if (!move_uploaded_file($fileTmpPath, $dest_path)) {
+    //     echo 'There was some error moving the file to the upload directory.';
+    //     exit();
+    // }
 
     // Redirect user to a page to assist with developing their page
-    header('Location: user_page_builder.php?file=' . urlencode($fileName));
+    // header('Location: user_page_builder.php?file=' . urlencode($fileName));
     exit();
 }
 ?>

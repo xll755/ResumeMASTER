@@ -42,7 +42,7 @@ if (!$user->confirmPW($mysqli, $_POST['password'])) {
 } else {
 	// NOTE: does this need to be in an else given the throw???
 	// NOTE: is this what we want to do / how its done?
-	if (!isset($_SESSION['id'])) {
+	if (!isset($_SESSION['user_id'])) {
 		$_SESSION['user_id'] = $id;
 	}
 	$user->pull($mysqli, $id);

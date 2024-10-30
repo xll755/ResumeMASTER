@@ -46,7 +46,7 @@ if ($id) {
 	$id = $user->create($mysqli);
 	$user->pull($mysqli, $id);
 	// NOTE: is this what we want to do / how its done?
-	if (!isset($_SESSION['id'])) {
+	if (!isset($_SESSION['user_id'])) {
 		$_SESSION['user_id'] = $id;
 	}
 	header('Location: ./index.html', true);

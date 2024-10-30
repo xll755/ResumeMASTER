@@ -1,6 +1,19 @@
 <?php
 // resumePage_backend.php
 
+session_start();
+$mysqli = require_once"./db_config.php";
+include "./Validation.php";
+include "./DB_functions.php";
+include "./Resume.php";
+
+if (!isset($_SESSION['user_id'])) {
+    echo 'NO SESSION';
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if a file was uploaded
     if (!isset($_FILES['resume']) || $_FILES['resume']['error'] !== UPLOAD_ERR_OK) {

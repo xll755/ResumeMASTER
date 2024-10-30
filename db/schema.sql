@@ -23,7 +23,7 @@ create table `resumes` (
 	`id` int not null auto_increment,
 	`userId` int default null,
 	`name` varchar(100) default null,
-	`pdf` blob default null,
+	`pdf` mediumblob default null,
 	primary key (`id`),
 	foreign key (`userId`) references users(`id`)
 ) Engine=InnoDB;

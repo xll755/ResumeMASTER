@@ -110,8 +110,9 @@ class Resume implements DB_functions
 		$id = $this->id;
 		$userId = $this->userId;
 		$name = $this->name;
-		$types = "ssi";
-		$stmt->bind_param($types, $userId, $name, $id);
+		$blob = $this->pdf_blob; // WARN: prob broken like pull?
+		$types = "ssib";
+		$stmt->bind_param($types, $userId, $name, $id, $blob);
 		$stmt->execute();
 	}
 

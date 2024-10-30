@@ -152,5 +152,19 @@ class Resume implements DB_functions
 		$text = $pdf->getText();
 		$this->contents = $text;
 	}
+
+	public function convert_blob2text(): void
+	{
+		$parser = new \Smalot\PdfParser\Parser();
+		print($this->pdf_blob);
+		if ($this->pdf_blob === "") {
+			// TODO: improve error handling
+			echo 'EMPTY PDF [ convert_blob2text() ]';
+			exit();
+		}
+		$pdf = $parser->parseFile($this->pdf_blob);
+		$text = $pdf->getText();
+		$this->contents = $text;
+	}
 }
 ?>

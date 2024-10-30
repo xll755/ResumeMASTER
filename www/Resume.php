@@ -6,15 +6,19 @@ require_once __DIR__ . '/../../../app/vendor/autoload.php';
 
 class Resume implements DB_functions
 {
-	private int $id; // or private?
+	private int $id;
 	private int $userId;
 	private string $name;
-	private string $contents;
+	private string $contents; // text contents of pdf
+	private string $pdf_blob; // raw ( binary ) pdf
 
 	public function setID(int $id):void { $this->id = $id; } // for testing & creation only rn  TODO: repair
 	public function getID():int { return $this->id; } // for testing & creation only rn  TODO: repair
 	public function get_contents():string { return $this->contents; }
 	public function print():void { echo $this->contents; } // for testing & creation only rn  TODO: repair
+	public function set_userId(int $id):void { $this->userId = $id; }
+	public function set_name(string $name):void { $this->name = $name; }
+	public function set_blob(string $blob):void { $this->pdf_blob = $blob; }
 
 	/**
 	 * Create a db entry for the current resume obj

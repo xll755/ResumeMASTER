@@ -91,7 +91,8 @@ class Resume implements DB_functions
 		$this->id = $row['id'];
 		$this->userId = $row['userId'];
 		$this->name = $row['name'];
-		// TODO: fetch pdf blob and/or other fields
+		$this->pdf_blob = $row['pdf'];
+		$this->contents = $this->convert_blob2text($this->pdf_blob);
 	}
 
 	/**

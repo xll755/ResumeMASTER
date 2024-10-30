@@ -116,6 +116,35 @@ class Resume implements DB_functions
 		$stmt->execute();
 	}
 
+	/**
+	* Confirm the existence of a Resume in the DB
+	* TODO: this is a terrible check for this class. REFINE
+	*
+	* Uses the Resume obj's name to query DB to check if an id exists for the
+	* provided name.
+	*
+	* @param mysqli $mysqli db oject
+	* @return bool false if resume.id not found
+	* @return int $id if resume.id found
+	*/
+	public function exists(mysqli $mysqli): bool|int
+	{
+		$query = "select id from resumes where resumes.name = (?);";
+		$stmt = $mysqli->prepare($query);
+		$name = $this->name;
+		$types = "s";
+		$stmt->bind_param($types, $name);
+		$stmt->execute();
+		$result = $stmt->get_result();
+		$row = $result->fetch_assoc();
+		if ($row == null) {
+			return false;
+		} else {
+			return $row['id'];
+		}
+	}
+
+	// NOTE: still necessary?? or maybe this over blobs???
 	public function import(string $path): void
 	{
 		$parser = new \Smalot\PdfParser\Parser();

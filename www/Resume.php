@@ -30,14 +30,21 @@ class Resume implements DB_functions
 	 */
 	public function create(mysqli $mysqli): int
 	{
-		$query = "insert into resumes(userId, name) values (?,?)";
+		$query = "insert into resumes(userId, name, pdf) values (?,?, ?)";
 		$stmt = $mysqli->prepare($query);
 		$userId = $this->userId;
 		$name = $this->name;
-		// TODO: insert pdf blob
-		$types = "ss";
-		$stmt->bind_param($types, $userId, $name);
+		$pdf_blob = $this->pdf_blob;
+		$types = "iss";
+		$stmt->bind_param($types, $userId, $name, $pdf_blob);
 		$stmt->execute();
+
+		$id = $this->exists($mysqli);
+		if ($id) {
+			return $id;
+		} else {
+			throw new Exception("RESUME NOT ADDED TO DB", 1);
+		}
 	}
 
 	/**

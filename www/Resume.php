@@ -92,7 +92,7 @@ class Resume implements DB_functions
 		$this->userId = $row['userId'];
 		$this->name = $row['name'];
 		$this->pdf_blob = $row['pdf'];
-		$this->contents = $this->convert_blob2text($this->pdf_blob);
+		$this->convert_blob2text();
 	}
 
 	/**
@@ -153,18 +153,33 @@ class Resume implements DB_functions
 		$this->contents = $text;
 	}
 
-	public function convert_blob2text(): void
+	/*
+	* Convert the DB returned PDF binary into a 'contents' string
+	*
+	* Private helper function to assist the pull() method.
+	* Takes the 'pdf_blob' field and converts it to a 'contents' string.
+	* This requires the intermediate step of creating a tmp PDF file on the
+	* server as parseFile() takes filenames, not raw bin input
+	* The tmp file is removed after use.
+	*
+	*/
+	private function convert_blob2text(): void
 	{
 		$parser = new \Smalot\PdfParser\Parser();
-		print($this->pdf_blob);
 		if ($this->pdf_blob === "") {
-			// TODO: improve error handling
-			echo 'EMPTY PDF [ convert_blob2text() ]';
+			echo 'EMPTY PDF [ convert_blob2text() ]'; // TODO: improve error handling
 			exit();
 		}
-		$pdf = $parser->parseFile($this->pdf_blob);
+
+		// convert raw bin to tmp file
+		$tmp_file = tempnam(sys_get_temp_dir(), 'pdf-');
+		file_put_contents($tmp_file, $this->pdf_blob);
+
+		// parse the tmp file's contents to text
+		$pdf = $parser->parseFile($tmp_file);
 		$text = $pdf->getText();
 		$this->contents = $text;
+		unlink($tmp_file); // remove tmp file from server
 	}
 }
 ?>

@@ -10,6 +10,7 @@ $ pip install google-generativeai
 #it to the job description.
 
 import os
+from dotenv import load_dotenv
 import google.generativeai as genai
 import sys
 
@@ -32,7 +33,9 @@ def resume_section(type):
     return section
 
 #insert API key
-genai.configure(api_key="")
+load_dotenv()
+api_key = os.getenv('API_KEY')
+genai.configure(api_key)
 
 # Create the model
 generation_config = {

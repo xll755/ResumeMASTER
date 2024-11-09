@@ -154,6 +154,36 @@ class Resume implements DB_functions
 	}
 
 	/*
+	 * Extract the contents from a PDF between two headers.
+	 *
+	 * Provides functionality to extract a section of text between two words,
+	 * exclusively ( words not included ).
+	 * Meant to extract a given section from a PDF doc's contents.
+	 *
+	 * !!!Requires Resume obj to have contents set!!!
+	 *
+	 * @param string $start string demarking beginning of section to extract 
+	 * @param string $end string demarking end of section to extract
+	 * @return string $section extracted section between above demarkers
+	 *
+	 */
+	public function get_section_between(string $start, string $end): string
+	{
+		if ($this->contents == null) {
+			echo 'NO CONTENTS';
+			exit();
+		}
+
+		$section = ' ' . $this->contents;
+		$init = strpos($section, $start);
+		if ($init == 0) return '';
+		$init += strlen($start);
+		$len = strpos($section, $end, $init) - $init;
+
+		return substr($section, $init, $len);
+	}
+
+	/*
 	* Convert the DB returned PDF binary into a 'contents' string
 	*
 	* Private helper function to assist the pull() method.

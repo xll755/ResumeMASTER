@@ -4,6 +4,9 @@ class pdf_parser
 
 	private $resume_contents;
 
+	/*
+	 * @param Resume $resume resume object to parse
+	 */
 	public function __construct(Resume $resume)
 	{
 		if ($resume == null || $resume->get_contents() == null) {
@@ -21,12 +24,10 @@ class pdf_parser
 	 * exclusively ( words not included ).
 	 * Meant to extract a given section from a PDF doc's contents.
 	 *
-	 * !!!Requires Resume obj to have contents set!!!
-	 *
 	 * @param string $start string demarking beginning of section to extract
 	 * @param string $end string demarking end of section to extract
-	 * @return string $section extracted section between above demarkers
-	 *
+	 * @return string $section extracted section between above demarkers ||
+	 * empty string on failure
 	 */
 	public function get_section_between(string $start, string $end): string
 	{
@@ -44,6 +45,17 @@ class pdf_parser
 		return substr($section, $init, $len);
 	}
 
+	/*
+	 * Extract the contents from a PDF before a header.
+	 *
+	 * Provides functionality to extract a section of text before a given word
+	 * exclusively ( word not included ).
+	 * Meant to extract from beginning of a PDF doc's contents to a given section.
+	 *
+	 * @param string $end string demarking end of section to extract
+	 * @return string $section extracted section between the start of the file's
+	 * contents and the above demarker || empty string on failure
+	 */
 	public function get_section_before(string $end): string
 	{
 		if ($this->resume_contents == null) {
@@ -58,6 +70,18 @@ class pdf_parser
 		return substr($section, 0, $pos);
 	}
 
+	/*
+	 * Extract the contents from a PDF after a header.
+	 *
+	 * Provides functionality to extract a section of text after a given word
+	 * exclusively ( word not included ).
+	 * Meant to extract from a given section to the end of the PDF doc's
+	 * contents.
+	 *
+	 * @param string $start string demarking beginning of section to extract
+	 * @return string $section extracted section between the provided string and
+	 * the end of the PDF doc's contents || empty string on failure
+	 */
 	public function get_section_after(string $start): string
 	{
 		if ($this->resume_contents == null) {

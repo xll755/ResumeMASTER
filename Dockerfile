@@ -17,7 +17,7 @@ RUN curl -sS https://getcomposer.org/installer -o composer-installer && \
     php composer-installer --filename composer && \
     rm composer-installer
 
-WORKDIR /var/www/html
 RUN ./composer install --no-dev --prefer-dist
+WORKDIR /var/www/html
 
 #RUN docker-php-ext-enable mysqli

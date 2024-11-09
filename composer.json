@@ -1,5 +1,5 @@
 {
-    "name": "resume_master",
+    "name": "capstone-proj/resume_master",
     "type": "project",
     "autoload": {
         "psr-4": {

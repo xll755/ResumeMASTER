@@ -2,23 +2,24 @@
 class pdf_render
 {
 	use text2html;
-	private Resume $r;
 
 	/*
 	 * NOTE:
 	 * Goal Usage:
-	 * $out = pdf_render($resume)::render()
-	 *
-	* @param Resume $r to be rendered
+	 * ```php
+	 * $r = new pdf_render();
+	 * $out = $r->render($resume)
+	 * ```
+	 * or
+	 * ```php
+	 * $out = call_user_func(['pdf_render', 'render'], $resume);
+	 * ```
 	*/
-	public function __construct(Resume $r)
-	{
-		$this->r = $r;
-	}
 
-	public function render(): string
+	// NOTE: maybe pass in an arr of section headers to use as args?
+	public function render(Resume $r): string
 	{
-		$get = new pdf_parser($this->r);
+		$get = new pdf_parser($r);
 		$render = '';
 
 		$title = $get->get_section_before(''); //TODO:

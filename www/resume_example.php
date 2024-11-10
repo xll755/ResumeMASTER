@@ -142,8 +142,8 @@ form for the user.
 					<td align="left"><b>The University Attended</b></td>
                 </tr>
             </table>
-				<p align="left">Your Major and graduation date goes here. Feel free to include GPA if desired (and high enough)</p align="left">
-                <p align="left">If you also have a minor, add right below (here)</p align="left">
+				<p align="left">Your Major and graduation date goes here. Feel free to include GPA if desired (and high enough)</p>
+                <p align="left">If you also have a minor, add right below (here)</p>
                 <hr>
             </div>
 				

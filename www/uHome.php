@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!-- ResumeMASTER
 	 Lewis Green
 	 CPSC 4910
@@ -74,8 +78,9 @@
     <div class="container">
         <nav>
             <ul class="bar">  											<!-- Creating a tab layout on the bar -->
-                <li><a href="uHome.html" class="active">Home</a></li>   <!-- Active tab and "web location" -->
+                <li><a href="uHome.php" class="active">Home</a></li>   <!-- Active tab and "web location" -->
                 <li><a href="resumePage.html">Resume Upload</a></li>	<!-- # are dummy links, replace w/ actual links -->
+		<li><a href="resume_example.php">Resume Example</a></li>   <!-- Active tab and "web location" -->
                 <li><a href="#">Logout</a></li>
             </ul>
         </nav>

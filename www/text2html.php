@@ -1,63 +1,59 @@
 <?php
 trait text2html
 {
-	private function render_section(string $section): string
+	/*
+	* @param array $info k/v array containing name, addr, & contact info
+	*/
+	private function personal_data(array $info): string
 	{
-		return '<section>' . $section . '<\section>';
+		$data = "<p style=\"text-align: center;\">" . $info["name"] . "</p>";
+		$data .= "<p style=\"text-align: center;\">" . $info["addr"] . "</p>";
+		$data .= "<p style=\"text-align: center;\">" . $info["contact"] . "</p>";
+
+		return $data;
 	}
 
-	private function render_header(string $header): string
+	/*
+	* @param array $work_exper k/v array containing job title, job dates, &
+	* experience
+	*/
+	private function work_expreience(int $exper_num, array $work_exper): string
 	{
-		return '<header>' . $header . '<\header>';
+		$data = "<h2>Work Experience</h2>";
+		for ($i = 0; $i  < $exper_num; $i++) {
+			$data .= "<div><table width=\"100%\"><tr>";
+			$data .= "<td align=\"left\"><b>" . $work_exper["job_title"] . "</b></td>";
+			$data .= "<td align=\"right\"><b>" . $work_exper["job_dates"] . "</b></td>";
+			$data .= "</tr></table>";
+			$data .= "<p>" . $work_exper["job_exper"] . "</p>";
+			$data .= "<hr></div>";
+		}
+
+		return $data;
 	}
 
-	private function render_footer(string $footer): string
+	/*
+	* @param array $school_exper k/v array containg school & degree
+	*/
+	private function edu_expereince(array $school_exper): string
 	{
-		return '<footer>' . $footer . '<\footer>';
+		$data = "<h2>Eduction</h2><div>";
+		$data .= "<table width=\"100%\"><tr><td align=\"left\">";
+		$data .= "<b>" . $school_exper["school"] . "</b></td></tr></table>";
+		$data .= "<p align=\"left\">". $school_exper["degree"] . "</p>";
+		$data .= "<hr></div>";
+
+		return $data;
 	}
 
-	private function render_h1(string $h1): string
+	/*
+	* @param string $info additional info
+	*/
+	private function additional_info(string $info): string
 	{
-		return '<h1>' . $h1 . '<\h1>';
-	}
+		$data = "<h3>Additional Information</h3>";
+		$data .= "<div><p align=\"left\">" . $info . "</p></div>";
 
-	private function render_h2(string $h2): string
-	{
-		return '<h2>' . $h2 . '<\h2>';
-	}
-
-	private function render_h3(string $h3): string
-	{
-		return '<h2>' . $h3 . '<\h2>';
-	}
-
-	private function render_h4(string $h4): string
-	{
-		return '<h4>' . $h4 . '<\h4>';
-	}
-
-	private function render_h5(string $h5): string
-	{
-		return '<h5>' . $h5 . '<\h5>';
-	}
-
-	private function render_h6(string $h6): string
-	{
-		return '<h6>' . $h6 . '<\h6>';
-	}
-
-	private function render_body(string $body): string
-	{
-		return '<body>' . $body . '<\body>';
-	}
-
-	private function render_paragraph(string $paragraph): string
-	{
-		return '<p>' . $paragraph . '<\p>';
-	}
-
-	private function render_hr(string $hr): string
-	{
-		return '<hr>' . $hr . '<\hr>';
+		return $data;
 	}
 }

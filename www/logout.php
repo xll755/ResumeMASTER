@@ -10,10 +10,10 @@ $_SESSION = [];
 // Destroy the session
 session_destroy();
 
-// Set headers to prevent page caching
-header("Cache-Control: no-cache, must-revalidate"); // HTTP 1.1.
-header("Pragma: no-cache"); // HTTP 1.0.
-header("Expires: 0"); // Proxies.
+// Set headers to prevent user from going back into account and session never being terminated
+header("Cache-Control: no-cache, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: 0");
 
 
 // Redirect to the welcome page

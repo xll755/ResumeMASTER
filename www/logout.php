@@ -10,7 +10,7 @@ $_SESSION = [];
 // Destroy the session
 session_destroy();
 
-// Set headers to prevent user from going back into account and session never being terminated
+// Prevent user from going back into account and session never being terminated
 header("Cache-Control: no-cache, must-revalidate");
 header("Pragma: no-cache");
 header("Expires: 0");

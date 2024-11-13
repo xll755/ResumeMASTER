@@ -12,21 +12,21 @@ class Resume implements DB_functions
 	private string $contents; // text contents of pdf
 	private string $pdf_blob; // raw ( binary ) pdf
 
-	public function setID(int $id):void { $this->id = $id; } // for testing & creation only rn  TODO: repair
-	public function getID():int { return $this->id; } // for testing & creation only rn  TODO: repair
-	public function get_contents():string { return $this->contents; }
-	public function print():void { echo $this->contents; } // for testing & creation only rn  TODO: repair
-	public function set_userId(int $id):void { $this->userId = $id; }
-	public function set_name(string $name):void { $this->name = $name; }
-	public function set_blob(string $blob):void { $this->pdf_blob = $blob; }
+	public function setID(int $id): void { $this->id = $id; } // for testing & creation only rn  TODO: repair
+	public function getID(): int { return $this->id; } // for testing & creation only rn  TODO: repair
+	public function get_contents(): string { return $this->contents; }
+	public function print(): void { echo $this->contents; } // for testing & creation only rn  TODO: repair
+	public function set_userId(int $id): void { $this->userId = $id; }
+	public function set_name(string $name): void { $this->name = $name; }
+	public function set_blob(string $blob): void { $this->pdf_blob = $blob; }
 
 	/**
 	 * Create a db entry for the current resume obj
 	 *
-	* TODO: desc
-	*
-	* @param mysqli $mysqli db object
-	* @return void
+	 * TODO: desc
+	 *
+	 * @param mysqli $mysqli db object
+	 * @return void
 	 */
 	public function create(mysqli $mysqli): int
 	{
@@ -48,13 +48,13 @@ class Resume implements DB_functions
 	}
 
 	/**
-	* Delete the resume who's resume obj this is from db
-	*
-	* TODO: desc
-	*
-	* @param mysqli $mysqli db object
-	* @return void
-	*/
+	 * Delete the resume who's resume obj this is from db
+	 *
+	 * TODO: desc
+	 *
+	 * @param mysqli $mysqli db object
+	 * @return void
+	 */
 	public function delete(mysqli $mysqli): void
 	{
 		$query = "delete from resumes where resumes.id = (?)";
@@ -66,14 +66,14 @@ class Resume implements DB_functions
 	}
 
 	/**
-	* Pull a resume from db into a resume object.
-	*
-	* TODO: desc
-	*
-	* @param mysqli $mysqli db object
-	* @param int $id id of resume to pull
-	* @return void
-	*/
+	 * Pull a resume from db into a resume object.
+	 *
+	 * TODO: desc
+	 *
+	 * @param mysqli $mysqli db object
+	 * @param int $id id of resume to pull
+	 * @return void
+	 */
 	public function pull(mysqli $mysqli, int $id): void
 	{
 		$query = "select * from resumes where resumes.id = (?)";
@@ -96,13 +96,13 @@ class Resume implements DB_functions
 	}
 
 	/**
-	* Push the current resume obj into the db
-	*
-	* TODO: desc
-	*
-	* @param mysqli $mysqli db object
-	* @return void
-	*/
+	 * Push the current resume obj into the db
+	 *
+	 * TODO: desc
+	 *
+	 * @param mysqli $mysqli db object
+	 * @return void
+	 */
 	public function push(mysqli $mysqli): void
 	{
 		$query = "update resmues(userId, name) set (?,?) where resumes.id = (?)";
@@ -117,16 +117,16 @@ class Resume implements DB_functions
 	}
 
 	/**
-	* Confirm the existence of a Resume in the DB
-	* TODO: this is a terrible check for this class. REFINE
-	*
-	* Uses the Resume obj's name to query DB to check if an id exists for the
-	* provided name.
-	*
-	* @param mysqli $mysqli db oject
-	* @return bool false if resume.id not found
-	* @return int $id if resume.id found
-	*/
+	 * Confirm the existence of a Resume in the DB
+	 * TODO: this is a terrible check for this class. REFINE
+	 *
+	 * Uses the Resume obj's name to query DB to check if an id exists for the
+	 * provided name.
+	 *
+	 * @param mysqli $mysqli db oject
+	 * @return bool false if resume.id not found
+	 * @return int $id if resume.id found
+	 */
 	public function exists(mysqli $mysqli): bool|int
 	{
 		$query = "select id from resumes where resumes.name = (?);";
@@ -182,4 +182,3 @@ class Resume implements DB_functions
 		unlink($tmp_file); // remove tmp file from server
 	}
 }
-?>

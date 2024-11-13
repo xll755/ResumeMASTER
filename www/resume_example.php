@@ -68,7 +68,27 @@ form for the user.
 
         h1, h2, h3, h4 {
             text-align: center; /*aligning headers 1 -4 to center */
+			margin: 0;
         }
+		
+		p.a {						/*This section alignes paragraphs to the left */					
+			text-align: center;
+			margin: 0;
+		}
+		p.b {
+			text-align: left;
+		}
+		
+		table {					/*Creating table and establishing spacing */
+			width: 100%;
+		}
+		
+		td.a {					/*establishing tables text alignment */
+			text-align: left;
+		}
+		td.b {
+			text-align: right;
+		}
     </style>
 </head>
 <body>	
@@ -88,48 +108,48 @@ form for the user.
 	<div class="resume-container">
 		<div>
 <!--Personal data-->
-			<p style="text-align: center;">Name</p>
-			<p style="text-align: center;">City, State Zipcode</p>
-			<p style="text-align: center;">Email & Phone #</p>
-			
+			<p class = "a">Name</p>
+			<p class = "a">City, State Zipcode</p>
+			<p class = "a">Email & Phone #</p>
+			<br>
 <!-- Work Experience Section -->
             <h2>Work Experience</h2>
             <div>
-            <table width="100%">
+            <table>
 				<tr>
-					<td align="left"><b>First Job + Job Title</b></td> <!--Using table to align left and right on same line-->
-                    <td align="right"><b>Dates worked there</b></td>
+					<td class = "a"><b>First Job + Job Title</b></td> <!--Using table to align left and right on same line-->
+                    <td class = "b"><b>Dates worked there</b></td>
                 </tr>
             </table>
-				<p>STAR Method: The Situation, The Task, The action you took, and the Result by the action.</p>
-				<p>You want <b>at least</b> three points per section, but if you can only do two, go for it.
-				<p>The Second portion will be an example of a work experience section.</p>
+				<p class = "b">Experience is important. Make sure each bullet point expresses your roles <b>AND</b> reflects the position you're applying for.</p>
+				<p class = "b">You want <b>at least</b> three points per section, but if you can only do two, go for it.
+				<p class = "b">The Second portion will be an example of a work experience section.</p>
             <hr>
             </div>
 			
             <div>
-            <table width="100%">
+            <table>
 				<tr>
-					<td align="left"><b>Kelly Connect – Apple Senior Technical Support Advisor</b></td>
-                    <td align="right"><b>05/2020 – 04/2021</b></td>
+					<td class = "a"><b>Kelly Connect – Apple Senior Technical Support Advisor</b></td>
+                    <td class = "b"><b>05/2020 – 04/2021</b></td>
 				</tr>
             </table>
-				<p>Collaborated with Apple’s engineering team for advanced troubleshooting methods if conventional methods did not resolve software issues related to logging in, cloud services, or internal functions</p>
-				<p>Documented intricate processes of steps taken to diagnose and each step’s result to determine problems with the software or hardware on a specific device.</p>
-				<p>Co-led technical support team, assisting peers with finding internal facing documents to assist with troubleshooting steps and compliance with organization standards pertaining to privacy and security.</p>
+				<p class = "b">Collaborated with Apple’s engineering team for advanced troubleshooting methods if conventional methods did not resolve software issues related to logging in, cloud services, or internal functions</p>
+				<p class = "b">Documented intricate processes of steps taken to diagnose and each step’s result to determine problems with the software or hardware on a specific device.</p>
+				<p class = "b"Co-led technical support team, assisting peers with finding internal facing documents to assist with troubleshooting steps and compliance with organization standards pertaining to privacy and security.</p>
             <hr>
             </div>
 			
             <div>
-            <table width="100%">
+            <table>
 				<tr>
-					<td align="left"><b>United States Army Counterintelligence Section Leader</b></td>
-					<td align="right"><b>03/2021 - 01/2022</b></td>
+					<td class = "a"><b>United States Army Counterintelligence Section Leader</b></td>
+					<td class = "b"><b>03/2021 - 01/2022</b></td>
                 </tr>
             </table>
-                <p>Developed certification tracker for counterintelligence candidates to monitor compliance with standards and qualifications for additional duties.</p>
-				<p>Trained junior counterintelligence personnel in weapon handling, achieving an 85% qualification rate.</p>
-				<p>Managed confidential information with an 100% accuracy rate in distribution and disposal, resulting in successfully maintaining confidentiality.</p>
+                <p class = "b">Developed certification tracker for counterintelligence candidates to monitor compliance with standards and qualifications for additional duties.</p>
+				<p class = "b">Trained junior counterintelligence personnel in weapon handling, achieving an 85% qualification rate.</p>
+				<p class = "b">Managed confidential information with an 100% accuracy rate in distribution and disposal, resulting in successfully maintaining confidentiality.</p>
             <br>
             </div>
             <hr>
@@ -137,20 +157,20 @@ form for the user.
 <!-- Education Section -->
             <h2>Education</h2>
 			<div>
-            <table width="100%">
+            <table>
 				<tr>
-					<td align="left"><b>The University Attended</b></td>
+					<td><b>The University Attended</b></td>
                 </tr>
             </table>
-				<p align="left">Your Major and graduation date goes here. Feel free to include GPA if desired (and high enough)</p>
-                <p align="left">If you also have a minor, add right below (here)</p>
+				<p>Your Major and graduation date goes here. Feel free to include GPA if desired (and high enough)</p>
+                <p>If you also have a minor, add right below (here)</p>
                 <hr>
             </div>
 				
 <!-- Additional Info section -->
 			<h3>Additional Information</h3>
 			<div>
-				<p align="left">Any Certifications, Projects worked on, stuff you want to include goes here!</p>
+				<p class = "b">Any Certifications, Projects worked on, stuff you want to include goes here!</p>
 			</div>
 		</div>
 	</div>

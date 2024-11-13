@@ -1,13 +1,12 @@
 <?php
 session_start();
 ?>
-
 <!-- ResumeMASTER
 	 Lewis Green
 	 CPSC 4910
 	 XLL755
-	 Version: 1
-	 Date: 10/21/2024
+	 Version: 2
+	 Date: 11/13/2024
 -->
 
 <!-- This segment of code will create the user page which
@@ -24,17 +23,12 @@ session_start();
 	 Coding For Webpages
 	 w3schools
 	 
-	What still needs to be done for this page to function: 10/23/24
-		Backend PHP file made specifically for logging out (terminate session).
-		Backend PHP needs to redirect user to login page/index page
-		Backend PHP file needs to be linked to this file to work
 	Nice to do if time permits:
-		Fill white space of Page so it isn't empty
-		Implement interactive assistant to fill whitespace
+		Implement interactive assistant
 -->
 
 <html>
-<head>
+<head> 
     <title>User Page</title>
     <style>
     .bar {									   		/* Section defines the bar */
@@ -71,19 +65,46 @@ session_start();
         background-color: rgb(255, 150, 255);  /* Color of the active page's tab */
         color: blue;  						  /* Color of the letters of active page */
     }
+	
+	body{
+		background-color: purple;
+	}
+	
+	.background-container {
+            max-width: 800px; /*Setting the width */
+            margin: 0 auto; /*Centering the container */
+            padding: 20px; /*Spacing inside the container */
+            border: 1px solid #ddd; /*border for the container */
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /*Coloring to ie shadow casting */
+        }
+		
+		p {
+			text-align: justify;
+			margin: 10;
+			font-size: 200%;
+		}
     </style>
 </head>
 <body>
-    <center><h1>Welcome To Your User Page!</h1></center>
     <div class="container">
         <nav>
-            <ul class="bar">  											<!-- Creating a tab layout on the bar -->
-                <li><a href="uHome.php" class="active">Home</a></li>   <!-- Active tab and "web location" -->
-                <li><a href="resumePage.html">Resume Upload</a></li>	<!-- # are dummy links, replace w/ actual links -->
-		<li><a href="resume_example.php">Resume Example</a></li>   <!-- Active tab and "web location" -->
-                <li><a href="#">Logout</a></li>
+            <ul class="bar">  											<!-- Creating a tab layout on the bar --> 
+                <li><a href="uHome.php" class="active">Home</a></li>   <!-- Active tab and "web location" -->		
+                <li><a href="resumePage.php">Resume Upload</a></li>	<!-- # are dummy links, replace w/ actual links --> 
+				<li><a href="resume_example.php">Resume Example</a></li>   <!-- Active tab and "web location" -->
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
     </div>
+	<br>
+	<div class= "background-container">
+	<center><h1>Welcome To Your User Page!</h1></center>
+	<p>Thank you for taking the time to download this repository and getting started! Congratulations, you made it here!
+		This is probably a very, very important time in your life and we want to make this transition as seamless as possible.
+		One thing you should know about Resumes is that they don't necessarily get you the job, they get you a chance to interview for a job.
+		Remember to have references; you may need people to vouche for your character and work ethic! Practice for interviews by getting familiar with your profession.
+		Always remember there is someone who may be a better candidate working hard to get the same job; you need tenacity, experience, and to reflect on yourself and accomplishments.</p>
+	<p>Now, this web-based app is here to help you get started with your Resume. At the time of writing this, our interactive assistant isn't up yet. Don't fret! We're still working though!</p>
+	</div>
 </body>
 </html>

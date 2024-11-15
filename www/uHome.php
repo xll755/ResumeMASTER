@@ -91,7 +91,7 @@ session_start();
         <nav>
             <ul class="bar">  											<!-- Creating a tab layout on the bar --> 
                 <li><a href="uHome.php" class="active">Home</a></li>   <!-- Active tab and "web location" -->		
-                <li><a href="resumePage.php">Resume Upload</a></li>	<!-- # are dummy links, replace w/ actual links --> 
+                <li><a href="resumePage.html">Resume Upload</a></li>	<!-- # are dummy links, replace w/ actual links --> 
 		<li><a href="resume_example.php">Resume Example</a></li>
                 <li><a href="comparisonF.php">Qualification Comparison</a></li>
 		<li><a href="logout.php">Logout</a></li>

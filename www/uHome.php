@@ -24,7 +24,8 @@ session_start();
 	 w3schools
 	 
 	Nice to do if time permits:
-		Implement interactive assistant
+		Fill white space of Page so it isn't empty
+		Implement interactive assistant to fill whitespace
 -->
 
 <html>
@@ -93,6 +94,7 @@ session_start();
                 <li><a href="resumePage.php">Resume Upload</a></li>	<!-- # are dummy links, replace w/ actual links --> 
 				<li><a href="resume_example.php">Resume Example</a></li>   <!-- Active tab and "web location" -->
                 <li><a href="logout.php">Logout</a></li>
+				<li><a href="comparisonF.php">Qualification Comparison</a></li>
             </ul>
         </nav>
     </div>

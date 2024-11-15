@@ -19,8 +19,8 @@ if (!isset($_POST) || $_POST['resume_id'] == null) {
 $resume_id = $_POST['resume_id'];
 $resume = new Resume();
 $resume->pull($mysqli, $resume_id);
-$render = new pdf_render();
-$html_pdf = $render->render($resume);
+$render = new pdf_render($resume);
+$html_pdf = $render->render();
 
 // new export obj
 $dompdf = new Dompdf();

@@ -86,12 +86,12 @@
     <div class="container">
         <nav>
             <ul class="bar">  											<!-- Creating a tab layout on the bar --> 
-				<li><a href="uHome.php">Resume Upload</a></li>	<!-- # are dummy links, replace w/ actual links --> 
-                <li><a href="resumePage.php">Resume Upload</a></li>	<!-- # are dummy links, replace w/ actual links --> 
-				<li><a href="resume_example.php">Resume Example</a></li>   <!-- Active tab and "web location" -->
-                <li><a href="logout.php">Logout</a></li>
-				<li><a href="comparisonF.php" class="active">Qualification Comparison</a></li>   <!-- Active tab and "web location" -->
-			</ul>
+		<li><a href="uHome.php">Home</a></li>	
+                <li><a href="resumePage.php">Resume Upload</a></li>
+		<li><a href="resume_example.php">Resume Example</a></li>   
+                <li><a href="comparisonF.php" class="active">Qualification Comparison</a></li>   <!-- Active tab and "web location" -->
+		<li><a href="logout.php">Logout</a></li>
+	     </ul>
         </nav>
     </div>
 	<br>

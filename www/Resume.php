@@ -12,6 +12,9 @@ class Resume implements DB_functions
 	private string $contents; // text contents of pdf
 	private string $pdf_blob; // raw ( binary ) pdf
 
+	// TODO: add enum to db & throughout appropriate funcs
+	private ?resume_styes $style;
+
 	public function setID(int $id): void { $this->id = $id; } // for testing & creation only rn  TODO: repair
 	public function getID(): int { return $this->id; } // for testing & creation only rn  TODO: repair
 	public function get_contents(): string { return $this->contents; }
@@ -19,6 +22,8 @@ class Resume implements DB_functions
 	public function set_userId(int $id): void { $this->userId = $id; }
 	public function set_name(string $name): void { $this->name = $name; }
 	public function set_blob(string $blob): void { $this->pdf_blob = $blob; }
+	public function set_style(resume_styes $style): void { $this->style = $style; }
+	public function get_style(): ?resume_styes { return $this->style; }
 
 	/**
 	 * Create a db entry for the current resume obj

@@ -2,6 +2,7 @@
 class pdf_render
 {
 	use text2html;
+	private Resume $r;
 
 	/*
 	 * NOTE:
@@ -16,22 +17,32 @@ class pdf_render
 	 * ```
 	*/
 
-	// NOTE: maybe pass in an arr of section headers to use as args?
-	public function render(Resume $r): string
+	public function __construct(Resume $r)
 	{
-		// $get = new pdf_parser($r);
-		// TODO: figure out how to get resume contents into arrays
-		// can use the extraction methods, but those only pull whole chunks of
-		// text
-		// can also refactor the text2hmtl methods to take args other than arrs
+		$this->r = $r;
+	}
+
+	// NOTE: better to take in obj in constructor or in func???
+
+	public function render(): string
+	{
+		return match($this->r->get_style()){
+			resume_styes::federal => $this->render_federal(resume_styes::federal->get_style_layout()),  // WARN: ?????
+			resume_styes::user_def => $this->render(),
+		};
+	}
+	
+	// NOTE: maybe just have a singular, flexible func that can handle all
+	// cases???
+	
+	private function render_federal(resume_styes $headers): string
+	{
+		$get = new parse_federal($this->r);
+		$headers = $headers;
 
 		$render = "<style> h1, h2, h3, h4 { text-align: center; } </style>";
 		$render .= "<html><body>";
-		$personal_arr = array(
-			"name" => "tester",
-			"addr" => "1337 tester drive",
-			"contact" => "tester@tester.com",
-		);
+		$personal_arr = $get->get_personal_arry($headers);
 		$render .= $this->personal_data(info: $personal_arr);
 		$work_arr = array(
 			"job_title" => "lead tester",

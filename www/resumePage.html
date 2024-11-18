@@ -6,43 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Your Resume</title>
     <style>
-/*Start of bar insertion code to give options to go elsewhere*/
- .bar {									   		/* Section defines the bar */
-        background-color: rgb(255, 0, 255);  		/* Setting color of background for bar */
-        width: 100%;
-        height: 40px;
-        display: flex;
-        list-style-type: none;  
-        padding: 0;  
-        margin: 0;   
-    }
-    
-    .bar li {										/* This section is for listed items (li) */
-        flex-grow: 1;								/* makes even spacing for tabs in bar */					
-        border-right: 1px solid rgb(0, 0, 0);		/* Separators color (black vertical line) */
-        list-style-type: none; 
-    }
-    
-    .bar li a {						/* This section and below defines anchored listed items */
-        color: black;				/* Color of the letters */
-        width: 100%;  
-        height: 100%; 
-        display: flex;
-        align-items: center;  		/* centering vertically */
-        justify-content: center;  	/* centering horizontally */
-        text-decoration: none;  	/* Stops from generating underlines */
-    }
-    
-    .bar li a:hover {						  /* Section defines "hovering" */
-        background-color: rgb(180, 175, 255);  /* Setting color for "hovering" over tabs */
-    }
-    
-    .bar li a.active {  					  /* Section defines the active page */
-        background-color: rgb(255, 150, 255);  /* Color of the active page's tab */
-        color: blue;  						  /* Color of the letters of active page */
-    }
-/*end of bar insertion*/
-        
         /* Base reset */
         * {
             margin: 0;
@@ -124,16 +87,6 @@
     </style>
 </head>
 <body>
-<div class="container">
-    <ul class="bar">
-	    <li><a href="uHome.php">Home</a></li> 		
-        <li><a href="resumePage.html" class ="active">Resume Upload</a></li> <!-- Active tab -->
-        <li><a href="resume_example.php">Resume Example</a></li> 
-	    <li><a href="comparisonF.php">Qualification Comparison</a></li>
-    </ul>
-</div>
-<br>
-    
     <h1>Upload Your Resume</h1>
     <div class="form-container">
         //Logout Button Here Below

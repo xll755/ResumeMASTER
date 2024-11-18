@@ -94,6 +94,7 @@ form for the user.
 <body>	
 <!--This class is for the bar that links back to other pages-->
 <div class="container">
+	<nav>
 		<ul class="bar">
 			<li><a href="uHome.php">Home</a></li> 		
                 	<li><a href="resumePage.html">Resume Upload</a></li>			<!-- # are dummy links, replace w/ actual links --> 

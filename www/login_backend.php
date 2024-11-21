@@ -46,7 +46,7 @@ if (!$user->confirmPW($mysqli, $_POST['password'])) {
 		$_SESSION['user_id'] = $id;
 	}
 	$user->pull($mysqli, $id);
-	header('Location: ./uHome.html', true);		/*Lewis: Changed location from index to User Page 10/23/24 */
+	header('Location: ./uHome.php', true);		/*Lewis: Changed location from index to User Page 10/23/24 */
 }
 
 ?>

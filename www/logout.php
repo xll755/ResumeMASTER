@@ -16,6 +16,6 @@ header("Pragma: no-cache");
 header("Expires: 0");
 
 // Redirect to the welcome page
-header("Location: ./welcome.html");
+header("Location: ./index.html");
 exit();
 ?>

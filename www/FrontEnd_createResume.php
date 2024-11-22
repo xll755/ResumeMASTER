@@ -87,7 +87,7 @@ session_start();
 				<li><a href="resumePage.html">Resume Upload</a></li> 
 				<li><a href="resume_example.php">Resume Example</a></li> 
 				<li><a href="comparisonF.php">Qualification Comparison</a></li>
-				<li><a href="front_end_create_resume.php" class="active">Create Your Resume</a></li>
+				<li><a href="FrontEnd_createResume.php" class="active">Create Your Resume</a></li>
 				<li><a href="logout.php">Logout</a></li>
 			</ul>
 		</nav>
@@ -118,7 +118,7 @@ session_start();
             <label for="startDate1">Job Start Date: </label>
             <textarea id="startDate1" name="startDate1" rows="1" required></textarea>
 			
-			<label for="endDate1">Job End Date: </label>
+	    <label for="endDate1">Job End Date: </label>
             <textarea id="endDate1" name="endDate1" rows="1" required></textarea>
 
             <label for="workExperience1">Work Experience (Separate entries with a line break):</label>

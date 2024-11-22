@@ -1,4 +1,7 @@
-<!-- resumePage.html -->
+<?php
+include 'check_login.php'; 
+?>
+<!-- resumePage.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>

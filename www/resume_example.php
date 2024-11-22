@@ -34,7 +34,7 @@ form for the user.
     
     .bar li {										/* This section is for listed items (li) */
         flex-grow: 1;								/* makes even spacing for tabs in bar */					
-        border-right: 1px solid rgb(0, 0, 0);		/* Separators color (black vertical line) */
+        border-right: 1px solid black;		/* Separators color (black vertical line) */
         list-style-type: none; 
     }
     
@@ -62,8 +62,8 @@ form for the user.
             max-width: 800px; /*Setting the width */
             margin: 0 auto; /*Centering the container */
             padding: 20px; /*Spacing inside the container */
-            border: 1px solid #ddd; /*border for the container */
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /*Coloring to ie shadow casting */
+            border: 1px solid grey; /*border for the container */
+            box-shadow: 2px 2px 10px black; /*Coloring to ie shadow casting */
         }
 
         h1, h2, h3, h4 {

@@ -16,12 +16,12 @@ import sys
 
 user_input = sys.argv[1]
 job_desc = sys.argv[2]
-type = sys.argv[3]
+arg_type = sys.argv[3]
 
 #will insert the desired resume section into the prompt, could edit these definitions to be more detailed for the LLM.
-def resume_section(type):
+def resume_section(arg_type):
     section = ''
-    match type:
+    match arg_type:
         case 1:
             section = 'objective/summary'
         case 2:
@@ -54,7 +54,7 @@ model = genai.GenerativeModel(
 )    
 
 model = genai.GenerativeModel("gemini-1.5-flash")
-response = model.generate_content("Write a complete and professional" + resume_section(type) + """section of a resume
+response = model.generate_content("Write a complete and professional" + resume_section(arg_type) + """section of a resume
                                    based on the given information: ' """ + user_input + """ '.  Phrase it so that it is relevant
                                    to the following job description while remaining accurate: ' """ + job_desc + " '.")
 print(response.text)

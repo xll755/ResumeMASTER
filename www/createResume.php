@@ -100,7 +100,7 @@ session_start();
 				<li><a href="resumePage.html">Resume Upload</a></li>	
 				<li><a href="resume_example.php">Resume Example</a></li>   <!-- Active tab and "web location" -->
 				<li><a href="comparisonF.php">Qualification Comparison</a></li>
-				<li><a href="front_end_create_resume.php" class="active">Create Your Resume</a></li>
+				<li><a href="FrontEnd_createResume.php" class="active">Create Your Resume</a></li>
 				<li><a href="logout.php">Logout</a></li>
 			</ul>
 		</nav>

@@ -1,5 +1,6 @@
 <?php
-session_start();
+include 'check_login.php'; 
+// session_start();
 
 // necessary resources for PDF export
 require_once __DIR__ . '/../../../app/vendor/autoload.php';

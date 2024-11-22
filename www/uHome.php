@@ -1,13 +1,14 @@
 <?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    header("Location: index.html");
-    exit();
-}
-
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
+include 'check_login.php'; 
+// session_start();
+// if (!isset($_SESSION['user_id'])) {
+//     header("Location: index.php");
+//     exit();
+// }
+//
+// header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+// header("Cache-Control: post-check=0, pre-check=0", false);
+// header("Pragma: no-cache");
 ?>
 
 <!-- ResumeMASTER
@@ -100,7 +101,7 @@ header("Pragma: no-cache");
         <nav>
             <ul class="bar">  											<!-- Creating a tab layout on the bar --> 
                 <li><a href="uHome.php" class="active">Home</a></li>   <!-- Active tab and "web location" -->		
-                <li><a href="resumePage.html">Resume Upload</a></li>	<!-- # are dummy links, replace w/ actual links --> 
+                <li><a href="resumePage.php">Resume Upload</a></li>	<!-- # are dummy links, replace w/ actual links --> 
 		<li><a href="resume_example.php">Resume Example</a></li>
                 <li><a href="comparisonF.php">Qualification Comparison</a></li>
 		<li><a href="logout.php">Logout</a></li>

@@ -1,7 +1,8 @@
 <?php
 // resumePage_backend.php
 
-session_start();
+include 'check_login.php'; 
+// session_start();
 $mysqli = require_once "./db_config.php";
 include "./Validation.php";
 include "./DB_functions.php";
@@ -49,6 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     unlink($fileTmpPath); // remove tmp file from server
 
     // Redirect user to a page to assist with developing their page
-    // header('Location: {TODO: correct_file_name}.php?resume_id=' . urlencode($resume_id));
+    header('Location: uHome.php');
     exit();
 }

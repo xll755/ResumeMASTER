@@ -1,4 +1,7 @@
 <?php
+
+use FontLib\Table\Type\post;
+
 session_start();
 ?>
 
@@ -108,6 +111,43 @@ session_start();
 	<br>
 
 
+<?php
+include "./pdf_renderer.php";
+$renderer = new pdf_render();
+// TODO: create, or fetch & update, DB resume
+// optional downloading here??
+$info = array(
+	'personal_info' => array(
+		'name' => $_POST['name'],
+		'location' => $_POST['location'],
+		'contact' => $_POST['contact'],
+		'obj' => $_POST['objstmt'],
+	),
+	'work_info' => array(
+		'job_1' => array(
+			'job_title' => $_POST['jobTitle1'],
+			'job_dates' => $_POST['startDate1'] . '-' . $_POST['endDate1'],
+			'job_exper' => $_POST['workExperience1'],
+		),
+		'job_2' => array(
+			'job_title' => $_POST['jobTitle2'],
+			'job_dates' => $_POST['startDate2'] . '-' . $_POST['endDate2'],
+			'job_exper' => $_POST['workExperience2'],
+		),
+		'job_3' => array(
+			'job_title' => $_POST['jobTitle3'],
+			'job_dates' => $_POST['startDate3'] . '-' . $_POST['endDate3'],
+			'job_exper' => $_POST['workExperience3'],
+		),
+	),
+	'edu_info' => $_POST['education'],
+	'add_info' => $_POST['additionalInfo'],
+	);
+$html = $renderer->render($info);
+print('<div class="resume-container">' .  $html . '</div>');
+?>
+
+<!--
     <div class="resume-container">
         <p class = "a"><?php echo htmlspecialchars($_POST['name']); ?></p>
         <p class = "a"><?php echo(htmlspecialchars($_POST['location'])); ?></p>
@@ -152,5 +192,6 @@ session_start();
         <h3>Additional Information</h3>
         <p class = "b"><?php echo nl2br(htmlspecialchars($_POST['additionalInfo'])); ?></p>
     </div>
+-->
 </body>
 </html>

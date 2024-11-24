@@ -22,13 +22,13 @@ arg_type = sys.argv[3]
 def resume_section(arg_type):
     section = ''
     match arg_type:
-        case 1:
+        case "objective":
             section = 'objective/summary'
-        case 2:
+        case "work_experience":
             section = 'work experience'
-        case 3:
+        case "education":
             section = 'education'
-        case 4:
+        case "skills":
             section = 'skills'
     return section
 

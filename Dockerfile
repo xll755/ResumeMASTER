@@ -21,12 +21,12 @@ RUN ./composer install --no-dev --prefer-dist
 
 # add python & required dependencies
 # RUN apt-get install -y python3 pip && \
-RUN apt-get install -y python3 python3-dotenv python3-pip python3-venv && \
+RUN apt-get install -y python3 python3-pip python3-venv && \
     rm -rf /tmp/* /var/tmp/*
 
 # RUN pip install python-dotenv
 RUN python3 -m venv /app/.venv
-RUN /app/.venv/bin/pip install google-generativeai
+RUN /app/.venv/bin/pip install google-generativeai python-dotenv
 
 WORKDIR /var/www/html
 

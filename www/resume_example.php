@@ -1,5 +1,6 @@
 <?php
-session_start();
+include 'check_login.php'; 
+// session_start();
 ?>
 <!-- Lewis Green
 	 XLL755
@@ -34,7 +35,7 @@ form for the user.
     
     .bar li {										/* This section is for listed items (li) */
         flex-grow: 1;								/* makes even spacing for tabs in bar */					
-        border-right: 1px solid rgb(0, 0, 0);		/* Separators color (black vertical line) */
+        border-right: 1px solid black;		/* Separators color (black vertical line) */
         list-style-type: none; 
     }
     
@@ -62,8 +63,8 @@ form for the user.
             max-width: 800px; /*Setting the width */
             margin: 0 auto; /*Centering the container */
             padding: 20px; /*Spacing inside the container */
-            border: 1px solid #ddd; /*border for the container */
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /*Coloring to ie shadow casting */
+            border: 1px solid grey; /*border for the container */
+            box-shadow: 2px 2px 10px black; /*Coloring to ie shadow casting */
         }
 
         h1, h2, h3, h4 {
@@ -94,12 +95,13 @@ form for the user.
 <body>	
 <!--This class is for the bar that links back to other pages-->
 <div class="container">
-		<nav>
-			<ul class="bar">
-				<li><a href="uHome.php">Home</a></li> 		
-                <li><a href="resumePage.php">Resume Upload</a></li>				<!-- # are dummy links, replace w/ actual links --> 
-                <li><a href="resume_example.php" class="active">Resume Example</a></li>   <!-- Active tab and "web location" -->
-				<li><a href="logout.php">Logout</a></li>
+	<nav>
+		<ul class="bar">
+			<li><a href="uHome.php">Home</a></li> 		
+                	<li><a href="resumePage.php">Resume Upload</a></li>			<!-- # are dummy links, replace w/ actual links --> 
+                	<li><a href="resume_example.php" class="active">Resume Example</a></li>   <!-- Active tab and "web location" -->
+			<li><a href="comparisonF.php">Qualification Comparison</a></li>
+			<li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
     </div>

@@ -1,29 +1,36 @@
 <?php
-session_start();
+include 'check_login.php'; 
+// session_start();
 
+include "./text2html.php";
+include "./pdf_renderer.php";
+include "./Validation.php";
+include "./DB_functions.php";
+include "./Resume.php";
 // necessary resources for PDF export
 require_once __DIR__ . '/../../../app/vendor/autoload.php';
 use Dompdf\Dompdf;
+$mysqli = require_once "./db_config.php";
 
-/*
-* MOCK-UP page for PDF exporting
-*
-* will need to:
-* - get passed in string either from html or from python return
-*/
+if (!isset($_POST) || $_POST['resume_id'] == null) {
+	print('NO RESUME TO DOWNLOAD');
+	exit();
+}
 
-// PDF to be exported in HTML markup form
-// will be just a string
-$html_pdf = '';
+$resume_id = $_POST['resume_id'];
+$resume = new Resume();
+$resume->pull($mysqli, $resume_id);
+$render = new pdf_render($resume);
+$html_pdf = $render->render();
 
 // new export obj
 $dompdf = new Dompdf();
 
 // load the pdf to be exported
-$dompdf->loadHtml($html_pdf->get_contents());
+$dompdf->loadHtml($html_pdf);
 
 // (Optional) Setup the paper size and orientation
-$dompdf->setPaper('A4', 'landscape');
+$dompdf->setPaper('A4', 'portrait');
 
 // Render the HTML as PDF
 $dompdf->render();

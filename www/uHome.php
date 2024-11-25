@@ -1,6 +1,16 @@
 <?php
-session_start();
+include 'check_login.php'; 
+// session_start();
+// if (!isset($_SESSION['user_id'])) {
+//     header("Location: index.php");
+//     exit();
+// }
+//
+// header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+// header("Cache-Control: post-check=0, pre-check=0", false);
+// header("Pragma: no-cache");
 ?>
+
 <!-- ResumeMASTER
 	 Lewis Green
 	 CPSC 4910
@@ -24,7 +34,8 @@ session_start();
 	 w3schools
 	 
 	Nice to do if time permits:
-		Implement interactive assistant
+		Fill white space of Page so it isn't empty
+		Implement interactive assistant to fill whitespace
 -->
 
 <html>
@@ -43,7 +54,7 @@ session_start();
     
     .bar li {										/* This section is for listed items (li) */
         flex-grow: 1;								/* makes even spacing for tabs in bar */					
-        border-right: 1px solid rgb(0, 0, 0);		/* Separators color (black vertical line) */
+        border-right: 1px solid black;		/* Separators color (black vertical line) */
         list-style-type: none; 
     }
     
@@ -74,8 +85,8 @@ session_start();
             max-width: 800px; /*Setting the width */
             margin: 0 auto; /*Centering the container */
             padding: 20px; /*Spacing inside the container */
-            border: 1px solid #ddd; /*border for the container */
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /*Coloring to ie shadow casting */
+            border: 1px solid grey; /*border for the container */
+            box-shadow: 2px 2px 10px black; /*Coloring to ie shadow casting */
         }
 		
 		p {
@@ -91,8 +102,9 @@ session_start();
             <ul class="bar">  											<!-- Creating a tab layout on the bar --> 
                 <li><a href="uHome.php" class="active">Home</a></li>   <!-- Active tab and "web location" -->		
                 <li><a href="resumePage.php">Resume Upload</a></li>	<!-- # are dummy links, replace w/ actual links --> 
-				<li><a href="resume_example.php">Resume Example</a></li>   <!-- Active tab and "web location" -->
-                <li><a href="logout.php">Logout</a></li>
+		<li><a href="resume_example.php">Resume Example</a></li>
+                <li><a href="comparisonF.php">Qualification Comparison</a></li>
+		<li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
     </div>

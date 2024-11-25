@@ -34,7 +34,7 @@
 <body>
     <h1>Welcome to Our Website</h1>
     <p>Please choose an option below:</p>
-    <a href="createAcc.html">Create Account</a>
-    <a href="login.html">Login</a>
+    <a href="createAcc.php">Create Account</a>
+    <a href="login.php">Login</a>
 </body>
 </html>

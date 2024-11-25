@@ -1,4 +1,7 @@
-<!-- resumePage.html -->
+<?php
+include 'check_login.php'; 
+?>
+<!-- resumePage.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,7 +90,6 @@
     </style>
 </head>
 <body>
-
     <h1>Upload Your Resume</h1>
     <div class="form-container">
         //Logout Button Here Below

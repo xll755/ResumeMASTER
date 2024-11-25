@@ -19,6 +19,7 @@
 *	- user object
 */
 
+// include 'check_login.php'; 
 session_start();
 $mysqli = require_once"./db_config.php";
 include "./Validation.php";
@@ -46,7 +47,7 @@ if (!$user->confirmPW($mysqli, $_POST['password'])) {
 		$_SESSION['user_id'] = $id;
 	}
 	$user->pull($mysqli, $id);
-	header('Location: ./uHome.php', true);		/*Lewis: Changed location from index to User Page 10/23/24 */
+	header('Location: ./uHome.php', true);		/*Lewis: Changed location from index to User Page 10/23/24 */ /*11/15/24 uhome.php changed to uhome.php*/
 }
 
 ?>

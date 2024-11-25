@@ -35,7 +35,7 @@ def resume_section(arg_type):
 #insert API key
 load_dotenv()
 api_key = os.getenv('API_KEY')
-genai.configure(api_key)
+genai.configure(api_key=api_key)
 
 # Create the model
 generation_config = {

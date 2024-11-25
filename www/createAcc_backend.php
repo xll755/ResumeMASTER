@@ -21,7 +21,8 @@
 *	- new user session
 */
 
-session_start();
+// include 'check_login.php'; 
+// session_start();
 $mysqli = require_once"./db_config.php";
 include "./Validation.php";
 include "./DB_functions.php";
@@ -49,7 +50,7 @@ if ($id) {
 	if (!isset($_SESSION['user_id'])) {
 		$_SESSION['user_id'] = $id;
 	}
-	header('Location: ./index.html', true);
+	header('Location: ./index.php', true);
 }
 
 ?>

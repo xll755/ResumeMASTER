@@ -1,5 +1,6 @@
 <?php
-session_start();
+include 'check_login.php'; 
+// session_start();
 
 include "./text2html.php";
 include "./pdf_renderer.php";

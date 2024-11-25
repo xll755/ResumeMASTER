@@ -1,5 +1,6 @@
 <?php
-session_start();
+include 'check_login.php'; 
+// session_start();
 ?>
 <!-- Lewis Green
 	 XLL755
@@ -97,7 +98,7 @@ form for the user.
 	<nav>
 		<ul class="bar">
 			<li><a href="uHome.php">Home</a></li> 		
-                	<li><a href="resumePage.html">Resume Upload</a></li>			<!-- # are dummy links, replace w/ actual links --> 
+                	<li><a href="resumePage.php">Resume Upload</a></li>			<!-- # are dummy links, replace w/ actual links --> 
                 	<li><a href="resume_example.php" class="active">Resume Example</a></li>   <!-- Active tab and "web location" -->
 			<li><a href="comparisonF.php">Qualification Comparison</a></li>
 			<li><a href="logout.php">Logout</a></li>

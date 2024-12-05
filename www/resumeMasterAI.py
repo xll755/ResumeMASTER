@@ -15,21 +15,20 @@ import google.generativeai as genai
 import sys
 
 user_input = sys.argv[1]
-job_desc = sys.argv[2]
-arg_type = sys.argv[3]
+arg_type = sys.argv[2]
 
 #will insert the desired resume section into the prompt, could edit these definitions to be more detailed for the LLM.
 def resume_section(arg_type):
     section = ''
     match arg_type:
-        case "objective":
-            section = 'objective/summary'
-        case "work_experience":
+        case "obj":
+            section = 'objective statement'
+        case "work":
             section = 'work experience'
-        case "education":
+        case "edu":
             section = 'education'
-        case "skills":
-            section = 'skills'
+        case "info":
+            section = 'additional information'
     return section
 
 #insert API key
@@ -54,7 +53,10 @@ model = genai.GenerativeModel(
 )    
 
 model = genai.GenerativeModel("gemini-1.5-flash")
-response = model.generate_content("Write a complete and professional" + resume_section(arg_type) + """section of a resume
-                                   based on the given information: ' """ + user_input + """ '.  Phrase it so that it is relevant
-                                   to the following job description while remaining accurate: ' """ + job_desc + " '.")
+content = f"""
+You are a professional copywrighter.
+Write a complete and professional {resume_section(arg_type)} section of a resume
+based on the given information: '{user_input}'.
+"""
+response = model.generate_content(content)
 print(response.text)

@@ -77,6 +77,15 @@ session_start();
             margin-bottom: 5px;
             font-weight: bold;
         }
+
+        .checkbox_align {
+            display: flex
+        }
+
+        input[type="checkbox"] {
+          width: 16px; /* Standard checkbox size */
+          height: 16px;
+        }
     </style>
 </head>
 <body>
@@ -101,16 +110,20 @@ session_start();
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 			
-			<label for="location">City, State, and Zipcode:</label>
+            <label for="location">City, State, and Zipcode:</label>
             <textarea id="location" name="location" rows="1" required></textarea>
 
-			<label for="contact">Phone Number and Email:</label>
+            <label for="contact">Phone Number and Email:</label>
             <textarea id="contact" name="contact" rows="1" required></textarea>
 
-			<label for="objstmt">Objective Statement:</label>
-			<textarea id="objstmt" name="objstmt" rows="3" required></textarea>
+            <label for="objstmt">Objective Statement:</label>
+            <textarea id="objstmt" name="objstmt" rows="3" required></textarea>
 
-
+            <div class="checkbox_align">
+                        <label for="objstmt_cb">Would you like AI to improve this?</label>
+                        <input type="checkbox" id="objstmt_cb" name="objstmt_cb" value="true"/>
+            </div>
+            <br>
 
             <label for="jobTitle1">First Job Title (Separate entries with a line break):</label>
             <textarea id="jobTitle1" name="jobTitle1" rows="1" required></textarea>
@@ -123,42 +136,70 @@ session_start();
 
             <label for="workExperience1">Work Experience (Separate entries with a line break):</label>
             <textarea id="workExperience1" name="workExperience1" rows="4" required></textarea>
+
+            <div class="checkbox_align">
+                        <label for="work1_cb">Would you like AI to improve this?</label>
+                        <input type="checkbox" id="work1_cb" name="work1_cb" value="true"/>
+            </div>
+            <br>
 			
 			
 			
-			<label for="jobTitle2">Second Job Title (Separate entries with a line break):</label>
+            <label for="jobTitle2">Second Job Title (Separate entries with a line break):</label>
             <textarea id="jobTitle2" name="jobTitle2" rows="1"></textarea>
 			
             <label for="startDate2">Job Start Date: </label>
             <textarea id="startDate2" name="startDate2" rows="1"></textarea>
 			
-			<label for="endDate2">Job End Date: </label>
+            <label for="endDate2">Job End Date: </label>
             <textarea id="endDate2" name="endDate2" rows="1"></textarea>			
 			
-			<label for="workExperience2">Work Experience (Separate entries with a line break):</label>
+            <label for="workExperience2">Work Experience (Separate entries with a line break):</label>
             <textarea id="workExperience2" name="workExperience2" rows="4"></textarea>
+
+            <div class="checkbox_align">
+                        <label for="work2_cb">Would you like AI to improve this?</label>
+                        <input type="checkbox" id="work2_cb" name="work2_cb" value="true"/>
+            </div>
+            <br>
 			
 			
 			
-			<label for="jobTitle3">Third Job Title (Separate entries with a line break):</label>
+            <label for="jobTitle3">Third Job Title (Separate entries with a line break):</label>
             <textarea id="jobTitle3" name="jobTitle3" rows="1"></textarea>	
 
             <label for="startDate3">Job Start Date: </label>
             <textarea id="startDate3" name="startDate3" rows="1"></textarea>
 			
-			<label for="endDate3">Job End Date: </label>
+            <label for="endDate3">Job End Date: </label>
             <textarea id="endDate3" name="endDate3" rows="1"></textarea>			
 			
-			<label for="workExperience3">Work Experience (Separate entries with a line break):</label>
+            <label for="workExperience3">Work Experience (Separate entries with a line break):</label>
             <textarea id="workExperience3" name="workExperience3" rows="4"></textarea>
+
+            <div class="checkbox_align">
+                        <label for="work3_cb">Would you like AI to improve this?</label>
+                        <input type="checkbox" id="work3_cb" name="work3_cb" value="true"/>
+            </div>
+            <br>
 			
 			
 
             <label for="education">Highest level of Education:</label>
             <textarea id="education" name="education" rows="4" required></textarea>
+            <div class="checkbox_align">
+                        <label for="edu_cb">Would you like AI to improve this?</label>
+                        <input type="checkbox" id="edu_cb" name="edu_cb" value="true"/>
+            </div>
+            <br>
 
             <label for="additionalInfo">Additional Information:</label>
             <textarea id="additionalInfo" name="additionalInfo" rows="4"></textarea>
+            <div class="checkbox_align">
+                        <label for="info_cb">Would you like AI to improve this?</label>
+                        <input type="checkbox" id="info_cb" name="info_cb" value="true"/>
+            </div>
+            <br>
 
             <button type="submit">Create Resume</button>
         </form>

@@ -112,6 +112,19 @@ session_start();
 
 
 <?php
+function call_ai($type, $post){
+	$command = "/app/.venv/bin/python3 /var/www/html/resumeMasterAI.py " . escapeshellarg($post) . " " . escapeshellarg($type);
+	$output = shell_exec($command);
+	return $output;
+}
+
+function get_contents($type, $post, $improve) {
+	if ($improve) {
+		$post = call_ai($type, $post);
+	}
+	return $post;
+}
+
 include "./pdf_renderer.php";
 $renderer = new pdf_render();
 // TODO: create, or fetch & update, DB resume
@@ -121,77 +134,31 @@ $info = array(
 		'name' => $_POST['name'],
 		'location' => $_POST['location'],
 		'contact' => $_POST['contact'],
-		'obj' => $_POST['objstmt'],
+		'obj' => get_contents('obj', $_POST['objstmt'], isset($_POST['objstmt_cb'])),
 	),
 	'work_info' => array(
 		'job_1' => array(
 			'job_title' => $_POST['jobTitle1'],
 			'job_dates' => $_POST['startDate1'] . '-' . $_POST['endDate1'],
-			'job_exper' => $_POST['workExperience1'],
+			'job_exper' => get_contents('work', $_POST['workExperience1'], isset($_POST['work1_cb'])),
 		),
 		'job_2' => array(
 			'job_title' => $_POST['jobTitle2'],
 			'job_dates' => $_POST['startDate2'] . '-' . $_POST['endDate2'],
-			'job_exper' => $_POST['workExperience2'],
+			'job_exper' => get_contents('work', $_POST['workExperience2'], isset($_POST['work2_cb'])),
 		),
 		'job_3' => array(
 			'job_title' => $_POST['jobTitle3'],
 			'job_dates' => $_POST['startDate3'] . '-' . $_POST['endDate3'],
-			'job_exper' => $_POST['workExperience3'],
+			'job_exper' => get_contents('work', $_POST['workExperience3'], isset($_POST['work3_cb'])),
 		),
 	),
-	'edu_info' => $_POST['education'],
-	'add_info' => $_POST['additionalInfo'],
+		'edu_info' => get_contents('edu', $_POST['education'], isset($_POST['edu_cb'])),
+		'add_info' => get_contents('info', $_POST['additionalInfo'], isset($_POST['info_cb']))
 	);
 $html = $renderer->render($info);
 print('<div class="resume-container">' .  $html . '</div>');
 ?>
 
-<!--
-    <div class="resume-container">
-        <p class = "a"><?php echo htmlspecialchars($_POST['name']); ?></p>
-        <p class = "a"><?php echo(htmlspecialchars($_POST['location'])); ?></p>
-        <p class = "a"><?php echo(htmlspecialchars($_POST['contact'])); ?></p>
-		<br>
-		<p class = "b"><b>Objective Statement: </b><?php echo(htmlspecialchars($_POST['objstmt'])); ?></p>
-
-
-        <h1>Work Experience</h1>
-        <p class = "a"><?php echo(htmlspecialchars($_POST['jobTitle1'])); ?></p>
-		<table>
-			<tr>
-				<td class = "a"><?php echo(htmlspecialchars($_POST['startDate1'])); ?></td>
-				<td class = "b"><?php echo(htmlspecialchars($_POST['endDate1'])); ?></td>
-			</tr>
-		</table>
-        <p class = "b"><?php echo nl2br(htmlspecialchars($_POST['workExperience1'])); ?></p>
-		
-		<p class = "a"><?php echo(htmlspecialchars($_POST['jobTitle2'])); ?></p>
-		<table>
-			<tr>
-				<td class = "a"><?php echo(htmlspecialchars($_POST['startDate2'])); ?></td>
-				<td class = "b"><?php echo(htmlspecialchars($_POST['endDate2'])); ?></td>
-			</tr>
-		</table>
-        <p class = "b"><?php echo nl2br(htmlspecialchars($_POST['workExperience2'])); ?></p>
-		
-		<p class = "a"><?php echo(htmlspecialchars($_POST['jobTitle3'])); ?></p>
-		<table>
-			<tr>
-				<td class = "a"><?php echo(htmlspecialchars($_POST['startDate3'])); ?></td>
-				<td class = "b"><?php echo(htmlspecialchars($_POST['endDate3'])); ?></td>
-			</tr>
-		</table>	
-        <p class = "b"><?php echo nl2br(htmlspecialchars($_POST['workExperience3'])); ?></p>		
-        <hr>
-
-        <h2>Education</h2>
-        <p class = "b"><?php echo nl2br(htmlspecialchars($_POST['education'])); ?></p>
-        <hr>
-
-        <h3>Additional Information</h3>
-        <p class = "b"><?php echo nl2br(htmlspecialchars($_POST['additionalInfo'])); ?></p>
-    </div>
--->
 </body>
 </html>

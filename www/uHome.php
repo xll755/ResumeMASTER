@@ -58,8 +58,9 @@ include 'check_login.php';
         /* List items inside the bar */
         .bar li {
             flex-grow: 1;  /* Makes even spacing for tabs in the bar */
-            border-right: 2px solid white;  /* Separator color (black vertical line) */
+            border: 1px solid white;  /* Separator color (black vertical line) */
             list-style-type: none;
+			border-radius: 5px;
         }
         
         /* Anchored listed items */
@@ -68,7 +69,7 @@ include 'check_login.php';
             width: 100%;
             height: 100%;
             display: flex;
-			border-radius: 4px;
+			border-radius: 5px;
             align-items: center;  /* Center vertically */
             justify-content: center;  /* Center horizontally */
             text-decoration: none;  /* Remove underline from links */
@@ -77,12 +78,12 @@ include 'check_login.php';
         
         /* Hover effect for navigation links */
         .bar li a:hover {
-            background-color: 45a049;  /* Background color when hovering over tabs */
+            background-color: #45a049;  /* Background color when hovering over tabs */
         }
         
         /* Style for active page link */
         .bar li a.active {
-            background-color: 45a049 ;  /* Background color of active tab */
+            background-color: #45a049 ;  /* Background color of active tab */
             color: white;  /* Text color of the active page */
         }
         
@@ -114,7 +115,7 @@ include 'check_login.php';
         
         /* Heading Styling */
         h1 {
-            color: #4CAF50;  /* Match heading color with navigation bar */
+            color: #C70039;  /* Match heading color with navigation bar */
         }
     </style>
 </head>

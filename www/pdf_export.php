@@ -1,33 +1,32 @@
 <?php
 include 'check_login.php'; 
-// session_start();
 
-include "./text2html.php";
 include "./pdf_renderer.php";
 include "./Validation.php";
 include "./DB_functions.php";
-include "./Resume.php";
+include "./User.php";
+
+$mysqli = require_once "./db_config.php";
+
 // necessary resources for PDF export
 require_once __DIR__ . '/../../../app/vendor/autoload.php';
 use Dompdf\Dompdf;
-$mysqli = require_once "./db_config.php";
 
-if (!isset($_POST) || $_POST['resume_id'] == null) {
-	print('NO RESUME TO DOWNLOAD');
-	exit();
+if (isset($_SESSION['data'])) {
+    $data = $_SESSION['data'];
+    unset($_SESSION['data']);
 }
 
-$resume_id = $_POST['resume_id'];
-$resume = new Resume();
-$resume->pull($mysqli, $resume_id);
-$render = new pdf_render($resume);
-$html_pdf = $render->render();
+$user_id = $_SESSION['user_id'];
+$user = new User();
+$user->pull($mysqli, $user_id);
+$user_name = $user->getLastName();
 
 // new export obj
 $dompdf = new Dompdf();
 
 // load the pdf to be exported
-$dompdf->loadHtml($html_pdf);
+$dompdf->loadHtml($data);
 
 // (Optional) Setup the paper size and orientation
 $dompdf->setPaper('A4', 'portrait');
@@ -36,5 +35,5 @@ $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
 
 // Output the generated PDF to Browser
-$dompdf->stream();
+$dompdf->stream($user_name . '_resume.pdf');
 ?>

@@ -22,7 +22,7 @@ include 'check_login.php';
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #f7f9fc;
+            background-color: #fee0ad;
             padding: 2em;
             min-height: 100vh;
         }
@@ -30,7 +30,7 @@ include 'check_login.php';
         /* Page header styling */
         h1 {
             text-align: center;
-            color: #C70039;
+            color: #C70039; /* upload your resume text color */
             margin-bottom: 1em;
             font-size: 1.8em;
         }
@@ -72,7 +72,7 @@ include 'check_login.php';
         input[type="submit"], .back-button {
             width: calc(50% - 10px);
             padding: 0.75em;
-            background-color: #4CAF50;
+            background-color: #9f8c6c;
             color: white;
             border: none;
             border-radius: 4px;
@@ -87,7 +87,7 @@ include 'check_login.php';
 
         /* Hover effect for buttons */
         input[type="submit"]:hover, .back-button:hover {
-            background-color: #45a049;
+            background-color: #5f5441;
         }
 
     </style>

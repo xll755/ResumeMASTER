@@ -30,7 +30,7 @@ function is_valid_email(string $email = null) {
 * Regex from: https://stackoverflow.com/questions/8141125/regex-for-password-php
 */
 function is_valid_pwd(string $pwd = null) {
-	$pattern = '^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$';
+	$pattern = '/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/';
 	return (bool)preg_match($pattern, $pwd);
 }
 
@@ -39,8 +39,14 @@ function is_valid_pwd(string $pwd = null) {
 *
 */
 function is_valid_input(string $in = null) {
-	$pattern = '';
+	$pattern = '(.*)';
 	return (bool)preg_match($pattern, $in);
 
+}
+
+function return_on_failure(string $err_msg, string $url) {
+	$_SESSION['err_msg'] = $err_msg;
+	header("Location: " . $url);
+	exit();
 }
 ?>

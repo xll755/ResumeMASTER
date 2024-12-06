@@ -30,7 +30,7 @@ include 'check_login.php';
         /* Page header styling */
         h1 {
             text-align: center;
-            color: #333;
+            color: #C70039;
             margin-bottom: 1em;
             font-size: 1.8em;
         }
@@ -69,8 +69,8 @@ include 'check_login.php';
         }
 
         /* Submit button styling */
-        input[type="submit"] {
-            width: 100%;
+        input[type="submit"], .back-button {
+            width: calc(50% - 10px);
             padding: 0.75em;
             background-color: #4CAF50;
             color: white;
@@ -79,21 +79,23 @@ include 'check_login.php';
             font-size: 1em;
             cursor: pointer;
             transition: background-color 0.3s;
+            margin-right: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        /* Hover effect for submit button */
-        input[type="submit"]:hover {
+        /* Hover effect for buttons */
+        input[type="submit"]:hover, .back-button:hover {
             background-color: #45a049;
         }
 
-        //Editor for logout button goes here
     </style>
 </head>
 <body>
     <h1>Upload Your Resume</h1>
     <div class="form-container">
-        //Logout Button Here Below
-        <a href="logout.php" class="logout-button">Logout</a>
+        
         <form action="resumePage_Backend.php" method="POST" enctype="multipart/form-data">
             <table>
                 <tr>
@@ -103,7 +105,9 @@ include 'check_login.php';
                     <td><input type="file" id="resume" name="resume" accept=".pdf" required></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Upload"></td>
+                    <td>
+					<input type="submit" value="Upload"><a href="uHome.php" class="back-button">Back</a>
+					</td>
                 </tr>
             </table>
         </form>

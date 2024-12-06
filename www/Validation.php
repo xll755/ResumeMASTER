@@ -20,19 +20,6 @@ trait Validation
 		return $str;
 	}
 
-	/**
-	 * Provides input validation for user integer input
-	 * WARN: not implemented
-	 *
-	 * @param integer $int integer input to be verified
-	 * @return integer $int validated integer
-	 */
-	function validate_int_input(int $int): int
-	{
-		// TODO: validate user input
-		return $int;
-	}
-
 	function validate_email(string $str): string
 	{
 		// TODO: validate email

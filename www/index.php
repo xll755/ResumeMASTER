@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #fee0ad;
             text-align: center;
             margin: 0;
             padding: 50px;
@@ -20,14 +20,14 @@
             display: inline-block;
             margin: 20px;
             padding: 15px 30px;
-            background-color: #4CAF50;
+            background-color: #9f8c6c;
             color: white;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
         }
         a:hover {
-            background-color: #45a049;
+            background-color: #5f5441;
         }
     </style>
 </head>

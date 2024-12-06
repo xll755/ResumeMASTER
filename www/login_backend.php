@@ -1,6 +1,4 @@
 <?php
-// WARN: UNTESTED CODE
-// TODO: confirm sessions code & improve session security
 // TODO: better error handling???
 // TODO: validate the contents of post (is not empty and/or is each field set?)
 
@@ -24,20 +22,28 @@ session_start();
 $mysqli = require_once"./db_config.php";
 include "./DB_functions.php";
 include "./User.php";
+include "./valid_funcs.php";
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
 	throw new Exception("METHOD NOT POST", 1);
 }
 
+$username = htmlspecialchars($_POST['username']);
+$pwd = htmlspecialchars($_POST['password']);
+
+if (!is_valid_uname($username) || !is_valid_pwd($pwd)) {
+	// fail & return to login page
+}
+
 $user = new User();
-$user->setUserName($_POST['username']);
+$user->setUserName($username);
 
 $id = $user->exists($mysqli);
 if (!$id) {
 	throw new Exception("NO USER WITH USERNAME" . $user->getUserName(), 1);
 }
 
-if (!$user->confirmPW($mysqli, $_POST['password'])) {
+if (!$user->confirmPW($mysqli, $pwd)) {
 	throw new Exception("INCORRECT PASSWORD", 1);
 } else {
 	// NOTE: does this need to be in an else given the throw???

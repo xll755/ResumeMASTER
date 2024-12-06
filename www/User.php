@@ -4,7 +4,6 @@
 //
 class User implements  DB_functions
 {
-	use Validation;
 	private int $id;
 	private string $userName;
 	private string $firstName;
@@ -13,15 +12,15 @@ class User implements  DB_functions
 	private string $passwd;
 
 	public function getID():int { return $this->id; }
-	public function setUserName(string $str): void { $this->userName = $this->$str; }
+	public function setUserName(string $str): void { $this->userName = $str; }
 	public function getUserName(): string { return $this->userName; }
-	public function setFirstName(string $str): void { $this->firstName = $this->$str; }
+	public function setFirstName(string $str): void { $this->firstName = $str; }
 	public function getFirstName(): string { return $this->firstName; }
-	public function setLastName(string $str): void { $this->lastName = $this->$str; }
+	public function setLastName(string $str): void { $this->lastName = $str; }
 	public function getLastName(): string { return $this->lastName; }
-	public function setEmail(string $str): void { $this->email = $this->str; }
+	public function setEmail(string $str): void { $this->email = $str; }
 	public function getEmail(): string { return $this->email; }
-	public function setPW(string $str):void { $this->passwd = password_hash($this->$str, PASSWORD_DEFAULT); }
+	public function setPW(string $str):void { $this->passwd = password_hash($str, PASSWORD_DEFAULT); }
 	public function getPW():string { return $this->passwd; }
 
 	/**
@@ -48,6 +47,7 @@ class User implements  DB_functions
 
 		$id = $this->exists($mysqli);
 		if ($id) {
+			$this->id = $id;
 			return $id;
 		} else {
 			throw new Exception("USER NOT ADDED TO DB", 1);
@@ -87,7 +87,6 @@ class User implements  DB_functions
 	{
 		$query = "select * from users where users.id = (?)";
 		$stmt = $mysqli->prepare($query);
-		$id = $this->$id;
 		$types = "i";
 		$stmt->bind_param($types, $id);
 		$stmt->execute();

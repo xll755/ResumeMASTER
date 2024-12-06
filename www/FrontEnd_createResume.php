@@ -126,6 +126,9 @@ include 'check_login.php';
 	<br>
 
 <?php
+$name = $location = $contact = $obj = $job_title1 = $job_exper1 = $job_title2 = $job_exper2 = $job_title3 = $job_exper3 = $education = $additionalInfo = '';
+$job_dates1 = $job_dates2 = $job_dates3 = ['', ''];
+
 if (isset($_SESSION['info'])) {
     $data = $_SESSION['info'];
     unset($_SESSION['info']);

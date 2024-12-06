@@ -1,28 +1,6 @@
 <?php
-// WARN: UNTESTED CODE
-// TODO: confirm sessions code & improve session security
-// TODO: better error handling???
-// TODO: validate the contents of post (is not empty and/or is each field set?)
-
-/* createAcc_backend
-*
-* Backend processing for account/user creation.
-* Checks if user account exists and creates a new one if none found.
-*
-* Takes in a HTTP POST containing:
-*	- firstName
-*	- lastName
-*	- email address
-*	- TODO: needs: userName & PW
-*
-* Produces:
-*	- new user db entry
-*	- new user ojb
-*	- new user session
-*/
-
 // include 'check_login.php'; 
-// session_start();
+session_start();
 $mysqli = require_once"./db_config.php";
 include "./DB_functions.php";
 include "./User.php";
@@ -38,13 +16,27 @@ $lastName = htmlspecialchars($_POST['lastName']);
 $email = htmlspecialchars($_POST['emailAddr']);
 $pwd = htmlspecialchars($_POST['passwd']);
 
-if (!is_valid_uname($username) ||
-	!is_valid_input($firstName) ||
-	!is_valid_input($lastName) ||
-	!is_valid_email($email) ||
-	!is_valid_pwd($pwd)) {
-	// fail & return to login page
-	//
+$err_msg = '';
+$retun_url = './createAcc.php';
+
+if (!is_valid_uname($username)) {
+	$err_msg = 'bad uname';
+	return_on_failure($err_msg, $retun_url);
+}
+
+if (!is_valid_input($firstName) || !is_valid_input($lastName)) {
+	$err_msg = 'bad names';
+	return_on_failure($err_msg, $retun_url);
+}
+
+if (!is_valid_email($email)) {
+	$err_msg = 'bad email';
+	return_on_failure($err_msg, $retun_url);
+}
+
+if (!is_valid_pwd($pwd)) {
+	$err_msg = 'bad pwd';
+	return_on_failure($err_msg, $retun_url);
 }
 
 $user = new User();
@@ -58,10 +50,8 @@ $id = $user->exists($mysqli);
 if ($id) {
 	throw new Exception("USER ALREADY EXISTS", 1);
 } else {
-	// NOTE: does this need to be in an else given the throw???
 	$id = $user->create($mysqli);
 	$user->pull($mysqli, $id);
-	// NOTE: is this what we want to do / how its done?
 	if (!isset($_SESSION['user_id'])) {
 		$_SESSION['user_id'] = $id;
 	}

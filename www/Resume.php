@@ -15,7 +15,6 @@ class Resume implements DB_functions
 	// TODO: add enum to db & throughout appropriate funcs
 	private ?resume_styes $style;
 
-	public function setID(int $id): void { $this->id = $id; } // for testing & creation only rn  TODO: repair
 	public function getID(): int { return $this->id; } // for testing & creation only rn  TODO: repair
 	public function get_contents(): string { return $this->contents; }
 	public function print(): void { echo $this->contents; } // for testing & creation only rn  TODO: repair

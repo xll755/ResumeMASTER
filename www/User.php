@@ -12,7 +12,6 @@ class User implements  DB_functions
 	private string $email;
 	private string $passwd;
 
-	public function setID(int $int):void { $this->id = $this->validate_int_input($int); }
 	public function getID():int { return $this->id; }
 	public function setUserName(string $str): void { $this->userName = $this->validate_str_input($str); }
 	public function getUserName(): string { return $this->userName; }

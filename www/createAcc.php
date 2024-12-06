@@ -31,7 +31,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #f0f2f5;
+            background-color: #fee0ad;
         }
 
         /* Centered container */
@@ -82,7 +82,7 @@
             padding: 0.75em;
             border: none;
             border-radius: 4px;
-            background-color: #4CAF50;
+            background-color: #9f8c6c;
             color: white;
             font-size: 1em;
             cursor: pointer;
@@ -91,7 +91,7 @@
 
         /* Hover effect for submit button */
         input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: #5f5441;
         }
     </style>
 </head>

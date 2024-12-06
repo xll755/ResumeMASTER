@@ -26,17 +26,33 @@
 $mysqli = require_once"./db_config.php";
 include "./DB_functions.php";
 include "./User.php";
+include "./valid_funcs.php";
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
 	throw new Exception("METHOD NOT POST", 1);
 }
 
+$username = htmlspecialchars($_POST['userName']);
+$firstName = htmlspecialchars($_POST['firstName']);
+$lastName = htmlspecialchars($_POST['lastName']);
+$email = htmlspecialchars($_POST['emailAddr']);
+$pwd = htmlspecialchars($_POST['passwd']);
+
+if (!is_valid_uname($username) ||
+	!is_valid_input($firstName) ||
+	!is_valid_input($lastName) ||
+	!is_valid_email($email) ||
+	!is_valid_pwd($pwd)) {
+	// fail & return to login page
+	//
+}
+
 $user = new User();
-$user->setUserName($_POST['userName']);
-$user->setFirstName($_POST['firstName']);
-$user->setLastName($_POST['lastName']);
-$user->setEmail($_POST['emailAddr']);
-$user->setPW($_POST['passwd']);
+$user->setUserName($username);
+$user->setFirstName($firstName);
+$user->setLastName($lastName);
+$user->setEmail($email);
+$user->setPW($pwd);
 
 $id = $user->exists($mysqli);
 if ($id) {

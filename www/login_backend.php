@@ -22,7 +22,6 @@
 // include 'check_login.php'; 
 session_start();
 $mysqli = require_once"./db_config.php";
-include "./Validation.php";
 include "./DB_functions.php";
 include "./User.php";
 

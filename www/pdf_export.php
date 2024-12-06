@@ -2,7 +2,6 @@
 include 'check_login.php'; 
 
 include "./pdf_renderer.php";
-include "./Validation.php";
 include "./DB_functions.php";
 include "./User.php";
 

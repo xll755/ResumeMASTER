@@ -13,15 +13,15 @@ class User implements  DB_functions
 	private string $passwd;
 
 	public function getID():int { return $this->id; }
-	public function setUserName(string $str): void { $this->userName = $this->validate_str_input($str); }
+	public function setUserName(string $str): void { $this->userName = $this->$str; }
 	public function getUserName(): string { return $this->userName; }
-	public function setFirstName(string $str): void { $this->firstName = $this->validate_str_input($str); }
+	public function setFirstName(string $str): void { $this->firstName = $this->$str; }
 	public function getFirstName(): string { return $this->firstName; }
-	public function setLastName(string $str): void { $this->lastName = $this->validate_str_input($str); }
+	public function setLastName(string $str): void { $this->lastName = $this->$str; }
 	public function getLastName(): string { return $this->lastName; }
-	public function setEmail(string $str): void { $this->email = $this->validate_email($str); }
+	public function setEmail(string $str): void { $this->email = $this->str; }
 	public function getEmail(): string { return $this->email; }
-	public function setPW(string $str):void { $this->passwd = password_hash($this->validate_str_input($str), PASSWORD_DEFAULT); }
+	public function setPW(string $str):void { $this->passwd = password_hash($this->$str, PASSWORD_DEFAULT); }
 	public function getPW():string { return $this->passwd; }
 
 	/**

@@ -88,7 +88,7 @@ class User implements  DB_functions
 	{
 		$query = "select * from users where users.id = (?)";
 		$stmt = $mysqli->prepare($query);
-		$id = $this->validate_int_input($id);
+		$id = $this->$id;
 		$types = "i";
 		$stmt->bind_param($types, $id);
 		$stmt->execute();

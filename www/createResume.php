@@ -153,12 +153,25 @@ $info = array(
 			'job_exper' => get_contents('work', $_POST['workExperience3'], isset($_POST['work3_cb'])),
 		),
 	),
-		'edu_info' => get_contents('edu', $_POST['education'], isset($_POST['edu_cb'])),
-		'add_info' => get_contents('info', $_POST['additionalInfo'], isset($_POST['info_cb']))
+	'edu_info' => get_contents('edu', $_POST['education'], isset($_POST['edu_cb'])),
+	'add_info' => get_contents('info', $_POST['additionalInfo'], isset($_POST['info_cb']))
 	);
 $html = $renderer->render($info);
 print('<div class="resume-container">' .  $html . '</div>');
 ?>
+
+<div style="text-align: center">
+	<br>
+	<?php $_SESSION["info"] = $info; ?>
+	<form action="./FrontEnd_createResume.php" method="POST">
+		<button type="submit">Edit Resume</button>
+	</form>
+
+	<?php $_SESSION["data"] = $html; ?>
+	<form action="./pdf_export.php" methon="POST">
+		<button type="submit">Download Resume</button>
+	</form>
+</div>
 
 </body>
 </html>

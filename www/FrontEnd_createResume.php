@@ -103,21 +103,47 @@ session_start();
 	</div>
 	<br>
 
+<?php
+if (isset($_SESSION['info'])) {
+    $data = $_SESSION['info'];
+    unset($_SESSION['info']);
+
+// handle persona_info array
+$name = $data['personal_info']['name'];
+$location = $data['personal_info']['location'];
+$contact = $data['personal_info']['contact'];
+$obj = $data['personal_info']['obj'];
+// handle work_info array of arrays
+$job_title1 = $data['work_info']['job_1']['job_title'];
+$job_dates1 = explode('-', $data['work_info']['job_1']['job_dates']);
+$job_exper1 = $data['work_info']['job_1']['job_exper'];
+$job_title2 = $data['work_info']['job_2']['job_title'];
+$job_dates2 = explode('-', $data['work_info']['job_2']['job_dates']);
+$job_exper2 = $data['work_info']['job_2']['job_exper'];
+$job_title3 = $data['work_info']['job_3']['job_title'];
+$job_dates3 = explode('-', $data['work_info']['job_3']['job_dates']);
+$job_exper3 = $data['work_info']['job_3']['job_exper'];
+// handle edu_info array
+$education = $data['edu_info'];
+// handle add_info array
+$additionalInfo = $data['add_info'];
+}
+?>
 
     <div class="form-container">
         <h1>Create Your Resume</h1>
         <form action="createResume.php" method="POST">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-			
+            <input type="text" id="name" name="name" value="<?php echo $name; ?>" required>
+
             <label for="location">City, State, and Zipcode:</label>
-            <textarea id="location" name="location" rows="1" required></textarea>
+            <textarea id="location" name="location" rows="1" required><?php echo $location; ?></textarea>
 
             <label for="contact">Phone Number and Email:</label>
-            <textarea id="contact" name="contact" rows="1" required></textarea>
+            <textarea id="contact" name="contact" rows="1" required><?php echo $contact; ?></textarea>
 
             <label for="objstmt">Objective Statement:</label>
-            <textarea id="objstmt" name="objstmt" rows="3" required></textarea>
+            <textarea id="objstmt" name="objstmt" rows="3" required><?php echo $obj; ?></textarea>
 
             <div class="checkbox_align">
                         <label for="objstmt_cb">Would you like AI to improve this?</label>
@@ -126,16 +152,16 @@ session_start();
             <br>
 
             <label for="jobTitle1">First Job Title (Separate entries with a line break):</label>
-            <textarea id="jobTitle1" name="jobTitle1" rows="1" required></textarea>
+            <textarea id="jobTitle1" name="jobTitle1" rows="1" required><?php echo $job_title1; ?></textarea>
 			
             <label for="startDate1">Job Start Date: </label>
-            <textarea id="startDate1" name="startDate1" rows="1" required></textarea>
+            <textarea id="startDate1" name="startDate1" rows="1" required><?php echo $job_dates1[0]; ?></textarea>
 			
 	    <label for="endDate1">Job End Date: </label>
-            <textarea id="endDate1" name="endDate1" rows="1" required></textarea>
+            <textarea id="endDate1" name="endDate1" rows="1" required><?php echo $job_dates1[1]; ?></textarea>
 
             <label for="workExperience1">Work Experience (Separate entries with a line break):</label>
-            <textarea id="workExperience1" name="workExperience1" rows="4" required></textarea>
+            <textarea id="workExperience1" name="workExperience1" rows="4" required><?php echo $job_exper1; ?></textarea>
 
             <div class="checkbox_align">
                         <label for="work1_cb">Would you like AI to improve this?</label>
@@ -146,16 +172,16 @@ session_start();
 			
 			
             <label for="jobTitle2">Second Job Title (Separate entries with a line break):</label>
-            <textarea id="jobTitle2" name="jobTitle2" rows="1"></textarea>
+            <textarea id="jobTitle2" name="jobTitle2" rows="1"><?php echo $job_title2; ?></textarea>
 			
             <label for="startDate2">Job Start Date: </label>
-            <textarea id="startDate2" name="startDate2" rows="1"></textarea>
+            <textarea id="startDate2" name="startDate2" rows="1"><?php echo $job_dates2[0]; ?></textarea>
 			
             <label for="endDate2">Job End Date: </label>
-            <textarea id="endDate2" name="endDate2" rows="1"></textarea>			
+            <textarea id="endDate2" name="endDate2" rows="1"><?php echo $job_dates2[1]; ?></textarea>
 			
             <label for="workExperience2">Work Experience (Separate entries with a line break):</label>
-            <textarea id="workExperience2" name="workExperience2" rows="4"></textarea>
+            <textarea id="workExperience2" name="workExperience2" rows="4"><?php echo $job_exper2; ?></textarea>
 
             <div class="checkbox_align">
                         <label for="work2_cb">Would you like AI to improve this?</label>
@@ -166,16 +192,16 @@ session_start();
 			
 			
             <label for="jobTitle3">Third Job Title (Separate entries with a line break):</label>
-            <textarea id="jobTitle3" name="jobTitle3" rows="1"></textarea>	
+            <textarea id="jobTitle3" name="jobTitle3" rows="1"><?php echo $job_title3; ?></textarea>
 
             <label for="startDate3">Job Start Date: </label>
-            <textarea id="startDate3" name="startDate3" rows="1"></textarea>
+            <textarea id="startDate3" name="startDate3" rows="1"><?php echo $job_dates3[0]; ?></textarea>
 			
             <label for="endDate3">Job End Date: </label>
-            <textarea id="endDate3" name="endDate3" rows="1"></textarea>			
+            <textarea id="endDate3" name="endDate3" rows="1"><?php echo $job_dates3[1]; ?></textarea>
 			
             <label for="workExperience3">Work Experience (Separate entries with a line break):</label>
-            <textarea id="workExperience3" name="workExperience3" rows="4"></textarea>
+            <textarea id="workExperience3" name="workExperience3" rows="4"><?php echo $job_exper3; ?></textarea>
 
             <div class="checkbox_align">
                         <label for="work3_cb">Would you like AI to improve this?</label>
@@ -186,7 +212,7 @@ session_start();
 			
 
             <label for="education">Highest level of Education:</label>
-            <textarea id="education" name="education" rows="4" required></textarea>
+            <textarea id="education" name="education" rows="4" required><?php echo $education; ?></textarea>
             <div class="checkbox_align">
                         <label for="edu_cb">Would you like AI to improve this?</label>
                         <input type="checkbox" id="edu_cb" name="edu_cb" value="true"/>
@@ -194,7 +220,7 @@ session_start();
             <br>
 
             <label for="additionalInfo">Additional Information:</label>
-            <textarea id="additionalInfo" name="additionalInfo" rows="4"></textarea>
+            <textarea id="additionalInfo" name="additionalInfo" rows="4"><?php echo $additionalInfo; ?></textarea>
             <div class="checkbox_align">
                         <label for="info_cb">Would you like AI to improve this?</label>
                         <input type="checkbox" id="info_cb" name="info_cb" value="true"/>

@@ -6,7 +6,14 @@ define('DB_PASSWORD', 'dev'); //TODO: change
 define('DB_NAME', 'rm_db'); //TODO: change
 
 // attempt db connection
-$mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+$connected = false;
+do {
+	try {
+		$mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+		$connected = true;
+	} catch (\Throwable $th) {
+	}
+} while (!$connected);
 
 // verify connection
 if ($mysqli === false) {

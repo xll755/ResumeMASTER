@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!-- ResumeMASTER
 	 Lewis Green
 	 CPSC 4910
@@ -99,6 +100,9 @@
 
     <div class="container">
         <h1>Create Account</h1>
+        <!-- TODO: this error printing needs prettying -->
+        <?php if (isset($_SESSION['err_msg'])) echo $_SESSION['err_msg']; ?>
+        <?php unset($_SESSION['err_msg']); ?>
         <form action="createAcc_backend.php" method="POST">
             <table>
                 <tr>

@@ -24,63 +24,69 @@ include 'check_login.php';
 	<head>
 	<title>Comparison Page</title>
 		<style>
-		    .bar {									   		/* Section defines the bar */
-				background-color: rgb(255, 0, 255);  		/* Setting color of background for bar */
-				width: 100%;
-				height: 40px;
-				display: flex;
-				list-style-type: none;  
-				padding: 0;  
-				margin: 0;   
-			}
+		/* Section defines the bar */
+        .bar {
+            background-color: #9f8c6c;  /* Background color for navigation bar */
+            width: 100%;
+            height: 40px;
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
 			
-			.bar li {										/* This section is for listed items (li) */
-				flex-grow: 1;								/* makes even spacing for tabs in bar */					
-				border-right: 1px solid rgb(0, 0, 0);		/* Separators color (black vertical line) */
-				list-style-type: none; 
-			}
+        }
+        
+        /* List items inside the bar */
+        .bar li {
+            flex-grow: 1;  /* Makes even spacing for tabs in the bar */
+            border: 1px #f1f1f1;  /* Separator color (black vertical line) */
+            list-style-type: none;
+			border-radius: 5px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Anchored listed items */
+        .bar li a {
+            color: white;  /* Text color */
+            width: 100%;
+            height: 100%;
+            display: flex;
+			border-radius: 2px;
+            align-items: center;  /* Center vertically */
+            justify-content: center;  /* Center horizontally */
+            text-decoration: none;  /* Remove underline from links */
+			transition: background-color 0.3s;
+        }
+        
+        /* Hover effect for navigation links */
+        .bar li a:hover {
+            background-color: #5f5441;  /* Background color when hovering over tabs */
+        }
+        
+        /* Style for active page link */
+        .bar li a.active {
+            background-color: #5f5441 ;  /* Background color of active tab */
+            color: white;  /* Text color of the active page */
+        }
+        
+        /* Body styling */
+        body {
+            background-color: #fee0ad;  /* Background color for the entire page */
+            font-family: Arial, sans-serif;  /* Set a font family for consistency */
+            margin: 0;  /* Remove default body margin */
+        }
 			
-			.bar li a {						/* This section and below defines anchored listed items */
-				color: black;				/* Color of the letters */
-				width: 100%;  
-				height: 100%; 
-				display: flex;
-				align-items: center;  		/* centering vertically */
-				justify-content: center;  	/* centering horizontally */
-				text-decoration: none;  	/* Stops from generating underlines */
-			}
-			
-			.bar li a:hover {						  /* Section defines "hovering" */
-				background-color: rgb(180, 175, 255);  /* Setting color for "hovering" over tabs */
-			}
-			
-			.bar li a.active {  					  /* Section defines the active page */
-				background-color: rgb(255, 150, 255);  /* Color of the active page's tab */
-				color: blue;  						  /* Color of the letters of active page */
-				
-			
-			h1 {					/*This section is for header 1's format*/
-				text-align: left;
-				font-size: 100%;
-				margin: 0;
-			}
-			h2 [					/*This section is for header 2's format*/
-				text-align: right;
-				font-size: 100%;
-				margin: 0;
-			}
-			
-			.background-container {  /*This section is for the background format*/
-				max-width: 800px;
-				margin: 0 auto;
-				padding: 20px;
-				border: 1px solid #ddd;
-				box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-			}
-			
-			body{
-				background-color: orange;
-			}
+			/* Styling for the container holding content */
+        .background-container {
+            max-width: 800px;  /* Maximum width of the container */
+            margin: 20px auto;  /* Centering the container and adding top/bottom margin */
+            padding: 2em;  /* Spacing inside the container */
+            border-radius: 8px;  /* Border color */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Shadow effect */
+            background-color: white;  /* Set the background color to contrast with body */
+            color: black;  /* Set text color for the container content */
+        }
+		
 		</style>
 	</head>
 	<body>
@@ -91,6 +97,7 @@ include 'check_login.php';
                 <li><a href="resumePage.php">Resume Upload</a></li>
 		<li><a href="resume_example.php">Resume Example</a></li>   
                 <li><a href="comparisonF.php" class="active">Qualification Comparison</a></li>   <!-- Active tab and "web location" -->
+				<li><a href="FrontEnd_createResume.php">Create Your Resume</a></li>
 		<li><a href="logout.php">Logout</a></li>
 	     </ul>
         </nav>

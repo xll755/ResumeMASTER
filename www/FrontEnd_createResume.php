@@ -218,7 +218,7 @@ if (isset($_SESSION['resume_id'])) {
             </div>
             <br>
 
-            <label for="jobTitle1">First Job Title (Separate entries with a line break):</label>
+            <label for="jobTitle1">First Job Title:</label>
             <textarea id="jobTitle1" name="jobTitle1" rows="1" required><?php echo $job_title1; ?></textarea>
 			
             <label for="startDate1">Job Start Date: </label>
@@ -238,7 +238,7 @@ if (isset($_SESSION['resume_id'])) {
 			
 			
 			
-            <label for="jobTitle2">Second Job Title (Separate entries with a line break):</label>
+            <label for="jobTitle2">Second Job Title:</label>
             <textarea id="jobTitle2" name="jobTitle2" rows="1"><?php echo $job_title2; ?></textarea>
 			
             <label for="startDate2">Job Start Date: </label>
@@ -258,7 +258,7 @@ if (isset($_SESSION['resume_id'])) {
 			
 			
 			
-            <label for="jobTitle3">Third Job Title (Separate entries with a line break):</label>
+            <label for="jobTitle3">Third Job Title:</label>
             <textarea id="jobTitle3" name="jobTitle3" rows="1"><?php echo $job_title3; ?></textarea>
 
             <label for="startDate3">Job Start Date: </label>
@@ -278,7 +278,7 @@ if (isset($_SESSION['resume_id'])) {
 			
 			
 
-            <label for="education">Highest level of Education:</label>
+            <label for="education">Highest level of Education  (Separate entries with a line break):</label>
             <textarea id="education" name="education" rows="4" required><?php echo $education; ?></textarea>
             <div class="checkbox_align">
                         <label for="edu_cb">Would you like AI to improve this?</label>
@@ -286,7 +286,7 @@ if (isset($_SESSION['resume_id'])) {
             </div>
             <br>
 
-            <label for="additionalInfo">Additional Information:</label>
+            <label for="additionalInfo">Additional Information (Separate entries with a line break):</label>
             <textarea id="additionalInfo" name="additionalInfo" rows="4"><?php echo $additionalInfo; ?></textarea>
             <div class="checkbox_align">
                         <label for="info_cb">Would you like AI to improve this?</label>

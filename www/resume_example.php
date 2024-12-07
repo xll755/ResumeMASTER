@@ -1,6 +1,15 @@
 <?php
 include 'check_login.php'; 
 // session_start();
+// session_start();
+// if (!isset($_SESSION['user_id'])) {
+//     header("Location: index.php");
+//     exit();
+// }
+//
+// header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+// header("Cache-Control: post-check=0, pre-check=0", false);
+// header("Pragma: no-cache");
 ?>
 <!-- Lewis Green
 	 XLL755
@@ -14,57 +23,70 @@ and CSS. The CSS used creates two classes, one for the bar that links to other p
 and another class to format the resume so it appears in a familiar
 form for the user.
 -->
-
-
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Not necessary, but helps w/ scaling with different devices (phones, tablets, etc.) -->
     <title>Resume Example</title>
-<style>
-/*This is for the bar at the top of the page to navigate to different sections.*/
-    .bar {									   		/* Section defines the bar */
-        background-color: rgb(255, 0, 255);  		/* Setting color of background for bar */
-        width: 100%;
-        height: 40px;
-        display: flex;
-        list-style-type: none;  
-        padding: 0;  
-        margin: 0;   
-    }
-    
-    .bar li {										/* This section is for listed items (li) */
-        flex-grow: 1;								/* makes even spacing for tabs in bar */					
-        border-right: 1px solid black;		/* Separators color (black vertical line) */
-        list-style-type: none; 
-    }
-    
-    .bar li a {						/* This section and below defines anchored listed items */
-        color: black;				/* Color of the letters */
-        width: 100%;  
-        height: 100%; 
-        display: flex;
-        align-items: center;  		/* centering vertically */
-        justify-content: center;  	/* centering horizontally */
-        text-decoration: none;  	/* Stops from generating underlines */
-    }
-    
-    .bar li a:hover {						  /* Section defines "hovering" */
-        background-color: rgb(180, 175, 255);  /* Setting color for "hovering" over tabs */
-    }
-    
-    .bar li a.active {  					  /* Section defines the active page */
-        background-color: rgb(255, 150, 255);  /* Color of the active page's tab */
-        color: blue;  						  /* Color of the letters of active page */
-    }
-
+    <style>
+       /* Section defines the bar */
+        .bar {
+            background-color: #9f8c6c;  /* Background color for navigation bar */
+            width: 100%;
+            height: 40px;
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+			
+        }
+        
+        /* List items inside the bar */
+        .bar li {
+            flex-grow: 1;  /* Makes even spacing for tabs in the bar */
+            border: 1px #f1f1f1;  /* Separator color (black vertical line) */
+            list-style-type: none;
+			border-radius: 5px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Anchored listed items */
+        .bar li a {
+            color: white;  /* Text color */
+            width: 100%;
+            height: 100%;
+            display: flex;
+			border-radius: 2px;
+            align-items: center;  /* Center vertically */
+            justify-content: center;  /* Center horizontally */
+            text-decoration: none;  /* Remove underline from links */
+			transition: background-color 0.3s;
+        }
+        
+        /* Hover effect for navigation links */
+        .bar li a:hover {
+            background-color: #5f5441;  /* Background color when hovering over tabs */
+        }
+        
+        /* Style for active page link */
+        .bar li a.active {
+            background-color: #5f5441 ;  /* Background color of active tab */
+            color: white;  /* Text color of the active page */
+        }
+        body {
+            background-color: #fee0ad;  /* Background color for the entire page */
+            font-family: Arial, sans-serif;  /* Set a font family for consistency */
+            margin: 0;  /* Remove default body margin */
+        }
   /*This is to make the resume look like (format) it was actually written in word/on paper.*/
         .resume-container {
-            max-width: 800px; /*Setting the width */
-            margin: 0 auto; /*Centering the container */
-            padding: 20px; /*Spacing inside the container */
-            border: 1px solid grey; /*border for the container */
-            box-shadow: 2px 2px 10px black; /*Coloring to ie shadow casting */
+            max-width: 800px;  /* Maximum width of the container */
+            margin: 20px auto;  /* Centering the container and adding top/bottom margin */
+            padding: 2em;  /* Spacing inside the container */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Shadow effect */
+            background-color: white;  /* Set the background color to contrast with body */
+            color: black;  /* Set text color for the container content */
         }
 
         h1, h2, h3, h4 {
@@ -92,16 +114,16 @@ form for the user.
 		}
     </style>
 </head>
-<body>	
-<!--This class is for the bar that links back to other pages-->
-<div class="container">
-	<nav>
-		<ul class="bar">
-			<li><a href="uHome.php">Home</a></li> 		
-                	<li><a href="resumePage.php">Resume Upload</a></li>			<!-- # are dummy links, replace w/ actual links --> 
-                	<li><a href="resume_example.php" class="active">Resume Example</a></li>   <!-- Active tab and "web location" -->
-			<li><a href="comparisonF.php">Qualification Comparison</a></li>
-			<li><a href="logout.php">Logout</a></li>
+<body>	<!--This class is for the bar that links back to other pages-->
+   <div class="container">
+	   <nav>
+		    <ul class="bar">  <!-- Creating a tab layout on the bar -->
+                <li><a href="uHome.php">Home</a></li>  <!-- Active tab and "web location" -->
+                <li><a href="resumePage.php">Resume Upload</a></li>
+                <li><a href="resume_example.php"class="active">Resume Example</a></li>
+                <li><a href="comparisonF.php">Qualification Comparison</a></li>
+				<li><a href="FrontEnd_createResume.php">Create Your Resume</a></li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
     </div>

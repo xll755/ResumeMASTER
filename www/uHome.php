@@ -46,20 +46,23 @@ include 'check_login.php';
     <style>
         /* Section defines the bar */
         .bar {
-            background-color: #4CAF50;  /* Background color for navigation bar */
+            background-color: #9f8c6c;  /* Background color for navigation bar */
             width: 100%;
             height: 40px;
             display: flex;
             list-style-type: none;
             padding: 0;
             margin: 0;
+			
         }
         
         /* List items inside the bar */
         .bar li {
             flex-grow: 1;  /* Makes even spacing for tabs in the bar */
-            border-right: 2px solid white;  /* Separator color (black vertical line) */
+            border: 1px #f1f1f1;  /* Separator color (black vertical line) */
             list-style-type: none;
+			border-radius: 5px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
         /* Anchored listed items */
@@ -68,7 +71,7 @@ include 'check_login.php';
             width: 100%;
             height: 100%;
             display: flex;
-			border-radius: 4px;
+			border-radius: 2px;
             align-items: center;  /* Center vertically */
             justify-content: center;  /* Center horizontally */
             text-decoration: none;  /* Remove underline from links */
@@ -77,20 +80,19 @@ include 'check_login.php';
         
         /* Hover effect for navigation links */
         .bar li a:hover {
-            background-color: 45a049;  /* Background color when hovering over tabs */
+            background-color: #5f5441;  /* Background color when hovering over tabs */
         }
         
         /* Style for active page link */
         .bar li a.active {
-            background-color: 45a049 ;  /* Background color of active tab */
+            background-color: #5f5441;  /* Background color of active tab */
             color: white;  /* Text color of the active page */
         }
         
         /* Body styling */
         body {
-            background-color: white;  /* Background color for the entire page */
+            background-color: #fee0ad;  /* Background color for the entire page */
             font-family: Arial, sans-serif;  /* Set a font family for consistency */
-            color: white;  /* Set a default text color */
             margin: 0;  /* Remove default body margin */
         }
         
@@ -98,9 +100,9 @@ include 'check_login.php';
         .background-container {
             max-width: 800px;  /* Maximum width of the container */
             margin: 20px auto;  /* Centering the container and adding top/bottom margin */
-            padding: 20px;  /* Spacing inside the container */
-            border: 1px solid grey;  /* Border color */
-            box-shadow: 2px 2px 10px black;  /* Shadow effect */
+            padding: 2em;  /* Spacing inside the container */
+            border-radius: 8px;  /* Border color */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Shadow effect */
             background-color: white;  /* Set the background color to contrast with body */
             color: black;  /* Set text color for the container content */
         }
@@ -114,7 +116,7 @@ include 'check_login.php';
         
         /* Heading Styling */
         h1 {
-            color: #4CAF50;  /* Match heading color with navigation bar */
+            color: #C70039;  /* Match heading color with navigation bar */
         }
     </style>
 </head>
@@ -126,6 +128,7 @@ include 'check_login.php';
                 <li><a href="resumePage.php">Resume Upload</a></li>
                 <li><a href="resume_example.php">Resume Example</a></li>
                 <li><a href="comparisonF.php">Qualification Comparison</a></li>
+				<li><a href="FrontEnd_createResume.php">Create Your Resume</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>

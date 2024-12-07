@@ -1,3 +1,4 @@
+
 <!-- ResumeMASTER
 	 Lewis Green
 	 CPSC 4910
@@ -35,7 +36,7 @@ Data is not stored via cache, aren't bookmarked, etc.
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: #f0f2f5;
+            background: #fee0ad;
         }
 
         /* Centered container */
@@ -73,7 +74,7 @@ Data is not stored via cache, aren't bookmarked, etc.
             padding: 0.75em;
             border: none;
             border-radius: 4px;
-            background-color: #4CAF50;
+            background-color: #9f8c6c;
             color: white;
             font-size: 1em;
             cursor: pointer;
@@ -82,7 +83,7 @@ Data is not stored via cache, aren't bookmarked, etc.
 
         /* Button hover effect */
         button[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: #5f5441;
         }
 
         /* Placeholder text */

@@ -1,5 +1,14 @@
 <?php
-session_start();
+include 'check_login.php'; 
+// session_start();
+// if (!isset($_SESSION['user_id'])) {
+//     header("Location: index.php");
+//     exit();
+// }
+//
+// header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+// header("Cache-Control: post-check=0, pre-check=0", false);
+// header("Pragma: no-cache");
 ?>
 
 <!--
@@ -21,44 +30,54 @@ session_start();
 <head>
     <title>Resume Input</title>
     <style>
-    .bar {									   		/* Section defines the bar */
-        background-color: rgb(255, 0, 255);  		/* Setting color of background for bar */
-        width: 100%;
-        height: 40px;
-        display: flex;
-        list-style-type: none;  
-        padding: 0;  
-        margin: 0;   
-    }
-	
-		.bar li {										/* This section is for listed items (li) */
-			flex-grow: 1;								/* makes even spacing for tabs in bar */					
-			border-right: 1px solid rgb(0, 0, 0);		/* Separators color (black vertical line) */
-			list-style-type: none; 
-		}
-		
-		.bar li a {						/* This section and below defines anchored listed items */
-			color: black;				/* Color of the letters */
-			width: 100%;  
-			height: 100%; 
-			display: flex;
-			align-items: center;  		/* centering vertically */
-			justify-content: center;  	/* centering horizontally */
-			text-decoration: none;  	/* Stops from generating underlines */
-		}
-		
-		.bar li a:hover {						  /* Section defines "hovering" */
-			background-color: rgb(180, 175, 255);  /* Setting color for "hovering" over tabs */
-		}
-		
-		.bar li a.active {  					  /* Section defines the active page */
-			background-color: rgb(255, 150, 255);  /* Color of the active page's tab */
-			color: blue;  						  /* Color of the letters of active page */
-		}
-		
-		
-        body {
-            margin: 20px;
+    		/* Section defines the bar */
+        .bar {
+            background-color: #9f8c6c;  /* Background color for navigation bar */
+            width: 100%;
+            height: 40px;
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+			
+        }
+        
+        /* List items inside the bar */
+        .bar li {
+            flex-grow: 1;  /* Makes even spacing for tabs in the bar */
+            border: 1px #f1f1f1;  /* Separator color (black vertical line) */
+            list-style-type: none;
+			border-radius: 5px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Anchored listed items */
+        .bar li a {
+            color: white;  /* Text color */
+            width: 100%;
+            height: 100%;
+            display: flex;
+			border-radius: 2px;
+            align-items: center;  /* Center vertically */
+            justify-content: center;  /* Center horizontally */
+            text-decoration: none;  /* Remove underline from links */
+			transition: background-color 0.3s;
+        }
+        
+        /* Hover effect for navigation links */
+        .bar li a:hover {
+            background-color: #5f5441;  /* Background color when hovering over tabs */
+        }
+        
+        /* Style for active page link */
+        .bar li a.active {
+            background-color: #5f5441;  /* Background color of active tab */
+            color: white;  /* Text color of the active page */
+        }
+		body {
+            background-color: #fee0ad;  /* Background color for the entire page */
+            font-family: Arial, sans-serif;  /* Set a font family for consistency */
+            margin: 0;  /* Remove default body margin */
         }
 		
         .form-container {
@@ -86,6 +105,9 @@ session_start();
           width: 16px; /* Standard checkbox size */
           height: 16px;
         }
+		 h1 {
+            color: #C70039;  /* Match heading color with navigation bar */
+        }
     </style>
 </head>
 <body>
@@ -104,6 +126,9 @@ session_start();
 	<br>
 
 <?php
+$name = $location = $contact = $obj = $job_title1 = $job_exper1 = $job_title2 = $job_exper2 = $job_title3 = $job_exper3 = $education = $additionalInfo = '';
+$job_dates1 = $job_dates2 = $job_dates3 = ['', ''];
+
 if (isset($_SESSION['info'])) {
     $data = $_SESSION['info'];
     unset($_SESSION['info']);

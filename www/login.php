@@ -80,7 +80,18 @@ Data is not stored via cache, aren't bookmarked, etc.
             cursor: pointer;
             transition: background-color 0.3s;
         }
-
+/* Submit button styling */
+        input[type="submit"], .back-button {
+             width: 100%;
+            padding: 0.75em;
+            border: none;
+            border-radius: 4px;
+            background-color: #9f8c6c;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
         /* Button hover effect */
         button[type="submit"]:hover {
             background-color: #5f5441;

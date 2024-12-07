@@ -42,6 +42,19 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
         <title>My Resumes</title>
     </head>
     <body>
+       <div class="container">
+       <link rel="stylesheet" href="css/styles.css">
+           <nav>
+                <ul class="bar">  <!-- Creating a tab layout on the bar -->
+                    <li><a href="uHome.php" class="active">Home</a></li>  <!-- Active tab and "web location" -->
+                    <li><a href="./my_resumes.php">My Resumes</a></li>
+                    <li><a href="./FrontEnd_createResume.php">Create Resume</a></li>
+                    <li><a href="resume_example.php">Example Resume</a></li>
+                    <!-- <li><a href="comparisonF.php">Qualification Comparison</a></li> -->
+                    <li><a href="logout.php">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
         <h1>My Resumes</h1>
         <?php if (sizeof($resumes) > 0) : ?>
         <table>

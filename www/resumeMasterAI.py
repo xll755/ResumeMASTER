@@ -32,8 +32,20 @@ def resume_section(arg_type):
     return section
 
 #insert API key
-load_dotenv()
+env_loaded = load_dotenv()
+
+# short circuit & return if no env file
+if not env_loaded:
+    print(user_input)
+    exit()
+
 api_key = os.getenv('API_KEY')
+
+# short circuit & return if no api key
+if api_key == '':
+    print(user_input)
+    exit()
+
 genai.configure(api_key=api_key)
 
 # Create the model

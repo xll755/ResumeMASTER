@@ -125,10 +125,10 @@ include 'check_login.php';
         <nav>
             <ul class="bar">  <!-- Creating a tab layout on the bar -->
                 <li><a href="uHome.php" class="active">Home</a></li>  <!-- Active tab and "web location" -->
-                <li><a href="resumePage.php">Resume Upload</a></li>
-                <li><a href="resume_example.php">Resume Example</a></li>
-                <li><a href="comparisonF.php">Qualification Comparison</a></li>
-				<li><a href="FrontEnd_createResume.php">Create Your Resume</a></li>
+                <li><a href="./my_resumes.php">My Resumes</a></li>
+                <li><a href="./FrontEnd_createResume.php">Create Resume</a></li>
+                <li><a href="resume_example.php">Example Resume</a></li>
+                <!-- <li><a href="comparisonF.php">Qualification Comparison</a></li> -->
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>

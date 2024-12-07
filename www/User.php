@@ -32,17 +32,17 @@ class User implements  DB_functions
 	* @param mysqli $mysqli db object
 	* @return int $id created user's id
 	 */
-	public function create(mysqli $mysqli): int
+	public function create(mysqli $mysqli, ...$args): int
 	{
 		$query = "insert users(userName, firstName, lastName, email, passwd) values (?,?,?,?,?)";
 		$stmt = $mysqli->prepare($query);
-		$userName = $this->userName;
-		$firstName = $this->firstName;
-		$lastName = $this->lastName;
-		$email = $this->email;
-		$passwd = $this->passwd;
+		$this->userName = $args[0];
+		$this->firstName = $args[1];
+		$this->lastName = $args[2];
+		$this->email = $args[3];
+		$this->setPW($args[4]);
 		$types = "sssss";
-		$stmt->bind_param($types, $userName, $firstName, $lastName, $email, $passwd);
+		$stmt->bind_param($types, $this->userName, $this->firstName, $this->lastName, $this->email, $this->passwd);
 		$stmt->execute();
 
 		$id = $this->exists($mysqli);
@@ -63,11 +63,10 @@ class User implements  DB_functions
 	* @param mysqli $mysqli db object
 	* @return void
 	*/
-	public function delete(mysqli $mysqli): void
+	public function delete(mysqli $mysqli, int $id): void
 	{
 		$query = "delete from users where users.id = (?)";
 		$stmt = $mysqli->prepare($query);
-		$id = $this->id;
 		$types = "i";
 		$stmt->bind_param($types, $id);
 		$stmt->execute();

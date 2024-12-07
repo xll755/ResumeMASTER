@@ -75,12 +75,12 @@ form for the user.
    <div class="container">
    <link rel="stylesheet" href="css/styles.css">
 	   <nav>
-		    <ul class="bar">  <!-- Creating a tab layout on the bar -->
-                <li><a href="uHome.php">Home</a></li>  <!-- Active tab and "web location" -->
-                <li><a href="resumePage.php">Resume Upload</a></li>
-                <li><a href="resume_example.php"class="active">Resume Example</a></li>
-                <li><a href="comparisonF.php">Qualification Comparison</a></li>
-				<li><a href="FrontEnd_createResume.php">Create Your Resume</a></li>
+            <ul class="bar">  <!-- Creating a tab layout on the bar -->
+                <li><a href="uHome.php" class="active">Home</a></li>  <!-- Active tab and "web location" -->
+                <li><a href="./my_resumes.php">My Resumes</a></li>
+                <li><a href="./FrontEnd_createResume.php">Create Resume</a></li>
+                <li><a href="resume_example.php">Example Resume</a></li>
+                <!-- <li><a href="comparisonF.php">Qualification Comparison</a></li> -->
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>

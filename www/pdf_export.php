@@ -4,6 +4,7 @@ include 'check_login.php';
 include "./pdf_renderer.php";
 include "./DB_functions.php";
 include "./User.php";
+include "./Resume.php";
 
 $mysqli = require_once "./db_config.php";
 
@@ -11,21 +12,29 @@ $mysqli = require_once "./db_config.php";
 require_once __DIR__ . '/../../../app/vendor/autoload.php';
 use Dompdf\Dompdf;
 
-if (isset($_SESSION['data'])) {
-    $data = $_SESSION['data'];
-    unset($_SESSION['data']);
-}
-
+// get user's id & last name
 $user_id = $_SESSION['user_id'];
 $user = new User();
 $user->pull($mysqli, $user_id);
 $user_name = $user->getLastName();
 
+if (isset($_SESSION['resume_id'])) {
+    $resume_id = $_SESSION['resume_id'];
+    unset($_SESSION['resume_id']);
+}
+
+$resume = new Resume();
+$resume->pull($mysqli, $resume_id);
+$data = $resume->get_resume();
+
+$renderer = new pdf_render();
+$html = $renderer->render($data);
+
 // new export obj
 $dompdf = new Dompdf();
 
 // load the pdf to be exported
-$dompdf->loadHtml($data);
+$dompdf->loadHtml($html);
 
 // (Optional) Setup the paper size and orientation
 $dompdf->setPaper('A4', 'portrait');

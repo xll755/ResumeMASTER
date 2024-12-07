@@ -149,12 +149,12 @@ include 'check_login.php';
 	<div class="container">
 		<nav>
 			<ul class="bar">
-				<li><a href="uHome.php">Home</a></li> 		
-				<li><a href="resumePage.php">Resume Upload</a></li> 
-				<li><a href="resume_example.php">Resume Example</a></li> 
-				<li><a href="comparisonF.php">Qualification Comparison</a></li>
-				<li><a href="FrontEnd_createResume.php" class="active">Create Your Resume</a></li>
-				<li><a href="logout.php">Logout</a></li>
+                                <li><a href="uHome.php" class="active">Home</a></li>  <!-- Active tab and "web location" -->
+                                <li><a href="./my_resumes.php">My Resumes</a></li>
+                                <li><a href="./FrontEnd_createResume.php">Create Resume</a></li>
+                                <li><a href="resume_example.php">Example Resume</a></li>
+                                <!-- <li><a href="comparisonF.php">Qualification Comparison</a></li> -->
+                                <li><a href="logout.php">Logout</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -164,9 +164,17 @@ include 'check_login.php';
 $name = $location = $contact = $obj = $job_title1 = $job_exper1 = $job_title2 = $job_exper2 = $job_title3 = $job_exper3 = $education = $additionalInfo = '';
 $job_dates1 = $job_dates2 = $job_dates3 = ['', ''];
 
-if (isset($_SESSION['info'])) {
-    $data = $_SESSION['info'];
-    unset($_SESSION['info']);
+if (isset($_SESSION['resume_id'])) {
+    $resume_id = $_SESSION['resume_id'];
+    unset($_SESSION['resume_id']);
+
+$mysqli = require_once "./db_config.php";
+include "./DB_functions.php";
+include "./Resume.php";
+
+$resume = new Resume();
+$resume->pull($mysqli, $resume_id);
+$data = $resume->get_resume();
 
 // handle persona_info array
 $name = $data['personal_info']['name'];

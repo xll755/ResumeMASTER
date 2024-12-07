@@ -23,12 +23,14 @@ trait text2html
 	{
 		$data = "<h2>" . $header . "</h2>";
 		foreach ($work_exper as $job) {
-			$data .= "<div><table width=\"100%\"><tr>";
-			$data .= "<td align=\"left\"><b>" . $job["job_title"] . "</b></td>";
-			$data .= "<td align=\"right\"><b>" . $job["job_dates"] . "</b></td>";
-			$data .= "</tr></table>";
-			$data .= "<p>" . nl2br($job["job_exper"]) . "</p>";
-			$data .= "<hr></div>";
+			if ($job["job_title"] != null) {
+				$data .= "<div><table width=\"100%\"><tr>";
+				$data .= "<td align=\"left\"><b>" . $job["job_title"] . "</b></td>";
+				$data .= "<td align=\"right\"><b>" . $job["job_dates"] . "</b></td>";
+				$data .= "</tr></table>";
+				$data .= "<p>" . nl2br($job["job_exper"]) . "</p>";
+				$data .= "<hr></div>";
+			}
 		}
 
 		return $data;
@@ -41,34 +43,22 @@ trait text2html
 	{
 		$data = "<h2>" . $header . "</h2><div>";
 		$data .= "<p>" . nl2br($school_exper) . "</p>";
-		$data .= "<hr></div>";
+		$data .= "</div>";
 
 		return $data;
 	}
-	// TODO: decide on "flow" ( single arg or array? )
-	// above or below?
-	//
-	// /*
-	// * @param array $school_exper k/v array containg school & degree
-	// */
-	// private function edu_expereince(array $school_exper): string
-	// {
-	// 	$data = "<h2>Eduction</h2><div>";
-	// 	$data .= "<table width=\"100%\"><tr><td align=\"left\">";
-	// 	$data .= "<b>" . $school_exper["eduction"] . "</b></td></tr></table>";
-	// 	$data .= "<p align=\"left\">". $school_exper["degree"] . "</p>";
-	// 	$data .= "<hr></div>";
-	//
-	// 	return $data;
-	// }
 
 	/*
 	* @param string $info additional info
 	*/
 	private function additional_info(string $header, string $info): string
 	{
-		$data = "<h3>" . $header . "</h3>";
-		$data .= "<div><p align=\"left\">" . nl2br($info) . "</p></div>";
+		$data = '';
+		if ($info != null) {
+			$data = "<hr>";
+			$data .= "<h3>" . $header . "</h3>";
+			$data .= "<div><p align=\"left\">" . nl2br($info) . "</p></div>";
+		}
 
 		return $data;
 	}

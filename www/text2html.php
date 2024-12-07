@@ -27,7 +27,7 @@ trait text2html
 			$data .= "<td align=\"left\"><b>" . $job["job_title"] . "</b></td>";
 			$data .= "<td align=\"right\"><b>" . $job["job_dates"] . "</b></td>";
 			$data .= "</tr></table>";
-			$data .= "<p>" . $job["job_exper"] . "</p>";
+			$data .= "<p>" . nl2br($job["job_exper"]) . "</p>";
 			$data .= "<hr></div>";
 		}
 
@@ -40,7 +40,7 @@ trait text2html
 	private function edu_expereince(string $header, string $school_exper): string
 	{
 		$data = "<h2>" . $header . "</h2><div>";
-			$data .= "<p>" . $school_exper . "</p>";
+		$data .= "<p>" . nl2br($school_exper) . "</p>";
 		$data .= "<hr></div>";
 
 		return $data;
@@ -68,7 +68,7 @@ trait text2html
 	private function additional_info(string $header, string $info): string
 	{
 		$data = "<h3>" . $header . "</h3>";
-		$data .= "<div><p align=\"left\">" . $info . "</p></div>";
+		$data .= "<div><p align=\"left\">" . nl2br($info) . "</p></div>";
 
 		return $data;
 	}

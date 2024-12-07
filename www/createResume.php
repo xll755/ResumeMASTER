@@ -151,50 +151,71 @@ function get_contents($type, $post, $improve) {
 	return $post;
 }
 
+$mysqli = require_once "./db_config.php";
 include "./pdf_renderer.php";
+include "./DB_functions.php";
+include "./Resume.php";
+
 $renderer = new pdf_render();
-// TODO: create, or fetch & update, DB resume
-// optional downloading here??
-$info = array(
-	'personal_info' => array(
-		'name' => htmlspecialchars($_POST['name']),
-		'location' => htmlspecialchars($_POST['location']),
-		'contact' => htmlspecialchars($_POST['contact']),
-		'obj' => get_contents('obj', htmlspecialchars($_POST['objstmt']), isset($_POST['objstmt_cb'])),
-	),
-	'work_info' => array(
-		'job_1' => array(
-			'job_title' => htmlspecialchars($_POST['jobTitle1']),
-			'job_dates' => htmlspecialchars($_POST['startDate1'] . '-' . $_POST['endDate1']),
-			'job_exper' => get_contents('work', htmlspecialchars($_POST['workExperience1']), isset($_POST['work1_cb'])),
+$resume = new Resume();
+
+if (isset($_SESSION['resume_id'])) {
+	$resume->pull($mysqli, $_SESSION['resume_id']);
+	$info = $resume->get_resume();
+} else {
+	$info = array(
+		'personal_info' => array(
+			'name' => htmlspecialchars($_POST['name']),
+			'location' => htmlspecialchars($_POST['location']),
+			'contact' => htmlspecialchars($_POST['contact']),
+			'obj' => get_contents('obj', htmlspecialchars($_POST['objstmt']), isset($_POST['objstmt_cb'])),
 		),
-		'job_2' => array(
-			'job_title' => htmlspecialchars($_POST['jobTitle2']),
-			'job_dates' => htmlspecialchars($_POST['startDate2'] . '-' . $_POST['endDate2']),
-			'job_exper' => get_contents('work', htmlspecialchars($_POST['workExperience2']), isset($_POST['work2_cb'])),
+		'work_info' => array(
+			'job_1' => array(
+				'job_title' => htmlspecialchars($_POST['jobTitle1']),
+				'job_dates' => htmlspecialchars($_POST['startDate1'] . '-' . $_POST['endDate1']),
+				'job_exper' => get_contents('work', htmlspecialchars($_POST['workExperience1']), isset($_POST['work1_cb'])),
+			),
+			'job_2' => array(
+				'job_title' => htmlspecialchars($_POST['jobTitle2']),
+				'job_dates' => htmlspecialchars($_POST['startDate2'] . '-' . $_POST['endDate2']),
+				'job_exper' => get_contents('work', htmlspecialchars($_POST['workExperience2']), isset($_POST['work2_cb'])),
+			),
+			'job_3' => array(
+				'job_title' => htmlspecialchars($_POST['jobTitle3']),
+				'job_dates' => htmlspecialchars($_POST['startDate3'] . '-' . $_POST['endDate3']),
+				'job_exper' => get_contents('work', htmlspecialchars($_POST['workExperience3']), isset($_POST['work3_cb'])),
+			),
 		),
-		'job_3' => array(
-			'job_title' => htmlspecialchars($_POST['jobTitle3']),
-			'job_dates' => htmlspecialchars($_POST['startDate3'] . '-' . $_POST['endDate3']),
-			'job_exper' => get_contents('work', htmlspecialchars($_POST['workExperience3']), isset($_POST['work3_cb'])),
-		),
-	),
-	'edu_info' => get_contents('edu', htmlspecialchars($_POST['education']), isset($_POST['edu_cb'])),
-	'add_info' => get_contents('info', htmlspecialchars($_POST['additionalInfo']), isset($_POST['info_cb'])),
-	);
+		'edu_info' => get_contents('edu', htmlspecialchars($_POST['education']), isset($_POST['edu_cb'])),
+		'add_info' => get_contents('info', htmlspecialchars($_POST['additionalInfo']), isset($_POST['info_cb'])),
+		);
+
+	$resume_name = 'test_resume';
+	$resume_id = $resume->create($mysqli, $_SESSION['user_id'], $resume_name, $info);
+	$_SESSION['resume_id'] = $resume_id;
+}
+
+if (isset($_POST['save_resume'])) {
+	$resume->push($mysqli);
+}
+
 $html = $renderer->render($info);
 print('<div class="resume-container">' .  $html . '</div>');
+
 ?>
 
 <div style="text-align: center">
 	<br>
-	<?php $_SESSION["info"] = $info; ?>
 	<form action="./FrontEnd_createResume.php" method="POST">
 		<button type="submit">Edit Resume</button>
 	</form>
 
-	<?php $_SESSION["data"] = $html; ?>
-	<form action="./pdf_export.php" methon="POST">
+	<form action="" method="POST">
+		<button type="submit" name="save_resume">Save Resume</button>
+	</form>
+
+	<form action="./pdf_export.php" method="POST">
 		<button type="submit">Download Resume</button>
 	</form>
 </div>

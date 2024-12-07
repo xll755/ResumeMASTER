@@ -129,9 +129,17 @@ include 'check_login.php';
 $name = $location = $contact = $obj = $job_title1 = $job_exper1 = $job_title2 = $job_exper2 = $job_title3 = $job_exper3 = $education = $additionalInfo = '';
 $job_dates1 = $job_dates2 = $job_dates3 = ['', ''];
 
-if (isset($_SESSION['info'])) {
-    $data = $_SESSION['info'];
-    unset($_SESSION['info']);
+if (isset($_SESSION['resume_id'])) {
+    $resume_id = $_SESSION['resume_id'];
+    unset($_SESSION['resume_id']);
+
+$mysqli = require_once "./db_config.php";
+include "./DB_functions.php";
+include "./Resume.php";
+
+$resume = new Resume();
+$resume->pull($mysqli, $resume_id);
+$data = $resume->get_resume();
 
 // handle persona_info array
 $name = $data['personal_info']['name'];

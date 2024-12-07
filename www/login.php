@@ -36,7 +36,7 @@ Data is not stored via cache, aren't bookmarked, etc.
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: #fee0ad;
+            background: #fff7ea;
         }
 
         /* Centered container */

@@ -131,30 +131,30 @@ $renderer = new pdf_render();
 // optional downloading here??
 $info = array(
 	'personal_info' => array(
-		'name' => $_POST['name'],
-		'location' => $_POST['location'],
-		'contact' => $_POST['contact'],
-		'obj' => get_contents('obj', $_POST['objstmt'], isset($_POST['objstmt_cb'])),
+		'name' => htmlspecialchars($_POST['name']),
+		'location' => htmlspecialchars($_POST['location']),
+		'contact' => htmlspecialchars($_POST['contact']),
+		'obj' => get_contents('obj', htmlspecialchars($_POST['objstmt']), isset($_POST['objstmt_cb'])),
 	),
 	'work_info' => array(
 		'job_1' => array(
-			'job_title' => $_POST['jobTitle1'],
-			'job_dates' => $_POST['startDate1'] . '-' . $_POST['endDate1'],
-			'job_exper' => get_contents('work', $_POST['workExperience1'], isset($_POST['work1_cb'])),
+			'job_title' => htmlspecialchars($_POST['jobTitle1']),
+			'job_dates' => htmlspecialchars($_POST['startDate1'] . '-' . $_POST['endDate1']),
+			'job_exper' => get_contents('work', htmlspecialchars($_POST['workExperience1']), isset($_POST['work1_cb'])),
 		),
 		'job_2' => array(
-			'job_title' => $_POST['jobTitle2'],
-			'job_dates' => $_POST['startDate2'] . '-' . $_POST['endDate2'],
-			'job_exper' => get_contents('work', $_POST['workExperience2'], isset($_POST['work2_cb'])),
+			'job_title' => htmlspecialchars($_POST['jobTitle2']),
+			'job_dates' => htmlspecialchars($_POST['startDate2'] . '-' . $_POST['endDate2']),
+			'job_exper' => get_contents('work', htmlspecialchars($_POST['workExperience2']), isset($_POST['work2_cb'])),
 		),
 		'job_3' => array(
-			'job_title' => $_POST['jobTitle3'],
-			'job_dates' => $_POST['startDate3'] . '-' . $_POST['endDate3'],
-			'job_exper' => get_contents('work', $_POST['workExperience3'], isset($_POST['work3_cb'])),
+			'job_title' => htmlspecialchars($_POST['jobTitle3']),
+			'job_dates' => htmlspecialchars($_POST['startDate3'] . '-' . $_POST['endDate3']),
+			'job_exper' => get_contents('work', htmlspecialchars($_POST['workExperience3']), isset($_POST['work3_cb'])),
 		),
 	),
-	'edu_info' => get_contents('edu', $_POST['education'], isset($_POST['edu_cb'])),
-	'add_info' => get_contents('info', $_POST['additionalInfo'], isset($_POST['info_cb']))
+	'edu_info' => get_contents('edu', htmlspecialchars($_POST['education']), isset($_POST['edu_cb'])),
+	'add_info' => get_contents('info', htmlspecialchars($_POST['additionalInfo']), isset($_POST['info_cb'])),
 	);
 $html = $renderer->render($info);
 print('<div class="resume-container">' .  $html . '</div>');

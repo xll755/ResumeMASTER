@@ -108,6 +108,41 @@ include 'check_login.php';
 		 h1 {
             color: #C70039;  /* Match heading color with navigation bar */
         }
+		.resume-container {
+            max-width: 800px;  /* Maximum width of the container */
+            margin: 20px auto;  /* Centering the container and adding top/bottom margin */
+            padding: 2em;  /* Spacing inside the container */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Shadow effect */
+            background-color: white;  /* Set the background color to contrast with body */
+            color: black;  /* Set text color for the container content */
+        }
+		button[type="submit"] {
+            width: 100%;
+            padding: 0.75em;
+            border: none;
+            border-radius: 4px;
+            background-color: #9f8c6c;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+		input[type="submit"], .back-button {
+             width: 100%;
+            padding: 0.75em;
+            border: none;
+            border-radius: 4px;
+            background-color: #9f8c6c;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        /* Button hover effect */
+        button[type="submit"]:hover {
+            background-color: #5f5441;
+        }
     </style>
 </head>
 <body>
@@ -115,7 +150,7 @@ include 'check_login.php';
 		<nav>
 			<ul class="bar">
 				<li><a href="uHome.php">Home</a></li> 		
-				<li><a href="resumePage.html">Resume Upload</a></li> 
+				<li><a href="resumePage.php">Resume Upload</a></li> 
 				<li><a href="resume_example.php">Resume Example</a></li> 
 				<li><a href="comparisonF.php">Qualification Comparison</a></li>
 				<li><a href="FrontEnd_createResume.php" class="active">Create Your Resume</a></li>
@@ -124,7 +159,7 @@ include 'check_login.php';
 		</nav>
 	</div>
 	<br>
-
+<div class="resume-container">
 <?php
 $name = $location = $contact = $obj = $job_title1 = $job_exper1 = $job_title2 = $job_exper2 = $job_title3 = $job_exper3 = $education = $additionalInfo = '';
 $job_dates1 = $job_dates2 = $job_dates3 = ['', ''];
@@ -156,7 +191,7 @@ $additionalInfo = $data['add_info'];
 ?>
 
     <div class="form-container">
-        <h1>Create Your Resume</h1>
+        <center><h1>Create Your Resume</h1></center>
         <form action="createResume.php" method="POST">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" value="<?php echo $name; ?>" required>
@@ -252,8 +287,9 @@ $additionalInfo = $data['add_info'];
             </div>
             <br>
 
-            <button type="submit">Create Resume</button>
+            <button type="submit" >Create Resume</button>
         </form>
     </div>
+</div>
 </body>
 </html>

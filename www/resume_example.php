@@ -74,7 +74,7 @@ form for the user.
             color: white;  /* Text color of the active page */
         }
         body {
-            background-color: #fee0ad;  /* Background color for the entire page */
+            background-color: #fff7ea;  /* Background color for the entire page */
             font-family: Arial, sans-serif;  /* Set a font family for consistency */
             margin: 0;  /* Remove default body margin */
         }

@@ -32,7 +32,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #fee0ad;
+            background-color: #fff7ea;
         }
 
         /* Centered container */

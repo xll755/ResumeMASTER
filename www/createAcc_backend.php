@@ -41,16 +41,12 @@ if (!is_valid_pwd($pwd)) {
 
 $user = new User();
 $user->setUserName($username);
-$user->setFirstName($firstName);
-$user->setLastName($lastName);
-$user->setEmail($email);
-$user->setPW($pwd);
-
 $id = $user->exists($mysqli);
+
 if ($id) {
 	throw new Exception("USER ALREADY EXISTS", 1);
 } else {
-	$id = $user->create($mysqli);
+	$id = $user->create($mysqli, $username, $firstName, $lastName, $email, $pwd);
 	$user->pull($mysqli, $id);
 	if (!isset($_SESSION['user_id'])) {
 		$_SESSION['user_id'] = $id;

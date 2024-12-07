@@ -54,9 +54,11 @@ model = genai.GenerativeModel(
 
 model = genai.GenerativeModel("gemini-1.5-flash")
 content = f"""
-You are a professional copywrighter.
-Write a complete and professional {resume_section(arg_type)} section of a resume
-based on the given information: '{user_input}'.
+You are a professional copywriter with expertise in creating impactful resumes.
+Using the provided information, craft a {resume_section(arg_type)} that is concise and well-structured.
+The section should use action verbs, quantify achievements where possible, and be free of grammatical errors.
+
+Information: '{user_input}'.
 """
 response = model.generate_content(content)
 print(response.text)

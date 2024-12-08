@@ -10,7 +10,6 @@ trait text2html
 		$data .= "<p style=\"text-align: center;\">" . $info["location"] . "</p>";
 		$data .= "<p style=\"text-align: center;\">" . $info["contact"] . "</p>";
 		$data .= "<p style=\"text-align: left;\"><b>" . $header . ": </b>" . $info["obj"] . "</p>";
-	    $data .= "<p style=\"text-align: left;\">" . $info["obj"] . "</p>";
 
 		return $data;
 	}

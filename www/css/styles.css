@@ -1,34 +1,38 @@
 /* Section defines the bar */
 .bar {
     background-color: #9f8c6c; /* Background color for navigation bar */
-    width: 100%;
-    height: 40px;
     display: flex;
+    height: 70px;
     list-style-type: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 /* List items inside the bar */
 .bar li {
-    flex-grow: 1; /* Makes even spacing for tabs in the bar */
-    border: 1px #f1f1f1; /* Separator color (black vertical line) */
-    list-style-type: none;
+    align-items: center;
     border-radius: 5px;
+    border: 1px #f1f1f1; /* Separator color (black vertical line) */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-grow: 1; /* Makes even spacing for tabs in the bar */
+    list-style-type: none;
+    height: 100%;
+    width: 100%;
+    justify-content: center; /* Center horizontally */
 }
 
 /* Anchored listed items */
 .bar li a {
-    color: white; /* Text color */
-    width: 100%;
-    height: 100%;
-    display: flex;
-    border-radius: 2px;
     align-items: center; /* Center vertically */
+    border-radius: 2px;
+    color: white; /* Text color */
+    display: flex;
     justify-content: center; /* Center horizontally */
     text-decoration: none; /* Remove underline from links */
     transition: background-color 0.3s;
+    width: 100%;
 }
 
 /* Hover effect for navigation links */
@@ -46,23 +50,43 @@
 body {
     background-color: #fff7ea;  /* Background color for the entire page */
     font-family: Arial, sans-serif;
-    text-align: center;
     margin: 0;
+    min-height: 100vh;
     padding: 50px;
+    text-align: center;
 }
 
+/* Heading Styling */
 h1 {
+    /* color: #333; */
+    color: #C70039;  /* Match heading color with navigation bar */
+    font-size: 1.8em;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+/* Title styling */
+h2 {
     color: #333;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    margin: 0;
+    text-align: center; /*aligning headers 1-3 to center */
+}
+
+h3 {
+    margin: 0;
+    text-align: center;
 }
 
 a {
+    background-color: #9f8c6c;
+    border-radius: 5px;
+    color: white;
     display: inline-block;
     margin: 20px;
     padding: 15px 30px;
-    background-color: #9f8c6c;
-    color: white;
     text-decoration: none;
-    border-radius: 5px;
     transition: background-color 0.3s;
 }
 
@@ -70,24 +94,28 @@ a:hover {
     background-color: #5f5441;
 }
 
-.resume-container {
-    max-width: 800px;  /* Maximum width of the container */
-    margin: 20px auto;  /* Centering the container and adding top/bottom margin */
-    padding: 2em;  /* Spacing inside the container */
-    border-radius: 8px;  /* Border color */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Shadow effect */
-    background-color: white;  /* Set the background color to contrast with body */
-    color: black;  /* Set text color for the container content */
+/* Styling for paragraphs */
+p {
+    font-size: 1.2em;  /* Set a relative font size for readability */
+    margin: 10px 0;  /* Add top and bottom margin */
+    text-align: justify;  /* Justify the text for clean alignment */
 }
 
-h1, h2, h3{
-    text-align: center; /*aligning headers 1-3 to center */
-    margin: 0;
+/*This is to make the resume look like (format) it was actually written in word/on paper.*/
+.resume-container {
+    background-color: white;  /* Set the background color to contrast with body */
+    border-radius: 8px;  /* Border color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Shadow effect */
+    color: black;  /* Set text color for the container content */
+    margin: 20px auto;  /* Centering the container and adding top/bottom margin */
+    max-width: 800px;  /* Maximum width of the container */
+    padding: 2em;  /* Spacing inside the container */
 }
+
 /*This section aligns paragraphs to the left */
 p.a {
-    text-align: center;
     margin: 0;
+    text-align: center;
 }
 p.b {
     text-align: left;
@@ -106,41 +134,26 @@ td.b {
     text-align: right;
 }
 
-/* create-account */
 
-/* Reset and base styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-/* Full-page background */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #fff7ea;
+.login-container {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;  /* Centering the container and adding top/bottom margin */
+    padding: 2em;
+    text-align: center;
+    width: 300px;
 }
 
 /* Centered container */
-.container {
-    width: 100%;
-    max-width: 400px;
-    padding: 2em;
+.creation-container {
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Title styling */
-h1 {
-    text-align: center;
-    margin-bottom: 1em;
-    font-size: 1.8em;
-    color: #333;
+    margin: 20px auto;  /* Centering the container and adding top/bottom margin */
+    max-width: 400px;
+    padding: 2em;
+    width: 100%;
 }
 
 /* Form table styling */
@@ -150,34 +163,44 @@ table {
 
 /* Label and input field styling */
 label {
+    color: #555;
     display: block;
     font-size: 0.9em;
-    color: #555;
     margin-bottom: 0.3em;
+}
+
+textarea {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    color: #333;
+    font-size: 1em;
+    margin-bottom: 1em;
+    padding: 0.75em;
+    width: 100%;
 }
 
 input[type="text"],
 input[type="password"] {
-    width: 100%;
-    padding: 0.75em;
-    margin-bottom: 1em;
-    border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 1em;
+    border: 1px solid #ccc;
     color: #333;
+    font-size: 1em;
+    margin-bottom: 1em;
+    padding: 0.75em;
+    width: 100%;
 }
 
 /* Submit button styling */
 input[type="submit"] {
-    width: 100%;
-    padding: 0.75em;
-    border: none;
-    border-radius: 4px;
     background-color: #9f8c6c;
+    border-radius: 4px;
+    border: none;
     color: white;
-    font-size: 1em;
     cursor: pointer;
+    font-size: 1em;
+    padding: 0.75em;
     transition: background-color 0.3s;
+    width: 100%;
 }
 
 /* Hover effect for submit button */
@@ -185,63 +208,18 @@ input[type="submit"]:hover {
     background-color: #5f5441;
 }
 
-/* login */
-/* Centered container */
-.container {
-    width: 300px;
-    padding: 2em;
-    background: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    text-align: center;
-}
-
-/* Title styling */
-h2 {
-    margin-bottom: 1em;
-    font-size: 1.5em;
-    color: #333;
-}
-
-/* Input fields */
-input[type="text"],
-input[type="password"] {
-    width: 100%;
-    padding: 0.75em;
-    margin-bottom: 1em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1em;
-    color: #333;
-}
-
-/* Button styling */
-button[type="submit"] {
-    width: 100%;
-    padding: 0.75em;
-    border: none;
-    border-radius: 4px;
-    background-color: #9f8c6c;
-    color: white;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
 /* Submit button styling */
+/* why? */
 input[type="submit"], .back-button {
-    width: 100%;
-    padding: 0.75em;
-    border: none;
-    border-radius: 4px;
     background-color: #9f8c6c;
+    border-radius: 4px;
+    border: none;
     color: white;
-    font-size: 1em;
     cursor: pointer;
+    font-size: 1em;
+    padding: 0.75em;
     transition: background-color 0.3s;
-}
-/* Button hover effect */
-button[type="submit"]:hover {
-    background-color: #5f5441;
+    width: 100%;
 }
 
 /* Placeholder text */
@@ -252,20 +230,20 @@ input::placeholder {
 /* create-resume */
 
 .form-container {
-    max-width: 800px;
     margin: 0 auto;
+    max-width: 800px;
 }
 
 .form-container input, .form-container textarea, .form-container button {
     display: block;
-    width: 100%;
     margin-bottom: 10px;
     padding: 10px;
+    width: 100%;
 }
 
 .form-container label {
-    margin-bottom: 5px;
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .checkbox_align {
@@ -273,163 +251,45 @@ input::placeholder {
 }
 
 input[type="checkbox"] {
-    width: 16px; /* Standard checkbox size */
     height: 16px;
+    width: 16px; /* Standard checkbox size */
 }
-h1 {
-    color: #C70039;  /* Match heading color with navigation bar */
-}
+
 .resume-container {
-    max-width: 800px;  /* Maximum width of the container */
-    margin: 20px auto;  /* Centering the container and adding top/bottom margin */
-    padding: 2em;  /* Spacing inside the container */
+    background-color: white;  /* Set the background color to contrast with body */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Shadow effect */
-    background-color: white;  /* Set the background color to contrast with body */
     color: black;  /* Set text color for the container content */
+    margin: 20px auto;  /* Centering the container and adding top/bottom margin */
+    max-width: 800px;  /* Maximum width of the container */
+    padding: 2em;  /* Spacing inside the container */
 }
+
+/* can make input? */
 button[type="submit"] {
-    width: 100%;
-    padding: 0.75em;
-    border: none;
-    border-radius: 4px;
     background-color: #9f8c6c;
-    color: white;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-input[type="submit"], .back-button {
-    width: 100%;
-    padding: 0.75em;
-    border: none;
     border-radius: 4px;
-    background-color: #9f8c6c;
+    border: none;
     color: white;
-    font-size: 1em;
     cursor: pointer;
+    font-size: 1em;
+    padding: 0.75em;
     transition: background-color 0.3s;
+    width: 100%;
 }
+
 /* Button hover effect */
 button[type="submit"]:hover {
     background-color: #5f5441;
 }
 
-/* example-resume */
-
-body {
-    background-color: #fff7ea;  /* Background color for the entire page */
-    font-family: Arial, sans-serif;  /* Set a font family for consistency */
-    margin: 0;  /* Remove default body margin */
-}
-/*This is to make the resume look like (format) it was actually written in word/on paper.*/
-.resume-container {
-    max-width: 800px;  /* Maximum width of the container */
-    margin: 20px auto;  /* Centering the container and adding top/bottom margin */
-    padding: 2em;  /* Spacing inside the container */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Shadow effect */
-    background-color: white;  /* Set the background color to contrast with body */
-    color: black;  /* Set text color for the container content */
-}
-
-h1, h2, h3, h4 {
-    text-align: center; /*aligning headers 1 -4 to center */
-    margin: 0;
-}
-
-p.a {						/*This section alignes paragraphs to the left */					
-    text-align: center;
-    margin: 0;
-}
-p.b {
-    text-align: left;
-}
-
-table {					/*Creating table and establishing spacing */
-    width: 100%;
-}
-
-td.a {					/*establishing tables text alignment */
-    text-align: left;
-}
-td.b {
-    text-align: right;
-}
-
-/* home */
-
-/* Section defines the bar */
-.bar {
-    background-color: #9f8c6c;  /* Background color for navigation bar */
-    width: 100%;
-    height: 40px;
-    display: flex;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-
-}
-
-/* List items inside the bar */
-.bar li {
-    flex-grow: 1;  /* Makes even spacing for tabs in the bar */
-    border: 1px #f1f1f1;  /* Separator color (black vertical line) */
-    list-style-type: none;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Anchored listed items */
-.bar li a {
-    color: white;  /* Text color */
-    width: 100%;
-    height: 100%;
-    display: flex;
-    border-radius: 2px;
-    align-items: center;  /* Center vertically */
-    justify-content: center;  /* Center horizontally */
-    text-decoration: none;  /* Remove underline from links */
-    transition: background-color 0.3s;
-}
-
-/* Hover effect for navigation links */
-.bar li a:hover {
-    background-color: #5f5441;  /* Background color when hovering over tabs */
-}
-
-/* Style for active page link */
-.bar li a.active {
-    background-color: #5f5441;  /* Background color of active tab */
-    color: white;  /* Text color of the active page */
-}
-
-/* Body styling */
-body {
-    background-color: #fff7ea;  /* Background color for the entire page */
-    font-family: Arial, sans-serif;  /* Set a font family for consistency */
-    margin: 0;  /* Remove default body margin */
-}
-
 /* Styling for the container holding content */
 .background-container {
-    max-width: 800px;  /* Maximum width of the container */
-    margin: 20px auto;  /* Centering the container and adding top/bottom margin */
-    padding: 2em;  /* Spacing inside the container */
+    background-color: white;  /* Set the background color to contrast with body */
     border-radius: 8px;  /* Border color */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Shadow effect */
-    background-color: white;  /* Set the background color to contrast with body */
     color: black;  /* Set text color for the container content */
-}
-
-/* Styling for paragraphs */
-p {
-    text-align: justify;  /* Justify the text for clean alignment */
-    margin: 10px 0;  /* Add top and bottom margin */
-    font-size: 1.2em;  /* Set a relative font size for readability */
-}
-
-/* Heading Styling */
-h1 {
-    color: #C70039;  /* Match heading color with navigation bar */
+    margin: 20px auto;  /* Centering the container and adding top/bottom margin */
+    max-width: 800px;  /* Maximum width of the container */
+    padding: 2em;  /* Spacing inside the container */
 }

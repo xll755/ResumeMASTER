@@ -26,16 +26,9 @@ include '../back-end/verify-session.php';
 	 CSS and HTML. The tabs created will be Home, Resume Upload,
 	 and logout. Others may be added along development
 	 
-	 Any additions (except corrections) to code modifies version 
-	 and needs to be commented along with editors name.
-	 
 	 Resources used:
 	 Coding For Webpages
 	 w3schools
-	 
-	Nice to do if time permits:
-		Fill white space of Page so it isn't empty
-		Implement interactive assistant to fill whitespace
 -->
 
 <html lang="en">
@@ -142,7 +135,7 @@ include '../back-end/verify-session.php';
             Remember to have references; you may need people to vouch for your character and work ethic! Practice for interviews by getting familiar with your profession.
             Always remember there is someone who may be a better candidate working hard to get the same job; you need tenacity, experience, and to reflect on yourself and accomplishments.
         </p>
-        <p>Now, this web-based app is here to help you get started with your resume. At the time of writing this, our interactive assistant isn't up yet. Don't fret! We're still working though!</p>
+        <p>Now, this web-based app is here to help you get started with your resume!</p>
     </div>
 </body>
 </html>

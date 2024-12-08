@@ -24,16 +24,16 @@ firefox localhost
 # to stop containers
 docker compose stop
 # to stop and remove containers
-docker compose down # This command will **DELETE** ANY DATA IN THE DATABASE
+docker compose down # THIS COMMAND WILL **DELETE** ANY DATA IN THE DATABASE
 ```
 
-### Additional steps
+#### Configure secrets
 
 ResumeMASTER employs the use of a `.env` file for managing secrets.
 This file is **NOT** tracked by the repository due to its sensitive nature and
 therefore must be created individually by each user as they see fit.
 
-#### Add API key
+##### Add API key
 
 ```bash
 # Create an ".env" file if you don't have one created already.

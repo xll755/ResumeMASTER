@@ -56,7 +56,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
                 <li><a href="./logout.php">Logout</a></li>
             </ul>
         </nav>
-        <div class="general-container">
+        <div class="background-container">
             <h1>My Resumes</h1>
             <?php if (sizeof($resumes) > 0) : ?>
             <table>

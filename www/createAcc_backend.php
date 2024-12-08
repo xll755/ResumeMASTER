@@ -20,22 +20,22 @@ $err_msg = '';
 $retun_url = './createAcc.php';
 
 if (!is_valid_uname($username)) {
-	$err_msg = 'bad uname';
+	$err_msg = "Invalid username<br>Usernames must be alphanumeric & 1-15 characters in length.";
 	return_on_failure($err_msg, $retun_url);
 }
 
 if (!is_valid_input($firstName) || !is_valid_input($lastName)) {
-	$err_msg = 'bad names';
+	$err_msg = "Invalid input<br>Input must be ...";
 	return_on_failure($err_msg, $retun_url);
 }
 
 if (!is_valid_email($email)) {
-	$err_msg = 'bad email';
+	$err_msg = "Invalid email<br>Emails must adhere to standard format.";
 	return_on_failure($err_msg, $retun_url);
 }
 
 if (!is_valid_pwd($pwd)) {
-	$err_msg = 'bad pwd';
+	$err_msg = "Invalid password<br>Passwords must be 8 characters or longer & contain one or more uppercase, lowercase, and digit.";
 	return_on_failure($err_msg, $retun_url);
 }
 

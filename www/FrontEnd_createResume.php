@@ -166,35 +166,35 @@ $job_dates1 = $job_dates2 = $job_dates3 = ['', ''];
 
 if (isset($_SESSION['resume_id'])) {
     $resume_id = $_SESSION['resume_id'];
-    unset($_SESSION['resume_id']);
+    unset($_SESSION['from_my']);
 
-$mysqli = require_once "./db_config.php";
-include "./DB_functions.php";
-include "./Resume.php";
+    $mysqli = require_once "./db_config.php";
+    include "./DB_functions.php";
+    include "./Resume.php";
 
-$resume = new Resume();
-$resume->pull($mysqli, $resume_id);
-$data = $resume->get_resume();
+    $resume = new Resume();
+    $resume->pull($mysqli, $resume_id);
+    $data = $resume->get_resume();
 
-// handle persona_info array
-$name = $data['personal_info']['name'];
-$location = $data['personal_info']['location'];
-$contact = $data['personal_info']['contact'];
-$obj = $data['personal_info']['obj'];
-// handle work_info array of arrays
-$job_title1 = $data['work_info']['job_1']['job_title'];
-$job_dates1 = explode('-', $data['work_info']['job_1']['job_dates']);
-$job_exper1 = $data['work_info']['job_1']['job_exper'];
-$job_title2 = $data['work_info']['job_2']['job_title'];
-$job_dates2 = explode('-', $data['work_info']['job_2']['job_dates']);
-$job_exper2 = $data['work_info']['job_2']['job_exper'];
-$job_title3 = $data['work_info']['job_3']['job_title'];
-$job_dates3 = explode('-', $data['work_info']['job_3']['job_dates']);
-$job_exper3 = $data['work_info']['job_3']['job_exper'];
-// handle edu_info array
-$education = $data['edu_info'];
-// handle add_info array
-$additionalInfo = $data['add_info'];
+    // handle persona_info array
+    $name = $data['personal_info']['name'];
+    $location = $data['personal_info']['location'];
+    $contact = $data['personal_info']['contact'];
+    $obj = $data['personal_info']['obj'];
+    // handle work_info array of arrays
+    $job_title1 = $data['work_info']['job_1']['job_title'];
+    $job_dates1 = explode('-', $data['work_info']['job_1']['job_dates']);
+    $job_exper1 = $data['work_info']['job_1']['job_exper'];
+    $job_title2 = $data['work_info']['job_2']['job_title'];
+    $job_dates2 = explode('-', $data['work_info']['job_2']['job_dates']);
+    $job_exper2 = $data['work_info']['job_2']['job_exper'];
+    $job_title3 = $data['work_info']['job_3']['job_title'];
+    $job_dates3 = explode('-', $data['work_info']['job_3']['job_dates']);
+    $job_exper3 = $data['work_info']['job_3']['job_exper'];
+    // handle edu_info array
+    $education = $data['edu_info'];
+    // handle add_info array
+    $additionalInfo = $data['add_info'];
 }
 ?>
 
@@ -219,7 +219,7 @@ $additionalInfo = $data['add_info'];
             </div>
             <br>
 
-            <label for="jobTitle1">First Job Title (Separate entries with a line break):</label>
+            <label for="jobTitle1">First Job Title:</label>
             <textarea id="jobTitle1" name="jobTitle1" rows="1" required><?php echo $job_title1; ?></textarea>
 			
             <label for="startDate1">Job Start Date: </label>
@@ -239,7 +239,7 @@ $additionalInfo = $data['add_info'];
 			
 			
 			
-            <label for="jobTitle2">Second Job Title (Separate entries with a line break):</label>
+            <label for="jobTitle2">Second Job Title:</label>
             <textarea id="jobTitle2" name="jobTitle2" rows="1"><?php echo $job_title2; ?></textarea>
 			
             <label for="startDate2">Job Start Date: </label>
@@ -259,7 +259,7 @@ $additionalInfo = $data['add_info'];
 			
 			
 			
-            <label for="jobTitle3">Third Job Title (Separate entries with a line break):</label>
+            <label for="jobTitle3">Third Job Title:</label>
             <textarea id="jobTitle3" name="jobTitle3" rows="1"><?php echo $job_title3; ?></textarea>
 
             <label for="startDate3">Job Start Date: </label>
@@ -279,7 +279,7 @@ $additionalInfo = $data['add_info'];
 			
 			
 
-            <label for="education">Highest level of Education:</label>
+            <label for="education">Highest level of Education  (Separate entries with a line break):</label>
             <textarea id="education" name="education" rows="4" required><?php echo $education; ?></textarea>
             <div class="checkbox_align">
                         <label for="edu_cb">Would you like AI to improve this?</label>
@@ -287,7 +287,7 @@ $additionalInfo = $data['add_info'];
             </div>
             <br>
 
-            <label for="additionalInfo">Additional Information:</label>
+            <label for="additionalInfo">Additional Information (Separate entries with a line break):</label>
             <textarea id="additionalInfo" name="additionalInfo" rows="4"><?php echo $additionalInfo; ?></textarea>
             <div class="checkbox_align">
                         <label for="info_cb">Would you like AI to improve this?</label>

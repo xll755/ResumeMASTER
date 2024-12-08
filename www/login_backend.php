@@ -31,23 +31,30 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 $username = htmlspecialchars($_POST['username']);
 $pwd = htmlspecialchars($_POST['password']);
 
-if (!is_valid_uname($username) || !is_valid_pwd($pwd)) {
-	// fail & return to login page
+$retun_url = './login.php';
+
+if (!is_valid_uname($username)) {
+	$err_msg = "Invalid username<br>Usernames must be alphanumeric & 1-15 characters in length.";
+	return_on_failure($err_msg, $retun_url);
+}
+
+if (!is_valid_pwd($pwd)) {
+	$err_msg = "Invalid password<br>Passwords must be 8 characters or longer & contain one or more uppercase, lowercase, and digit.";
+	return_on_failure($err_msg, $retun_url);
 }
 
 $user = new User();
 $user->setUserName($username);
-
 $id = $user->exists($mysqli);
-if (!$id) {
-	throw new Exception("NO USER WITH USERNAME" . $user->getUserName(), 1);
-}
 
+if (!$id) {
+	$err_msg = "NO USER WITH USERNAME: <br>" . $user->getUserName();
+	return_on_failure($err_msg, $retun_url);
+}
 if (!$user->confirmPW($mysqli, $pwd)) {
-	throw new Exception("INCORRECT PASSWORD", 1);
+	$err_msg = 'INCORRECT PASSWORD';
+	return_on_failure($err_msg, $retun_url);
 } else {
-	// NOTE: does this need to be in an else given the throw???
-	// NOTE: is this what we want to do / how its done?
 	if (!isset($_SESSION['user_id'])) {
 		$_SESSION['user_id'] = $id;
 	}

@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 <!-- ResumeMASTER
 	 Lewis Green
 	 CPSC 4910
@@ -107,6 +107,9 @@ Data is not stored via cache, aren't bookmarked, etc.
 
     <div class="container">
         <h2>Login</h2>
+        <!-- TODO: this error printing needs prettying -->
+        <?php if (isset($_SESSION['err_msg'])) echo $_SESSION['err_msg']; ?>
+        <?php unset($_SESSION['err_msg']); ?>
         <form action="login_backend.php" method="POST">
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>

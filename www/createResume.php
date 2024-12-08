@@ -159,7 +159,7 @@ include "./Resume.php";
 $renderer = new pdf_render();
 $resume = new Resume();
 
-if (isset($_SESSION['resume_id'])) {
+if (isset($_SESSION['resume_id']) &&  isset($_SESSION['from_my'])) {
 	$resume->pull($mysqli, $_SESSION['resume_id']);
 	$info = $resume->get_resume();
 } else {
@@ -190,13 +190,16 @@ if (isset($_SESSION['resume_id'])) {
 		'edu_info' => get_contents('edu', htmlspecialchars($_POST['education']), isset($_POST['edu_cb'])),
 		'add_info' => get_contents('info', htmlspecialchars($_POST['additionalInfo']), isset($_POST['info_cb'])),
 		);
-
-	$resume_name = 'test_resume';
-	$resume_id = $resume->create($mysqli, $_SESSION['user_id'], $resume_name, $info);
-	$_SESSION['resume_id'] = $resume_id;
 }
 
-if (isset($_POST['save_resume'])) {
+$resume_name = 'test_resume'; // TODO: handle resume name creation
+
+if (!isset($_SESSION['resume_id'])) {
+	$_SESSION['resume_id'] = $resume->create($mysqli, $_SESSION['user_id'], $resume_name, $info);
+} else {
+	$resume->setID($_SESSION['resume_id']);
+	$resume->set_name($resume_name);
+	$resume->set_resume($info);
 	$resume->push($mysqli);
 }
 
@@ -209,10 +212,6 @@ print('<div class="resume-container">' .  $html . '</div>');
 	<br>
 	<form action="./FrontEnd_createResume.php" method="POST">
 		<button type="submit">Edit Resume</button>
-	</form>
-
-	<form action="" method="POST">
-		<button type="submit" name="save_resume">Save Resume</button>
 	</form>
 
 	<form action="./pdf_export.php" method="POST">

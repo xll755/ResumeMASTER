@@ -4,6 +4,7 @@ $mysqli = require_once "../back-end/db-config.php";
 include "../back-end/dbfuncs.php";
 include "../back-end/Resume.php";
 
+unset($_SESSION['resume_id']);
 $query = "select resumes.id, resumes.name from resumes where resumes.userId = (?)";
 $stmt = $mysqli->prepare($query);
 $user_id = $_SESSION['user_id'];

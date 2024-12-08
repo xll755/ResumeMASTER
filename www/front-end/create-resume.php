@@ -164,7 +164,7 @@ include '../back-end/verify-session.php';
 $name = $location = $contact = $obj = $job_title1 = $job_exper1 = $job_title2 = $job_exper2 = $job_title3 = $job_exper3 = $education = $additionalInfo = '';
 $job_dates1 = $job_dates2 = $job_dates3 = ['', ''];
 
-if (isset($_SESSION['resume_id'])) {
+if (isset($_SESSION['resume_id']) && (isset($_SESSION['from_my']) || isset($_POST['edit']))) {
     $resume_id = $_SESSION['resume_id'];
     unset($_SESSION['from_my']);
 
@@ -195,6 +195,8 @@ if (isset($_SESSION['resume_id'])) {
     $education = $data['edu_info'];
     // handle add_info array
     $additionalInfo = $data['add_info'];
+} else {
+    unset($_SESSION['resume_id']);
 }
 ?>
 

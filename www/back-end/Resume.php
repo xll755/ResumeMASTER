@@ -7,8 +7,6 @@ class Resume implements dbfuncs
 	private int $userId;
 	private string $name;
 	private array $resume; // text contents of pdf
-
-	// TODO: add enum to db & throughout appropriate funcs
 	private ?resume_styes $style;
 
 	public function getID(): int { return $this->id; }
@@ -17,6 +15,7 @@ class Resume implements dbfuncs
 	public function print(): void { var_dump($this->resume); } // WARN: remove
 	public function set_userId(int $id): void { $this->userId = $id; }
 	public function set_name(string $name): void { $this->name = $name; }
+	public function get_name(): string { return $this->name; }
 	public function set_resume(array $resume): void { $this->resume = $resume; }
 	public function get_resume(): array { return $this->resume; }
 	public function set_style(resume_styes $style): void { $this->style = $style; }

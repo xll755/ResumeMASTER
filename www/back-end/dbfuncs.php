@@ -1,5 +1,5 @@
 <?php
-interface  DB_functions
+interface  dbfuncs
 {
 	// we could make these return bool for p/f
 	public function create(mysqli $mysqli, ...$args): int;

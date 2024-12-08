@@ -1,5 +1,5 @@
 <?php
-include '../back_end/verify-session.php'; 
+include '../back-end/verify-session.php'; 
 // session_start();
 // if (!isset($_SESSION['user_id'])) {
 //     header("Location: index.php");

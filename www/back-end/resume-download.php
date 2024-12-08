@@ -43,5 +43,5 @@ $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
 
 // Output the generated PDF to Browser
-$dompdf->stream($user_name . '_resume.pdf');
+$dompdf->stream($resume->get_name() . '.pdf');
 ?>

@@ -3,7 +3,7 @@
 use FontLib\Table\Type\post;
 
 
-include '../back_end/verify-session.php'; 
+include '../back-end/verify-session.php'; 
 // session_start();
 // if (!isset($_SESSION['user_id'])) {
 //     header("Location: index.php");
@@ -22,7 +22,7 @@ include '../back_end/verify-session.php';
 	ResumeMASTER
 	
 	The purpose of this code is to capture the contents produced
-	from the file front_end_create_resume.php and output a useable
+	from the file front-end_create_resume.php and output a useable
 	resume. This file uses php functions such as nl2br to create a
 	new line each time the user pressed entered, separating them in
 	work experience. The style used is to format the page into a resume
@@ -139,7 +139,7 @@ include '../back_end/verify-session.php';
 
 <?php
 function call_ai($type, $post){
-	$command = "/app/.venv/bin/python3 /var/www/html/back_end/ai-api-caller.py " . escapeshellarg($post) . " " . escapeshellarg($type);
+	$command = "/app/.venv/bin/python3 /var/www/html/back-end/ai-api-caller.py " . escapeshellarg($post) . " " . escapeshellarg($type);
 	$output = shell_exec($command);
 	return $output;
 }
@@ -151,11 +151,11 @@ function get_contents($type, $post, $improve) {
 	return $post;
 }
 
-$mysqli = require_once "../back_end/db-config.php";
-include "../back_end/resume-renderer.php";
-include "../back_end/dbfuncs.php";
-include "../Resume.php";
-include "../User.php";
+$mysqli = require_once "../back-end/db-config.php";
+include "../back-end/resume-renderer.php";
+include "../back-end/dbfuncs.php";
+include "../back-end/Resume.php";
+include "../back-end/User.php";
 
 $renderer = new pdf_render();
 $resume = new Resume();
@@ -195,12 +195,13 @@ if (isset($_SESSION['resume_id']) &&  isset($_SESSION['from_my'])) {
 
 $user_id = $_SESSION['user_id'];
 $user = new User();
-$user->setID($user_id);
-$resume_name = $user->getLastName() . '-resume-' . $_SESSION['resume_id'];
+$user->pull($mysqli, $user_id);
 
 if (!isset($_SESSION['resume_id'])) {
+	$resume_name = $user->getLastName() . '-resume';
 	$_SESSION['resume_id'] = $resume->create($mysqli, $user_id, $resume_name, $info);
 } else {
+	$resume_name = $user->getLastName() . '-resume-' . $_SESSION['resume_id'];
 	$resume->setID($_SESSION['resume_id']);
 	$resume->set_name($resume_name);
 	$resume->set_resume($info);
@@ -218,7 +219,7 @@ print('<div class="resume-container">' .  $html . '</div>');
 		<button type="submit">Edit Resume</button>
 	</form>
 
-	<form action="../back_end/resume-download.php" method="POST">
+	<form action="../back-end/resume-download.php" method="POST">
 		<button type="submit">Download Resume</button>
 	</form>
 </div>

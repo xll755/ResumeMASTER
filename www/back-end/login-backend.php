@@ -2,7 +2,7 @@
 // TODO: better error handling???
 // TODO: validate the contents of post (is not empty and/or is each field set?)
 
-/* back_end/login-backend.php
+/* back-end/login-backend.php
 *
 * Backend processing for user login.
 * Verifies that the user exists & confirms their password.
@@ -17,7 +17,7 @@
 *	- user object
 */
 
-// include 'back_end/verify-session.php'; 
+// include 'back-end/verify-session.php'; 
 session_start();
 $mysqli = require_once"./db-config.php";
 include "./dbfuncs.php";
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 $username = htmlspecialchars($_POST['username']);
 $pwd = htmlspecialchars($_POST['password']);
 
-$retun_url = '../front_end/login.php';
+$retun_url = '../front-end/login.php';
 
 if (!is_valid_uname($username)) {
 	$err_msg = "Invalid username<br>Usernames must be alphanumeric & 1-15 characters in length.";
@@ -59,7 +59,7 @@ if (!$user->confirmPW($mysqli, $pwd)) {
 		$_SESSION['user_id'] = $id;
 	}
 	$user->pull($mysqli, $id);
-	header('Location: ../front_end/home.php', true);		/*Lewis: Changed location from index to User Page 10/23/24 */ /*11/15/24 uhome.php changed to uhome.php*/
+	header('Location: ../front-end/home.php', true);		/*Lewis: Changed location from index to User Page 10/23/24 */ /*11/15/24 uhome.php changed to uhome.php*/
 }
 
 ?>

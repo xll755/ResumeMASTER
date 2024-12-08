@@ -32,7 +32,7 @@ def resume_section(arg_type):
     return section
 
 #insert API key
-env_loaded = load_dotenv("../../.env")
+env_loaded = load_dotenv("../.env")
 
 # short circuit & return if no env file
 if not env_loaded:

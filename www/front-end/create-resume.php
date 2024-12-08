@@ -1,5 +1,5 @@
 <?php
-include '../back_end/verify-session.php'; 
+include '../back-end/verify-session.php'; 
 // session_start();
 // if (!isset($_SESSION['user_id'])) {
 //     header("Location: index.php");
@@ -168,9 +168,9 @@ if (isset($_SESSION['resume_id'])) {
     $resume_id = $_SESSION['resume_id'];
     unset($_SESSION['from_my']);
 
-    $mysqli = require_once "../back_end/db-config.php";
-    include "../back_end/dbfuncs.php";
-    include "../Resume.php";
+    $mysqli = require_once "../back-end/db-config.php";
+    include "../back-end/dbfuncs.php";
+    include "../back-end/Resume.php";
 
     $resume = new Resume();
     $resume->pull($mysqli, $resume_id);

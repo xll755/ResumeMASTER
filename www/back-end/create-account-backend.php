@@ -1,5 +1,5 @@
 <?php
-// include 'back_end/verify-session.php'; 
+// include 'back-end/verify-session.php'; 
 session_start();
 $mysqli = require_once"./db-config.php";
 include "./dbfuncs.php";
@@ -17,7 +17,7 @@ $email = htmlspecialchars($_POST['emailAddr']);
 $pwd = htmlspecialchars($_POST['passwd']);
 
 $err_msg = '';
-$retun_url = '../front_end/create-account.php';
+$retun_url = '../front-end/create-account.php';
 
 if (!is_valid_uname($username)) {
 	$err_msg = "Invalid username<br>Usernames must be alphanumeric & 1-15 characters in length.";

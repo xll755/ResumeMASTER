@@ -1,8 +1,8 @@
 <?php
-include "../back_end/verify-session.php";
-$mysqli = require_once "../back_end/db-config.php";
-include "../back_end/dbfuncs.php";
-include "../back_end/Resume.php";
+include "../back-end/verify-session.php";
+$mysqli = require_once "../back-end/db-config.php";
+include "../back-end/dbfuncs.php";
+include "../back-end/Resume.php";
 
 $query = "select resumes.id, resumes.name from resumes where resumes.userId = (?)";
 $stmt = $mysqli->prepare($query);
@@ -25,7 +25,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
             header("Location: ./create-resume.php");
             exit;
         case 'download':
-            header("Location: ../back_end/resume-download.php");
+            header("Location: ../back-end/resume-download.php");
             exit;
         case 'delete':
             $resume = new Resume();

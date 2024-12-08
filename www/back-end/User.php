@@ -11,7 +11,6 @@ class User implements  dbfuncs
 	private string $email;
 	private string $passwd;
 
-	public function setID(int $id): void { $this->id = $id; }
 	public function getID():int { return $this->id; }
 	public function setUserName(string $str): void { $this->userName = $str; }
 	public function getUserName(): string { return $this->userName; }

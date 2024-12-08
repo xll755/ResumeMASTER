@@ -20,10 +20,10 @@ $user->pull($mysqli, $_SESSION['user_id']);
            <nav>
                 <ul class="bar">  <!-- Creating a tab layout on the bar -->
                     <li><a href="./home.php">Home</a></li>
-                    <li><a href="./my-resumes.php" class="active">My Resumes</a></li> <!-- Active tab and "web location" -->
+                    <li><a href="./my-resumes.php">My Resumes</a></li> <!-- Active tab and "web location" -->
                     <li><a href="./create-resume.php">Create Resume</a></li>
                     <li><a href="./example-resume.php">Example Resume</a></li>
-                    <li><a href="./edit-user.php">Edit My Information</a></li>
+                    <li><a href="./edit-user.php" class="active">Edit My Information</a></li>
                     <li><a href="./logout.php">Logout</a></li>
                 </ul>
             </nav>
@@ -67,6 +67,5 @@ $user->pull($mysqli, $_SESSION['user_id']);
                 </tr>
             </table>
         </form>
-    
     </body>
 </html>

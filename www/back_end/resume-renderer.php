@@ -1,6 +1,6 @@
 <?php
-include "./back_end/text-to-html.php";
-include "./back_end/resume-styles.php";
+include "./text-to-html.php";
+include "./resume-styles.php";
 class pdf_render
 {
 	use text2html;

@@ -19,10 +19,10 @@
 
 // include 'back_end/verify-session.php'; 
 session_start();
-$mysqli = require_once"./back_end/db-config.php";
-include "./back_end/db-funcs.php";
+$mysqli = require_once"./db-config.php";
+include "./dbfuncs.php";
 include "./User.php";
-include "./back_end/validation-funcs.php";
+include "./validation-funcs.php";
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
 	throw new Exception("METHOD NOT POST", 1);
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
 $username = htmlspecialchars($_POST['username']);
 $pwd = htmlspecialchars($_POST['password']);
 
-$retun_url = './login.php';
+$retun_url = '../front_end/login.php';
 
 if (!is_valid_uname($username)) {
 	$err_msg = "Invalid username<br>Usernames must be alphanumeric & 1-15 characters in length.";
@@ -59,7 +59,7 @@ if (!$user->confirmPW($mysqli, $pwd)) {
 		$_SESSION['user_id'] = $id;
 	}
 	$user->pull($mysqli, $id);
-	header('Location: ./front_end/home.php', true);		/*Lewis: Changed location from index to User Page 10/23/24 */ /*11/15/24 uhome.php changed to uhome.php*/
+	header('Location: ../front_end/home.php', true);		/*Lewis: Changed location from index to User Page 10/23/24 */ /*11/15/24 uhome.php changed to uhome.php*/
 }
 
 ?>

@@ -1,7 +1,7 @@
 <?php
 // TODO: error handling, specifically in regards to the db
 
-class Resume implements DB_functions
+class Resume implements dbfuncs
 {
 	private int $id;
 	private int $userId;

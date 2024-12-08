@@ -2,7 +2,7 @@
 // TODO: brror handling, specifically in regards to the db
 //
 //
-class User implements  DB_functions
+class User implements  dbfuncs
 {
 	private int $id;
 	private string $userName;
@@ -11,6 +11,7 @@ class User implements  DB_functions
 	private string $email;
 	private string $passwd;
 
+	public function setID(int $id): void { $this->id = $id; }
 	public function getID():int { return $this->id; }
 	public function setUserName(string $str): void { $this->userName = $str; }
 	public function getUserName(): string { return $this->userName; }

@@ -1,15 +1,15 @@
 <?php
-include 'back_end/verify-session.php'; 
+include './verify-session.php'; 
 
-include "./back_end/resume-renderer.php";
-include "./back_end/db-funcs.php";
+include "./resume-renderer.php";
+include "./dbfuncs.php";
 include "./User.php";
 include "./Resume.php";
 
-$mysqli = require_once "./back_end/db-config.php";
+$mysqli = require_once "./db-config.php";
 
 // necessary resources for PDF export
-require_once __DIR__ . '/../../../app/vendor/autoload.php';
+require_once __DIR__ . '/../../../../app/vendor/autoload.php';
 use Dompdf\Dompdf;
 
 // get user's id & last name

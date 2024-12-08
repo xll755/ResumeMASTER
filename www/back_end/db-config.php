@@ -1,6 +1,6 @@
 <?php
 // DB creds
-$env = parse_ini_file("./.env");
+$env = parse_ini_file("../../.env");
 define('DB_SERVER', $env["DB_SERVER"]);
 define('DB_USERNAME', $env["MYSQL_USER"]);
 define('DB_PASSWORD', $env["MYSQL_PASSWORD"]);

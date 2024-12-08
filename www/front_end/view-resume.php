@@ -3,7 +3,7 @@
 use FontLib\Table\Type\post;
 
 
-include 'back_end/verify-session.php'; 
+include '../back_end/verify-session.php'; 
 // session_start();
 // if (!isset($_SESSION['user_id'])) {
 //     header("Location: index.php");
@@ -125,12 +125,12 @@ include 'back_end/verify-session.php';
 	<div class="container">
 		<nav>
 			<ul class="bar">
-				<li><a href="front_end/home.php" class="active">Home</a></li>  <!-- Active tab and "web location" -->
-				<li><a href="./front_end/my-resumes.php">My Resumes</a></li>
-				<li><a href="./front_end/create-resume.php">Create Resume</a></li>
-				<li><a href="front_end/example-resume.php">Example Resume</a></li>
+				<li><a href="./home.php" class="active">Home</a></li>  <!-- Active tab and "web location" -->
+				<li><a href="./my-resumes.php">My Resumes</a></li>
+				<li><a href="./create-resume.php">Create Resume</a></li>
+				<li><a href="./example-resume.php">Example Resume</a></li>
 				<!-- <li><a href="comparisonF.php">Qualification Comparison</a></li> -->
-				<li><a href="logout.php">Logout</a></li>
+				<li><a href="./logout.php">Logout</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -151,10 +151,11 @@ function get_contents($type, $post, $improve) {
 	return $post;
 }
 
-$mysqli = require_once "./back_end/db-config.php";
-include "./back_end/resume-renderer.php";
-include "./back_end/db-funcs.php";
-include "./Resume.php";
+$mysqli = require_once "../back_end/db-config.php";
+include "../back_end/resume-renderer.php";
+include "../back_end/dbfuncs.php";
+include "../Resume.php";
+include "../User.php";
 
 $renderer = new pdf_render();
 $resume = new Resume();
@@ -192,10 +193,13 @@ if (isset($_SESSION['resume_id']) &&  isset($_SESSION['from_my'])) {
 		);
 }
 
-$resume_name = 'test_resume'; // TODO: handle resume name creation
+$user_id = $_SESSION['user_id'];
+$user = new User();
+$user->setID($user_id);
+$resume_name = $user->getLastName() . '-resume-' . $_SESSION['resume_id'];
 
 if (!isset($_SESSION['resume_id'])) {
-	$_SESSION['resume_id'] = $resume->create($mysqli, $_SESSION['user_id'], $resume_name, $info);
+	$_SESSION['resume_id'] = $resume->create($mysqli, $user_id, $resume_name, $info);
 } else {
 	$resume->setID($_SESSION['resume_id']);
 	$resume->set_name($resume_name);
@@ -210,11 +214,11 @@ print('<div class="resume-container">' .  $html . '</div>');
 
 <div style="text-align: center">
 	<br>
-	<form action="./front_end/create-resume.php" method="POST">
+	<form action="./create-resume.php" method="POST">
 		<button type="submit">Edit Resume</button>
 	</form>
 
-	<form action="./back_end/resume-download.php" method="POST">
+	<form action="../back_end/resume-download.php" method="POST">
 		<button type="submit">Download Resume</button>
 	</form>
 </div>

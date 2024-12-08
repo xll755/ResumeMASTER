@@ -110,7 +110,7 @@ Data is not stored via cache, aren't bookmarked, etc.
         <!-- TODO: this error printing needs prettying -->
         <?php if (isset($_SESSION['err_msg'])) echo $_SESSION['err_msg']; ?>
         <?php unset($_SESSION['err_msg']); ?>
-        <form action="back_end/login-backend.php" method="POST">
+        <form action="../back_end/login-backend.php" method="POST">
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>

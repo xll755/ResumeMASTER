@@ -1,5 +1,5 @@
 <?php
-include 'back_end/verify-session.php'; 
+include '../back_end/verify-session.php'; 
 // session_start();
 // session_start();
 // if (!isset($_SESSION['user_id'])) {
@@ -73,15 +73,15 @@ form for the user.
 </head>
 <body>	<!--This class is for the bar that links back to other pages-->
    <div class="container">
-   <link rel="stylesheet" href="css/styles.css">
+   <link rel="stylesheet" href="../css/styles.css">
 	   <nav>
             <ul class="bar">  <!-- Creating a tab layout on the bar -->
-                <li><a href="front_end/home.php">Home</a></li>
-                <li><a href="./front_end/my-resumes.php">My Resumes</a></li>
-                <li><a href="./front_end/create-resume.php">Create Resume</a></li>
-                <li><a href="front_end/example-resume.php" class="active">Example Resume</a></li> <!-- Active tab and "web location" -->
+                <li><a href="./home.php">Home</a></li>
+                <li><a href="./my-resumes.php">My Resumes</a></li>
+                <li><a href="./create-resume.php">Create Resume</a></li>
+                <li><a href="./example-resume.php" class="active">Example Resume</a></li> <!-- Active tab and "web location" -->
                 <!-- <li><a href="comparisonF.php">Qualification Comparison</a></li> -->
-                <li><a href="logout.php">Logout</a></li>
+                <li><a href="./logout.php">Logout</a></li>
             </ul>
         </nav>
     </div>

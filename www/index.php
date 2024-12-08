@@ -33,7 +33,7 @@
 <body>
     <h1>Welcome to Our Website</h1>
     <p>Please choose an option below:</p>
-    <a href="front_end/create-account.php">Create Account</a>
-    <a href="login.php">Login</a>
+    <a href="./front_end/create-account.php">Create Account</a>
+    <a href="./front_end/login.php">Login</a>
 </body>
 </html>

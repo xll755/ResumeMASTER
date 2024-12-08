@@ -37,19 +37,17 @@ include '../back-end/verify-session.php';
 	<head>
 	<title>View Resume</title>
         <link href="../css/styles.css" rel="stylesheet">
-<body>
-	<div class="container">
-		<nav>
-			<ul class="bar">
-			    <li><a href="./home.php">Home</a></li>
-			    <li><a href="./my-resumes.php" class="active">My Resumes</a></li> <!-- Active tab and "web location" -->
-			    <li><a href="./create-resume.php">Create Resume</a></li>
-			    <li><a href="./example-resume.php">Example Resume</a></li>
-			    <li><a href="./edit-user.php">Edit My Information</a></li>
-			    <li><a href="./logout.php">Logout</a></li>
-			</ul>
-		</nav>
-	</div>
+	<body>
+	<nav>
+		<ul class="bar">
+			<li><a href="./home.php">Home</a></li>
+			<li><a href="./my-resumes.php" class="active">My Resumes</a></li> <!-- Active tab and "web location" -->
+			<li><a href="./create-resume.php">Create Resume</a></li>
+			<li><a href="./example-resume.php">Example Resume</a></li>
+			<li><a href="./edit-user.php">Edit My Information</a></li>
+			<li><a href="./logout.php">Logout</a></li>
+		</ul>
+	</nav>
 	<br>
 
 
@@ -144,7 +142,7 @@ print('<div class="resume-container">' .  $html . '</div>');
 
 ?>
 
-<div style="text-align: center">
+<div class="form-container">
 	<br>
 	<form action="./create-resume.php" method="POST">
 		<input type="hidden" id="edit" name="edit">

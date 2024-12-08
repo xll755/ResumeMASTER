@@ -41,3 +41,10 @@
                 background-color: #5f5441; /* Background color of active tab */
                 color: white; /* Text color of the active page */
             }
+
+/*adding body background and format established by Nand */
+            body {
+                        background-color: #fff7ea;  /* Background color for the entire page */
+                        font-family: Arial, sans-serif;  /* Set a font family for consistency */
+                        margin: 0;  /* Remove default body margin */
+                    }

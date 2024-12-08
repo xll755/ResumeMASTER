@@ -13,7 +13,7 @@ $user->pull($mysqli, $_SESSION['user_id']);
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Edit My Information</title>
-        <link href="../css/style.css" rel="stylesheet">
+        <link href="../css/styles.css" rel="stylesheet">
     </head>
     <body>
        <div class="container">

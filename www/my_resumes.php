@@ -17,9 +17,11 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
     $_SESSION['resume_id'] = $_GET['id'];
     switch($_GET['action']) {
         case 'view':
+            $_SESSION['from_my'] = true;
             header("Location: ./createResume.php");
             exit;
         case 'edit':
+            $_SESSION['from_my'] = true;
             header("Location: ./FrontEnd_createResume.php");
             exit;
         case 'download':

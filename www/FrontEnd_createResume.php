@@ -166,6 +166,7 @@ $job_dates1 = $job_dates2 = $job_dates3 = ['', ''];
 
 if (isset($_SESSION['resume_id'])) {
     $resume_id = $_SESSION['resume_id'];
+    unset($_SESSION['from_my']);
 
     $mysqli = require_once "./db_config.php";
     include "./DB_functions.php";

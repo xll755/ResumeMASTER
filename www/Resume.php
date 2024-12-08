@@ -12,6 +12,7 @@ class Resume implements DB_functions
 	private ?resume_styes $style;
 
 	public function getID(): int { return $this->id; }
+	public function setID(int $id): void { $this->id = $id; }
 	public function get_contents(): string { return $this->contents; }
 	public function print(): void { var_dump($this->resume); } // WARN: remove
 	public function set_userId(int $id): void { $this->userId = $id; }

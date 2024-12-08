@@ -151,6 +151,20 @@ function get_contents($type, $post, $improve) {
 	return $post;
 }
 
+function get_next_resume_id($mysqli) {
+	$query = "select max(id) from resumes";
+	$stmt = $mysqli->prepare($query);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	$row = $result->fetch_assoc();
+
+	if (!isset($row['max(id)'])) {
+		return 1;
+	} else {
+		return $row['max(id)'] + 1;
+	}
+}
+
 $mysqli = require_once "../back-end/db-config.php";
 include "../back-end/resume-renderer.php";
 include "../back-end/dbfuncs.php";
@@ -198,7 +212,8 @@ $user = new User();
 $user->pull($mysqli, $user_id);
 
 if (!isset($_SESSION['resume_id'])) {
-	$resume_name = $user->getLastName() . '-resume';
+	$next_id = get_next_resume_id($mysqli);
+	$resume_name = $user->getLastName() . '-resume-' . $next_id;
 	$_SESSION['resume_id'] = $resume->create($mysqli, $user_id, $resume_name, $info);
 } else {
 	$resume_name = $user->getLastName() . '-resume-' . $_SESSION['resume_id'];
@@ -216,6 +231,7 @@ print('<div class="resume-container">' .  $html . '</div>');
 <div style="text-align: center">
 	<br>
 	<form action="./create-resume.php" method="POST">
+		<input type="hidden" id="edit" name="edit">
 		<button type="submit">Edit Resume</button>
 	</form>
 

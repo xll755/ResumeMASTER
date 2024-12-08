@@ -36,9 +36,10 @@ therefore must be created individually by each user as they see fit.
 ##### Configure Database
 
 ```bash
-# Create an ".env" file if you don't have one created already.
+# Create an ".env" file if you don't have one created already
 touch ./www/.env
 
+# Edit the ".env" file using your default ( favorite ) text editor
 $EDITOR ./www/.env
 ```
 
@@ -49,7 +50,7 @@ DB_SERVER=db
 MYSQL_DATABASE=<your_db_name>
 MYSQL_USER=<your_user_name>
 MYSQL_PASSWORD=<you_user_pwd>
-MYSQL_ALLOW_EMPTY_PASSWORD=<you_boolean_preference>
+MYSQL_ALLOW_EMPTY_PASSWORD=<your_int_boolean_preference>
 ```
 
 ##### Add API Key
@@ -68,14 +69,14 @@ echo "API_KEY=<your_api_key>" >> ./www/.env
 #### Initial Run
 
 ```bash
-# Build & run the application
+# Build & Run the application
 docker compose up --build
-# Access the application locally
+# Access the application locally in your favorite internet browser
 firefox localhost
 
-# to stop containers
+# Stop containers
 docker compose stop
-# to stop and remove containers
+# Stop and Remove containers
 docker compose down # THIS COMMAND WILL **DELETE** ANY DATA IN THE DATABASE
 ```
 
@@ -89,17 +90,17 @@ containers.
 # Navigate to application directory
 cd ~/ResumeMASTER
 
-# if "stop" was used to shutdown containers
+# If "stop" was used to shutdown containers
 docker compose start
-# if "down" was used to shutdown containers
+# If "down" was used to shutdown containers
 docker compose up
 
 # Access the application locally
 firefox localhost
 
-# to stop containers
+# Stop containers
 docker compose stop
-# to stop and remove containers
+# Stop and Remove containers
 docker compose down # THIS COMMAND WILL **DELETE** ANY DATA IN THE DATABASE
 ```
 
@@ -116,7 +117,7 @@ Start off your journey by creating an account to control your resumes with.
 ##### Account Field Requirements
 
 - Usernames must be alphanumeric, 1-15 chars in length
-- Emails are checked against RFC 822
+- Emails are checked against [RFC 822](https://datatracker.ietf.org/doc/html/rfc822)
 - Passwords must:
   - be >= 8 chars
   - contain >= 1 lowercase letter

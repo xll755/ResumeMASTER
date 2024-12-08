@@ -1,9 +1,10 @@
 <?php
 // DB creds
-define('DB_SERVER', 'db'); //TODO: change if necessary
-define('DB_USERNAME', 'dev'); //TODO: change
-define('DB_PASSWORD', 'dev'); //TODO: change
-define('DB_NAME', 'rm_db'); //TODO: change
+$env = parse_ini_file("./.env");
+define('DB_SERVER', $env["DB_SERVER"]);
+define('DB_USERNAME', $env["MYSQL_USER"]);
+define('DB_PASSWORD', $env["MYSQL_PASSWORD"]);
+define('DB_NAME', $env["MYSQL_DATABASE"]);
 
 // attempt db connection
 $connected = false;

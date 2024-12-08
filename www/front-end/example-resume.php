@@ -28,48 +28,7 @@ form for the user.
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Not necessary, but helps w/ scaling with different devices (phones, tablets, etc.) -->
     <title>Example Resume</title>
-    <style>
-      
-        body {
-            background-color: #fff7ea;  /* Background color for the entire page */
-            font-family: Arial, sans-serif;  /* Set a font family for consistency */
-            margin: 0;  /* Remove default body margin */
-        }
-  /*This is to make the resume look like (format) it was actually written in word/on paper.*/
-        .resume-container {
-            max-width: 800px;  /* Maximum width of the container */
-            margin: 20px auto;  /* Centering the container and adding top/bottom margin */
-            padding: 2em;  /* Spacing inside the container */
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Shadow effect */
-            background-color: white;  /* Set the background color to contrast with body */
-            color: black;  /* Set text color for the container content */
-        }
-
-        h1, h2, h3, h4 {
-            text-align: center; /*aligning headers 1 -4 to center */
-			margin: 0;
-        }
-		
-		p.a {						/*This section alignes paragraphs to the left */					
-			text-align: center;
-			margin: 0;
-		}
-		p.b {
-			text-align: left;
-		}
-		
-		table {					/*Creating table and establishing spacing */
-			width: 100%;
-		}
-		
-		td.a {					/*establishing tables text alignment */
-			text-align: left;
-		}
-		td.b {
-			text-align: right;
-		}
-    </style>
+    <link href="../css/styles.css" rel="stylesheet">
 </head>
 <body>	<!--This class is for the bar that links back to other pages-->
    <div class="container">

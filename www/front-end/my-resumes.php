@@ -43,10 +43,10 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>My Resumes</title>
+        <link href="../css/styles.css" rel="stylesheet">
     </head>
     <body>
        <div class="container">
-       <link rel="stylesheet" href="../css/styles.css">
            <nav>
                 <ul class="bar">  <!-- Creating a tab layout on the bar -->
                     <li><a href="./home.php">Home</a></li>

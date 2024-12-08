@@ -125,12 +125,12 @@ include '../back-end/verify-session.php';
 	<div class="container">
 		<nav>
 			<ul class="bar">
-				<li><a href="./home.php" class="active">Home</a></li>  <!-- Active tab and "web location" -->
-				<li><a href="./my-resumes.php">My Resumes</a></li>
-				<li><a href="./create-resume.php">Create Resume</a></li>
-				<li><a href="./example-resume.php">Example Resume</a></li>
-				<!-- <li><a href="comparisonF.php">Qualification Comparison</a></li> -->
-				<li><a href="./logout.php">Logout</a></li>
+			    <li><a href="./home.php">Home</a></li>
+			    <li><a href="./my-resumes.php" class="active">My Resumes</a></li> <!-- Active tab and "web location" -->
+			    <li><a href="./create-resume.php">Create Resume</a></li>
+			    <li><a href="./example-resume.php">Example Resume</a></li>
+			    <li><a href="./edit-user.php">Edit My Information</a></li>
+			    <li><a href="./logout.php">Logout</a></li>
 			</ul>
 		</nav>
 	</div>

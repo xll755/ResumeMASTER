@@ -48,11 +48,11 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
        <link rel="stylesheet" href="../css/styles.css">
            <nav>
                 <ul class="bar">  <!-- Creating a tab layout on the bar -->
-                    <li><a href="./home.php">Home</a></li> 
+                    <li><a href="./home.php">Home</a></li>
                     <li><a href="./my-resumes.php" class="active">My Resumes</a></li> <!-- Active tab and "web location" -->
                     <li><a href="./create-resume.php">Create Resume</a></li>
                     <li><a href="./example-resume.php">Example Resume</a></li>
-                    <!-- <li><a href="comparisonF.php">Qualification Comparison</a></li> -->
+                    <li><a href="./edit-user.php">Edit My Information</a></li>
                     <li><a href="./logout.php">Logout</a></li>
                 </ul>
             </nav>

@@ -145,20 +145,20 @@ include '../back-end/verify-session.php';
         }
     </style>
 </head>
-<body>
-	<div class="container">
-		<nav>
-			<ul class="bar">
-                                <li><a href="./home.php">Home</a></li>
-                                <li><a href="./my-resumes.php">My Resumes</a></li>
-                                <li><a href="./create-resume.php" class="active">Create Resume</a></li> <!-- Active tab and "web location" -->
-                                <li><a href="./example-resume.php">Example Resume</a></li>
-                                <!-- <li><a href="comparisonF.php">Qualification Comparison</a></li> -->
-                                <li><a href="./logout.php">Logout</a></li>
-			</ul>
-		</nav>
-	</div>
-	<br>
+    <body>
+        <div class="container">
+            <nav>
+                <ul class="bar">
+                    <li><a href="./home.php">Home</a></li>
+                    <li><a href="./my-resumes.php" class="active">My Resumes</a></li> <!-- Active tab and "web location" -->
+                    <li><a href="./create-resume.php">Create Resume</a></li>
+                    <li><a href="./example-resume.php">Example Resume</a></li>
+                    <li><a href="./edit-user.php">Edit My Information</a></li>
+                    <li><a href="./logout.php">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+        <br>
 <div class="resume-container">
 <?php
 $name = $location = $contact = $obj = $job_title1 = $job_exper1 = $job_title2 = $job_exper2 = $job_title3 = $job_exper3 = $education = $additionalInfo = '';

@@ -4,9 +4,9 @@
 
 ## TOC
 
-[Usage]
-[Quick Start Guide]
-[Application Flow]
+[Usage](#usage)
+[Quick Start Guide](#quick-start-guide)
+[Application Flow](#application-flow)
 
 ## Usage
 

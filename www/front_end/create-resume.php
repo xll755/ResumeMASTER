@@ -1,5 +1,5 @@
 <?php
-include 'check_login.php'; 
+include 'back_end/verify-session.php'; 
 // session_start();
 // if (!isset($_SESSION['user_id'])) {
 //     header("Location: index.php");
@@ -149,10 +149,10 @@ include 'check_login.php';
 	<div class="container">
 		<nav>
 			<ul class="bar">
-                                <li><a href="uHome.php">Home</a></li>
-                                <li><a href="./my_resumes.php">My Resumes</a></li>
-                                <li><a href="./FrontEnd_createResume.php" class="active">Create Resume</a></li> <!-- Active tab and "web location" -->
-                                <li><a href="resume_example.php">Example Resume</a></li>
+                                <li><a href="front_end/home.php">Home</a></li>
+                                <li><a href="./front_end/my-resumes.php">My Resumes</a></li>
+                                <li><a href="./front_end/create-resume.php" class="active">Create Resume</a></li> <!-- Active tab and "web location" -->
+                                <li><a href="front_end/example-resume.php">Example Resume</a></li>
                                 <!-- <li><a href="comparisonF.php">Qualification Comparison</a></li> -->
                                 <li><a href="logout.php">Logout</a></li>
 			</ul>
@@ -168,8 +168,8 @@ if (isset($_SESSION['resume_id'])) {
     $resume_id = $_SESSION['resume_id'];
     unset($_SESSION['from_my']);
 
-    $mysqli = require_once "./db_config.php";
-    include "./DB_functions.php";
+    $mysqli = require_once "./back_end/db-config.php";
+    include "./back_end/db-funcs.php";
     include "./Resume.php";
 
     $resume = new Resume();
@@ -200,7 +200,7 @@ if (isset($_SESSION['resume_id'])) {
 
     <div class="form-container">
         <center><h1>Create Your Resume</h1></center>
-        <form action="createResume.php" method="POST">
+        <form action="front_end/view-resume.php" method="POST">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" value="<?php echo $name; ?>" required>
 

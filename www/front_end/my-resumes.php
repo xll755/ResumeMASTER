@@ -1,7 +1,7 @@
 <?php
-include "check_login.php";
-$mysqli = require_once "./db_config.php";
-include "./DB_functions.php";
+include "back_end/verify-session.php";
+$mysqli = require_once "./back_end/db-config.php";
+include "./back_end/db-funcs.php";
 include "./Resume.php";
 
 $query = "select resumes.id, resumes.name from resumes where resumes.userId = (?)";
@@ -18,19 +18,19 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
     switch($_GET['action']) {
         case 'view':
             $_SESSION['from_my'] = true;
-            header("Location: ./createResume.php");
+            header("Location: ./front_end/view-resume.php");
             exit;
         case 'edit':
             $_SESSION['from_my'] = true;
-            header("Location: ./FrontEnd_createResume.php");
+            header("Location: ./front_end/create-resume.php");
             exit;
         case 'download':
-            header("Location: ./pdf_export.php");
+            header("Location: ./back_end/resume-download.php");
             exit;
         case 'delete':
             $resume = new Resume();
             $resume->delete($mysqli, $_GET['id']);
-            header("Location: ./my_resumes.php");
+            header("Location: ./front_end/my-resumes.php");
             exit;
     }
 }
@@ -48,10 +48,10 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
        <link rel="stylesheet" href="css/styles.css">
            <nav>
                 <ul class="bar">  <!-- Creating a tab layout on the bar -->
-                    <li><a href="uHome.php">Home</a></li> 
-                    <li><a href="./my_resumes.php" class="active">My Resumes</a></li> <!-- Active tab and "web location" -->
-                    <li><a href="./FrontEnd_createResume.php">Create Resume</a></li>
-                    <li><a href="resume_example.php">Example Resume</a></li>
+                    <li><a href="front_end/home.php">Home</a></li> 
+                    <li><a href="./front_end/my-resumes.php" class="active">My Resumes</a></li> <!-- Active tab and "web location" -->
+                    <li><a href="./front_end/create-resume.php">Create Resume</a></li>
+                    <li><a href="front_end/example-resume.php">Example Resume</a></li>
                     <!-- <li><a href="comparisonF.php">Qualification Comparison</a></li> -->
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
@@ -84,7 +84,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
             </tbody>
         </table>
         <?php else : ?>
-        <h3>You currently don't have any resumes created. <a href="./FrontEnd_createResume.php">Create one?</a></h3>
+        <h3>You currently don't have any resumes created. <a href="./front_end/create-resume.php">Create one?</a></h3>
         <?php endif; ?>
     </body>
 </html>

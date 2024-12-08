@@ -1,12 +1,12 @@
 <?php
-include 'check_login.php'; 
+include 'back_end/verify-session.php'; 
 
-include "./pdf_renderer.php";
-include "./DB_functions.php";
+include "./back_end/resume-renderer.php";
+include "./back_end/db-funcs.php";
 include "./User.php";
 include "./Resume.php";
 
-$mysqli = require_once "./db_config.php";
+$mysqli = require_once "./back_end/db-config.php";
 
 // necessary resources for PDF export
 require_once __DIR__ . '/../../../app/vendor/autoload.php';

@@ -3,7 +3,7 @@
 use FontLib\Table\Type\post;
 
 
-include 'check_login.php'; 
+include 'back_end/verify-session.php'; 
 // session_start();
 // if (!isset($_SESSION['user_id'])) {
 //     header("Location: index.php");
@@ -125,10 +125,10 @@ include 'check_login.php';
 	<div class="container">
 		<nav>
 			<ul class="bar">
-				<li><a href="uHome.php" class="active">Home</a></li>  <!-- Active tab and "web location" -->
-				<li><a href="./my_resumes.php">My Resumes</a></li>
-				<li><a href="./FrontEnd_createResume.php">Create Resume</a></li>
-				<li><a href="resume_example.php">Example Resume</a></li>
+				<li><a href="front_end/home.php" class="active">Home</a></li>  <!-- Active tab and "web location" -->
+				<li><a href="./front_end/my-resumes.php">My Resumes</a></li>
+				<li><a href="./front_end/create-resume.php">Create Resume</a></li>
+				<li><a href="front_end/example-resume.php">Example Resume</a></li>
 				<!-- <li><a href="comparisonF.php">Qualification Comparison</a></li> -->
 				<li><a href="logout.php">Logout</a></li>
 			</ul>
@@ -139,7 +139,7 @@ include 'check_login.php';
 
 <?php
 function call_ai($type, $post){
-	$command = "/app/.venv/bin/python3 /var/www/html/resumeMasterAI.py " . escapeshellarg($post) . " " . escapeshellarg($type);
+	$command = "/app/.venv/bin/python3 /var/www/html/back_end/ai-api-caller.py " . escapeshellarg($post) . " " . escapeshellarg($type);
 	$output = shell_exec($command);
 	return $output;
 }
@@ -151,9 +151,9 @@ function get_contents($type, $post, $improve) {
 	return $post;
 }
 
-$mysqli = require_once "./db_config.php";
-include "./pdf_renderer.php";
-include "./DB_functions.php";
+$mysqli = require_once "./back_end/db-config.php";
+include "./back_end/resume-renderer.php";
+include "./back_end/db-funcs.php";
 include "./Resume.php";
 
 $renderer = new pdf_render();
@@ -210,11 +210,11 @@ print('<div class="resume-container">' .  $html . '</div>');
 
 <div style="text-align: center">
 	<br>
-	<form action="./FrontEnd_createResume.php" method="POST">
+	<form action="./front_end/create-resume.php" method="POST">
 		<button type="submit">Edit Resume</button>
 	</form>
 
-	<form action="./pdf_export.php" method="POST">
+	<form action="./back_end/resume-download.php" method="POST">
 		<button type="submit">Download Resume</button>
 	</form>
 </div>

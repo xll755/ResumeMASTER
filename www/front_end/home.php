@@ -1,5 +1,5 @@
 <?php
-include 'check_login.php'; 
+include 'back_end/verify-session.php'; 
 // session_start();
 // if (!isset($_SESSION['user_id'])) {
 //     header("Location: index.php");
@@ -124,10 +124,10 @@ include 'check_login.php';
     <div class="container">
         <nav>
             <ul class="bar">  <!-- Creating a tab layout on the bar -->
-                <li><a href="uHome.php" class="active">Home</a></li>  <!-- Active tab and "web location" -->
-                <li><a href="./my_resumes.php">My Resumes</a></li>
-                <li><a href="./FrontEnd_createResume.php">Create Resume</a></li>
-                <li><a href="resume_example.php">Example Resume</a></li>
+                <li><a href="front_end/home.php" class="active">Home</a></li>  <!-- Active tab and "web location" -->
+                <li><a href="./front_end/my-resumes.php">My Resumes</a></li>
+                <li><a href="./front_end/create-resume.php">Create Resume</a></li>
+                <li><a href="front_end/example-resume.php">Example Resume</a></li>
                 <!-- <li><a href="comparisonF.php">Qualification Comparison</a></li> -->
                 <li><a href="logout.php">Logout</a></li>
             </ul>

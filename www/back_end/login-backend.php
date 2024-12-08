@@ -2,7 +2,7 @@
 // TODO: better error handling???
 // TODO: validate the contents of post (is not empty and/or is each field set?)
 
-/* login_backend.php
+/* back_end/login-backend.php
 *
 * Backend processing for user login.
 * Verifies that the user exists & confirms their password.
@@ -17,12 +17,12 @@
 *	- user object
 */
 
-// include 'check_login.php'; 
+// include 'back_end/verify-session.php'; 
 session_start();
-$mysqli = require_once"./db_config.php";
-include "./DB_functions.php";
+$mysqli = require_once"./back_end/db-config.php";
+include "./back_end/db-funcs.php";
 include "./User.php";
-include "./valid_funcs.php";
+include "./back_end/validation-funcs.php";
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
 	throw new Exception("METHOD NOT POST", 1);
@@ -59,7 +59,7 @@ if (!$user->confirmPW($mysqli, $pwd)) {
 		$_SESSION['user_id'] = $id;
 	}
 	$user->pull($mysqli, $id);
-	header('Location: ./uHome.php', true);		/*Lewis: Changed location from index to User Page 10/23/24 */ /*11/15/24 uhome.php changed to uhome.php*/
+	header('Location: ./front_end/home.php', true);		/*Lewis: Changed location from index to User Page 10/23/24 */ /*11/15/24 uhome.php changed to uhome.php*/
 }
 
 ?>

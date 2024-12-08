@@ -1,10 +1,10 @@
 <?php
-// include 'check_login.php'; 
+// include 'back_end/verify-session.php'; 
 session_start();
-$mysqli = require_once"./db_config.php";
-include "./DB_functions.php";
+$mysqli = require_once"./back_end/db-config.php";
+include "./back_end/db-funcs.php";
 include "./User.php";
-include "./valid_funcs.php";
+include "./back_end/validation-funcs.php";
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
 	throw new Exception("METHOD NOT POST", 1);
@@ -17,7 +17,7 @@ $email = htmlspecialchars($_POST['emailAddr']);
 $pwd = htmlspecialchars($_POST['passwd']);
 
 $err_msg = '';
-$retun_url = './createAcc.php';
+$retun_url = './front_end/create-account.php';
 
 if (!is_valid_uname($username)) {
 	$err_msg = "Invalid username<br>Usernames must be alphanumeric & 1-15 characters in length.";

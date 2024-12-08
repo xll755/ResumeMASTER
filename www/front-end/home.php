@@ -42,7 +42,7 @@ include '../back-end/verify-session.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Page</title>
+    <title>Home</title>
     <style>
         /* Section defines the bar */
         .bar {

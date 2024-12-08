@@ -27,7 +27,7 @@ form for the user.
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Not necessary, but helps w/ scaling with different devices (phones, tablets, etc.) -->
-    <title>Resume Example</title>
+    <title>Example Resume</title>
     <style>
       
         body {

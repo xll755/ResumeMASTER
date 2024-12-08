@@ -20,7 +20,7 @@ Data is not stored via cache, aren't bookmarked, etc.
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Login</title>
     <style>
         /* Basic reset */
         * {

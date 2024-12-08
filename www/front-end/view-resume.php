@@ -35,7 +35,7 @@ include '../back-end/verify-session.php';
 
 <html>
 	<head>
-		<title>Generated Resume</title>
+		<title>View Resume</title>
 			<style>
 				/* Section defines the bar */
         .bar {

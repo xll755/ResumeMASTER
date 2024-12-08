@@ -28,7 +28,7 @@ include '../back-end/verify-session.php';
 
 <html>
 <head>
-    <title>Resume Input</title>
+    <title>Create Resume</title>
     <style>
     		/* Section defines the bar */
         .bar {

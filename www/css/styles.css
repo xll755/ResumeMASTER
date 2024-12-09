@@ -293,3 +293,9 @@ button[type="submit"]:hover {
     max-width: 800px;  /* Maximum width of the container */
     padding: 2em;  /* Spacing inside the container */
 }
+
+p.error {
+    font-size: 10pt;
+    color: red;
+    text-align: center;
+}

@@ -150,3 +150,10 @@ potential employers.
 You will have a chance to review and edit anything, including your own work,
 before you download it so feel free to explore how you would like to present
 yourself!
+
+#### Manage Resumes
+
+Once you have created a resume or two you will be able to view, edit, download,
+and delete them as you see fit.
+This functionality is available through a dashboard on your account.
+You can view, edit, and download as much as you like, but deletion is permanent!

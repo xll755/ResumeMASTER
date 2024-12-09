@@ -104,6 +104,13 @@ echo "API_KEY=<your_api_key>" >> ./www/.env
 > This means that for this functionality to be accessible you must acquire and
 > include an API key.
 
+> [!NOTE]
+> **FOR POWER USERS**
+>
+> If you would like to use a different generative AI, feel free to edit the
+> Python  script located at `./www/back-end/ai-api-caller.py` to suit your
+> needs!
+
 #### Initial Run
 
 ```bash

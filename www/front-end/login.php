@@ -27,7 +27,6 @@ Data is not stored via cache, aren't bookmarked, etc.
 
     <div class="login-container">
         <h1>Login</h1>
-        <!-- TODO: this error printing needs prettying -->
         <?php if (isset($_SESSION['err_msg'])) echo $_SESSION['err_msg']; ?>
         <?php unset($_SESSION['err_msg']); ?>
         <form action="../back-end/login-backend.php" method="POST">

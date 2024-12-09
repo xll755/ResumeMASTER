@@ -28,7 +28,6 @@ $user->pull($mysqli, $_SESSION['user_id']);
         </nav>
         <div class="background-container">
             <h1>Edit My Information</h1>
-            <!-- TODO: this error printing needs prettying -->
             <?php if (isset($_SESSION['err_msg'])) echo $_SESSION['err_msg']; ?>
             <?php unset($_SESSION['err_msg']); ?>
             <form action="../back-end/edit-user-backend.php" method="POST">

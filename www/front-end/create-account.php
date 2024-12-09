@@ -23,7 +23,6 @@
 
     <div class="creation-container">
         <h1>Create Account</h1>
-        <!-- TODO: this error printing needs prettying -->
         <?php if (isset($_SESSION['err_msg'])) echo $_SESSION['err_msg']; ?>
         <?php unset($_SESSION['err_msg']); ?>
         <form action="../back-end/create-account-backend.php" method="POST">

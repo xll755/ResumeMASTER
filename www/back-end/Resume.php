@@ -1,6 +1,4 @@
 <?php
-// TODO: error handling, specifically in regards to the db
-
 class Resume implements dbfuncs
 {
 	private int $id;
@@ -12,7 +10,6 @@ class Resume implements dbfuncs
 	public function getID(): int { return $this->id; }
 	public function setID(int $id): void { $this->id = $id; }
 	public function get_contents(): string { return $this->contents; }
-	public function print(): void { var_dump($this->resume); } // WARN: remove
 	public function set_userId(int $id): void { $this->userId = $id; }
 	public function set_name(string $name): void { $this->name = $name; }
 	public function get_name(): string { return $this->name; }
@@ -24,9 +21,11 @@ class Resume implements dbfuncs
 	/**
 	 * Create a db entry for the current resume obj
 	 *
-	 * TODO: desc
+	 * Create a db entry for the $this Resume obj.
+	 * For use when adding a non-existing Resume to the DB.
 	 *
 	 * @param mysqli $mysqli db object
+	 * @param array  $args a list of args
 	 * @return resume_id
 	 */
 	public function create(mysqli $mysqli, ...$args): int
@@ -52,9 +51,11 @@ class Resume implements dbfuncs
 	/**
 	 * Delete the resume who's resume obj this is from db
 	 *
-	 * TODO: desc
+	 * Remove the db entry for $this Resume obj.
+	 * For use when removing an existing Resume from the DB.
 	 *
 	 * @param mysqli $mysqli db object
+	 * @param int $id of Resume to delete
 	 * @return void
 	 */
 	public function delete(mysqli $mysqli, int $id): void
@@ -69,7 +70,8 @@ class Resume implements dbfuncs
 	/**
 	 * Pull a resume from db into a resume object.
 	 *
-	 * TODO: desc
+	 * Get all of an existing Resume's DB fields and place them in $this obj.
+	 * For use when loading a Resume obj to work with locally.
 	 *
 	 * @param mysqli $mysqli db object
 	 * @param int $id id of resume to pull
@@ -98,8 +100,8 @@ class Resume implements dbfuncs
 	/**
 	 * Push the current resume obj into the db
 	 *
-	 * TODO: desc
-	 *
+	 * Update $this Resume's DB entry with the current state of $this Resume obj.
+	 * For use after manipulating a Resume's data locally.
 	 * @param mysqli $mysqli db object
 	 * @return void
 	 */
@@ -118,7 +120,6 @@ class Resume implements dbfuncs
 
 	/**
 	 * Confirm the existence of a Resume in the DB
-	 * TODO: this is a terrible check for this class. REFINE
 	 *
 	 * Uses the Resume obj's name to query DB to check if an id exists for the
 	 * provided name.

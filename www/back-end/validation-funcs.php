@@ -45,6 +45,7 @@ function is_valid_input(string $in = null) {
 }
 
 function return_on_failure(string $err_msg, string $url) {
+	$err_msg = "<p class=\"error\">" . $err_msg . "</p>";
 	$_SESSION['err_msg'] = $err_msg;
 	header("Location: " . $url);
 	exit();

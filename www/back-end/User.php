@@ -1,7 +1,4 @@
 <?php
-// TODO: brror handling, specifically in regards to the db
-//
-//
 class User implements  dbfuncs
 {
 	private int $id;
@@ -30,6 +27,7 @@ class User implements  dbfuncs
 	* For use when adding a non-existing User to the DB.
 	*
 	* @param mysqli $mysqli db object
+	 * @param array  $args a list of args
 	* @return int $id created user's id
 	 */
 	public function create(mysqli $mysqli, ...$args): int
@@ -61,6 +59,7 @@ class User implements  dbfuncs
 	* For use when removing an existing User from the DB.
 	*
 	* @param mysqli $mysqli db object
+	* @param int $id of User to delete
 	* @return void
 	*/
 	public function delete(mysqli $mysqli, int $id): void
@@ -125,22 +124,6 @@ class User implements  dbfuncs
 		$types = "sssssi";
 		$stmt->bind_param($types, $userName, $firstName, $lastName, $email, $passwd, $id);
 		$stmt->execute();
-	}
-
-	/**
-	* PUSH & PULL all information for a User from $this User obj to/from DB.
-	*
-	* Push and then pull updated information to update $this local User obj
-	* to DB state.
-	* For use when updating the local state of $this User is necessary.
-	*
-	* @param mysqli $mysqli db object
-	* @return void
-	*/
-	public function push_pull(mysqli $mysqli): void
-	{
-		$this->push($mysqli);
-		$this->pull($mysqli, $this->id);
 	}
 
 	/**

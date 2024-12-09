@@ -2,7 +2,19 @@
 
 ## About
 
-ResumeMASTER
+ResumeMASTER is a tool designed to help you create a resume that employers you
+to present your best self to anyone who reads it!
+This is accomplished through guiding you through the process of creating a basic
+yet powerful resume and allowing you to enhance it through leveraging the power
+of generative AI if you desire.
+This means that you can not only express yourself directly, but can get
+meaningful feedback & improvement on certain sections of your resumes!
+
+ResumeMASTER gives you the ability to create and manage multiple resumes,
+allowing you to explore exactly what you would like to put forward without
+having to worry about losing anything you've previously created.
+Once you're happy with any given resume you can download a copy of it as a PDF
+for your personal use!
 
 ## TOC
 

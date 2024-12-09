@@ -18,9 +18,9 @@ for your personal use!
 
 ## TOC
 
-[Usage](#usage)
-
 [Quick Start Guide](#quick-start-guide)
+
+[Usage](#usage)
 
 [Clone Repository](#clone-repository)
 
@@ -50,16 +50,31 @@ for your personal use!
 
 [Directory Tree](#directory-tree)
 
+## Quick Start Guide
+
+- Ensure Docker is installed on your system
+- Obtain ResumeMASTER's source code
+- Set-up ResumeMASTER's configuration file
+- Build ResumeMASTER's containers
+- Run ResumeMASTER's containers
+- Access ResumeMASTER via your favorite web browser at: `http://localhost`
+
 ## Usage
 
 ResumeMASTER is a web application that is deployed on Docker containers.
 This means that running the application is as simple as fetching the source
 code, building the containers, and accessing the application through your browser
 of choice.
-
-### Quick Start Guide
+If you do not already have Docker installed on your system, this
+[link](https://docs.docker.com/engine/install/) will guide you through the
+process of installing Docker on your computer so you can use ResumeMASTER.
 
 #### Clone Repository
+
+Getting the source code for the application onto your machine can be done by
+following
+[this guide](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+or through running the following Unix commands:
 
 ```bash
 # Clone repository & navigate to local directory
@@ -114,6 +129,12 @@ echo "API_KEY=<your_api_key>" >> ./www/.env
 > needs!
 
 #### Initial Run
+
+The first time that you go to use ResumeMASTER you will need to build the
+containers that serve as the applications back end.
+This can be done using
+[Docker desktop](https://www.docker.com/products/docker-desktop/)
+or though the following Unix commands:
 
 ```bash
 # Build & Run the application

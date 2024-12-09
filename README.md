@@ -48,6 +48,8 @@ for your personal use!
 
 [Manage Resumes](#manage-resumes)
 
+[Directory Tree](#directory-tree)
+
 ## Usage
 
 ResumeMASTER is a web application that is deployed on Docker containers.
@@ -205,3 +207,64 @@ Once you have created a resume or two you will be able to view, edit, download,
 and delete them as you see fit.
 This functionality is available through a dashboard on your account.
 You can view, edit, and download as much as you like, but deletion is permanent!
+
+## Directory Tree
+
+ResumeMASTER is divided into 2 main directories, with supporting files located
+at the project's root.
+The first directory, `./db`, contains the schema necessary to initialize the MySQL
+database that ResumeMASTER uses behind the scenes to power its data storage.
+The second directory, './www', contains the files that make up the application
+itself.
+These files are sorted, excluding the `./www/index.php` landing page, into
+sub-directories, namely `./www/back-end`, `./www/front-end`, and `./www/css`,
+that hold back- and front-end code, and our style sheet respectively.
+This logically separates out supporting files from view files, while still
+allowing everything to exist on the web server as a cohesive unit.
+
+ResumeMASTER employs a number of supporting files for managing the project's
+configuration and initiation.
+These supporting files manage the external PHP libraries used for PDF
+downloading, as well as the Docker infrastructure of the application itself.
+Specifically, `./composer.json` handles any PHP dependencies necessary for the
+application, while the `./Dockerfile` and `./docker-compose.yml` files handle
+the construction of the container images and their orchestration together.
+
+```text
+ResumeMASTER
+├── composer.json
+├── db
+│  └── schema.sql
+├── docker-compose.yml
+├── Dockerfile
+├── README.md
+└── www
+   ├── back-end
+   │  ├── ai-api-caller.py
+   │  ├── create-account-backend.php
+   │  ├── db-config.php
+   │  ├── dbfuncs.php
+   │  ├── edit-user-backend.php
+   │  ├── login-backend.php
+   │  ├── resume-download.php
+   │  ├── resume-renderer.php
+   │  ├── Resume.php
+   │  ├── resume_styles.php
+   │  ├── text2html.php
+   │  ├── User.php
+   │  ├── validation-funcs.php
+   │  └── verify-session.php
+   ├── css
+   │  └── styles.css
+   ├── front-end
+   │  ├── create-account.php
+   │  ├── create-resume.php
+   │  ├── edit-user.php
+   │  ├── example-resume.php
+   │  ├── home.php
+   │  ├── login.php
+   │  ├── logout.php
+   │  ├── my-resumes.php
+   │  └── view-resume.php
+   └── index.php
+```

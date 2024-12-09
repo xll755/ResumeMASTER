@@ -2,7 +2,7 @@
 
 ## About
 
-ResumeMASTER is a tool designed to help you create a resume that employers you
+ResumeMASTER is a tool designed to help you create a resume that empowers you
 to present your best self to anyone who reads it!
 This is accomplished through guiding you through the process of creating a basic
 yet powerful resume and allowing you to enhance it through leveraging the power
@@ -52,7 +52,7 @@ for your personal use!
 
 ResumeMASTER is a web application that is deployed on Docker containers.
 This means that running the application is as simple as fetching the source
-code, building the contains, and accessing the application through your browser
+code, building the containers, and accessing the application through your browser
 of choice.
 
 ### Quick Start Guide
@@ -127,9 +127,9 @@ docker compose down # THIS COMMAND WILL **DELETE** ANY DATA IN THE DATABASE
 
 #### Subsequent Runs
 
-After building the Docker containers that ResumeMASTER uses to host is server
-and database on, subsequent running of the application only requires running the
-containers.
+After building the Docker containers that ResumeMASTER uses to host its web
+server and database on, subsequent running of the application only requires
+running the containers.
 
 ```bash
 # Navigate to application directory
@@ -151,13 +151,14 @@ docker compose down # THIS COMMAND WILL **DELETE** ANY DATA IN THE DATABASE
 
 ### Application Flow
 
-After successfully staring and then accessing ResumeMASTER using your favorite
-browser, its finally time to go about creating, editing, and downloading your
+After successfully starting and then accessing ResumeMASTER using your favorite
+browser, it's finally time to go about creating, editing, and downloading your
 resume!
 
 #### Account Creation
 
 Start off your journey by creating an account to control your resumes with.
+After creating an account, simply login to access the your dashboard.
 
 ##### Account Field Requirements
 
@@ -172,7 +173,9 @@ Start off your journey by creating an account to control your resumes with.
 #### Resume Creation
 
 Create a resume either entirely by yourself or by leveraging the power of
-generative AI to level-up you resume!
+generative AI to level-up your resume!
+Simply fill out the input fields as prompted and click "Create Resume" when your
+through.
 
 ##### Required Fields
 
@@ -188,9 +191,9 @@ generative AI to level-up you resume!
 
 ##### Leveraging Generative AI
 
-All it takes to upgrade you resume's fields is a simple button click!
+All it takes to upgrade your resume's fields is a simple button click!
 Simply check the "Would you like AI to improve this?" box on the input fields
-where its available and Google's Gemini will aid you in expressing yourself to
+where it's available and Google's Gemini will aid you in expressing yourself to
 potential employers.
 You will have a chance to review and edit anything, including your own work,
 before you download it so feel free to explore how you would like to present

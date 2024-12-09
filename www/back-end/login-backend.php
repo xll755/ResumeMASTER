@@ -1,23 +1,4 @@
 <?php
-// TODO: better error handling???
-// TODO: validate the contents of post (is not empty and/or is each field set?)
-
-/* back-end/login-backend.php
-*
-* Backend processing for user login.
-* Verifies that the user exists & confirms their password.
-* Creates a User object & inits a session for that user.
-*
-* Takes in a HTTP POST containing:
-*	- userName
-*	- passwd
-*
-* Produces:
-*	- user session
-*	- user object
-*/
-
-// include 'back-end/verify-session.php'; 
 session_start();
 $mysqli = require_once"./db-config.php";
 include "./dbfuncs.php";

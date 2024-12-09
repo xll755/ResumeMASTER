@@ -2,13 +2,39 @@
 
 ## About
 
+ResumeMASTER
+
 ## TOC
 
 [Usage](#usage)
 
 [Quick Start Guide](#quick-start-guide)
 
+[Clone Repository](#clone-repository)
+
+[Configure Secrets](#configure-secrets)
+
+[Configure Database](#configure-database)
+
+[Add API Key](#add-api-key)
+
+[Initial Run](#initial-run)
+
+[Subsequent Runs](#subsequent-runs)
+
 [Application Flow](#application-flow)
+
+[Account Creation](#account-creation)
+
+[Account Field Requirements](#account-field-requirements)
+
+[Resume Creation](#resume-creation)
+
+[Required Fields](#required-fields)
+
+[Leveraging Generative AI](#leveraging-generative-ai)
+
+[Manage Resumes](#manage-resumes)
 
 ## Usage
 
